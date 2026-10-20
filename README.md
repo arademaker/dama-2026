@@ -101,3 +101,24 @@ Sobre o tema da palestra, achamos a proposta muito interessante, principalmente 
  - exemplo de AI gerando código
    https://github.com/arademaker/lean-binsearch , mas não tem CSLib.
    
+
+# Pendências
+
+## VS Code: hover
+
+O hover do mouse atrapalha no live demo (Joachim também o desliga). Em
+`.vscode/settings.json` deste repositório:
+
+```json
+"editor.hover.enabled": "onKeyboardModifier"
+```
+
+Conferir no notebook da palestra:
+
+- [ ] se essa opção é aceita na versão instalada do VS Code (se não for, usar
+      `"off"`, como no repositório de Joachim);
+- [ ] qual tecla faz o hover aparecer segurando-a (provavelmente `Option`).
+
+`Cmd+K Cmd+I` mostra o hover pelo teclado. A configuração vale só para esta
+pasta; para valer em todo lugar, pôr a mesma linha nas configurações de
+usuário.
