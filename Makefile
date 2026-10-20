@@ -8,7 +8,7 @@ QUOTED := @cslib/+Cslib.Algorithms.Lean.MergeSort.MergeSort \
           @cslib/+Cslib.Languages.CCS.Semantics \
           @cslib/+Cslib.Logics.HML.Basic
 
-.PHONY: all slides highlighted serve cache clean demo
+.PHONY: all slides highlighted serve cache clean demo roteiro
 
 all: slides
 
@@ -40,6 +40,16 @@ DEMO_OK := Demo/BinSearch.lean $(foreach n,1 2 3 4 6 7,Demo/Etapas/Etapa$(n).lea
 
 demo:
 	@for f in $(DEMO_OK); do echo "lake env lean $$f"; lake env lean $$f || exit 1; done
+
+# ROTEIRO.pdf, to print: pandoc renders the Markdown with a print style, and
+# headless Chrome writes the PDF. Not versioned; run again after editing.
+CHROME := /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+roteiro:
+	pandoc ROTEIRO.md --standalone --embed-resources --css scripts/roteiro-print.css \
+	  --metadata pagetitle="Roteiro" -o _roteiro.html
+	"$(CHROME)" --headless --disable-gpu --no-pdf-header-footer \
+	  --print-to-pdf=ROTEIRO.pdf _roteiro.html
+	rm -f _roteiro.html
 
 clean:
 	rm -rf _slides
