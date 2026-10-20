@@ -668,7 +668,7 @@ seguir explica melhor do que a lista.
   de métodos formais para Lean.
 - [Functional Algorithm Design](https://github.com/cslib-community/fad):
   algoritmos funcionais, com provas.
-- [Computational Semantics with Lean](https://emap-nlp.github.io/book/): o
+- [Computational Semantics with Lean](https://www.cslib.io/CSwL/): o
   livro do curso de PLN da EMAp, deste semestre, escrito em Verso como estes
   slides.
 
