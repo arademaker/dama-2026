@@ -223,22 +223,35 @@ Avanços na matemática, e com IA.
 12:00. Em ordem cronológica, das olimpíadas de 2024 até a semana passada.
 :::
 
-# IA nas olimpíadas
+# IA nas competições
 
-- *IMO 2024*: AlphaProof (Google DeepMind), nível prata.
-- *IMO 2025*: Aristotle (Harmonic), nível ouro; SEED Prover (ByteDance),
-  nível prata.
+- *IMO 2024*: AlphaProof (Google DeepMind), prata.
+- *IMO 2025*: ouro para Aristotle (Harmonic), prata para Seed Prover
+  (ByteDance). Também ouro para Gemini Deep Think (DeepMind) e OpenAI, mas em
+  linguagem natural.
+- *Putnam 2025* (6 de dezembro): [AxiomProver](https://github.com/AxiomMath/putnam2025)
+  resolveu 8 de 12 durante a prova, e os outros 4 nos dias seguintes.
 
-*As três usaram Lean.*
+*AlphaProof, Aristotle, Seed Prover e AxiomProver usaram Lean*: as provas
+deles foram conferidas pela máquina; as em linguagem natural, por juízes.
 
-Por quê: tipos expressivos, uma grande biblioteca e um ecossistema
-programável (Leonardo de Moura, [_Proof Assistants in the Age of AI_](https://leodemoura.github.io/blog/2026-2-18-proof-assistants-in-the-age-of-ai/),
-fevereiro de 2026).
+:::hstack
+{image "static/images/news-deepmind-imo2025.png" (width := "100%")}[DeepMind, 21 jul 2025]
+
+{image "static/images/news-harmonic-imo2025.png" (width := "100%")}[Harmonic, 2 out 2025]
+
+{image "static/images/news-bytedance-imo2025.png" (width := "100%")}[ByteDance Seed, 23 jul 2025]
+:::
 
 :::notes
-Pushmeet Kohli (DeepMind) creditou a
-"extensibility and verification capabilities" do Lean. No mesmo post, sobre
-o uso de IA na própria FRO: "we cannot imagine building Lean without it".
+Fontes: DeepMind, "Advanced version of Gemini with Deep Think officially
+achieves gold-medal standard" (21/7/2025); Harmonic, "How Aristotle Achieved
+its IMO Gold Medal-Level Performance" (2/10/2025); ByteDance Seed (23/7/2025).
+O README do AxiomProver dá a Putnam 2025 como encerrada em 6/12/2025. Por que
+Lean: tipos expressivos, uma grande biblioteca e um ecossistema programável
+(Leonardo de Moura, "Proof Assistants in the Age of AI", fev 2026). Pushmeet
+Kohli (DeepMind) creditou a "extensibility and verification capabilities" do
+Lean.
 :::
 
 # 2026 até aqui
@@ -249,7 +262,8 @@ o uso de IA na própria FRO: "we cannot imagine building Lean without it".
   * O quê
 *
   * jan
-  * [AxiomProver resolve 8 dos 12 problemas do Putnam](https://github.com/AxiomMath/putnam2025)
+  * [Problemas de Erdős em aberto](https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems)
+    resolvidos com ajuda de IA, com formalização em Lean
 *
   * mar
   * [Empacotamento de esferas em dimensões 8 e 24 formalizado](https://www.math.inc/sphere-packing)
@@ -258,34 +272,45 @@ o uso de IA na própria FRO: "we cannot imagine building Lean without it".
   * abr
   * [ChatGPT 5.5](https://openai.com/index/introducing-gpt-5-5/) encontra um resultado de Ramsey verificado em Lean
 *
-  * jul
-  * Lançamento do [Tau Ceti](https://taucetiproject.org/)
+  * jun
+  * Começa o [Tau Ceti](https://taucetiproject.org/): IA escrevendo matemática em Lean
 *
   * ago
   * OpenAI: [dez problemas em aberto](https://openai.com/index/ten-advances-in-mathematics/),
     com [certificados em Lean](https://github.com/openai/ten-proofs)
 *
   * set
-  * Anthropic [formaliza o Último Teorema de Fermat](https://www.anthropic.com/research/formalizing-fermats-last-theorem);
-    OpenAI: [Navier–Stokes](https://openai.com/index/navier-stokes-solution/),
-    com [prova em Lean](https://github.com/openai/NavierStokesAndEuler)
+  * Anthropic: [Último Teorema de Fermat](https://www.anthropic.com/research/formalizing-fermats-last-theorem);
+    OpenAI: [Navier–Stokes](https://openai.com/index/navier-stokes-solution/);
+    os dois com provas em Lean
 :::
 
 :::notes
 Linha do tempo da página da Lean FRO, "A Brief History of Lean"
-(lean-lang.org/fro/about), de onde vêm também os links. Em agosto, a
-Anthropic também publicou resultados sobre a função zeta de Riemann, com
-formalização em Lean (anthropic.com/research/riemann-zeta). Segundo o post do Xena (16/10), a formalização de
-Fermat pelo Claude teve 13 milhões de linhas, escritas em 11 dias; Kevin
-Buzzard elogiou o resultado e segue com a sua própria formalização, de uma
-prova mais moderna. Também em setembro: o GPT-6 Astra ajudou a chegar a um
-limite de 186 para intervalos entre primos, com formalização em Lean.
+(lean-lang.org/fro/about), de onde vêm também os links, com datas conferidas
+nos repositórios. Empacotamento de esferas: repositório math-inc/Sphere-Packing-Lean
+criado em 23/2, formalizações das dimensões 8 e 24 em 2/3/2026. Tau Ceti:
+repositório criado em 2/6/2026 (a FRO diz julho, a data do anúncio). A FRO põe o Putnam do
+AxiomProver em jan 2026, mas a prova foi em dez 2025: por isso ele está no
+slide anterior. O link de janeiro é a página de Terence Tao que acompanha as
+contribuições de IA aos problemas de Erdős. Em agosto, a Anthropic também
+publicou resultados sobre a função zeta de Riemann, com formalização em Lean
+(anthropic.com/research/riemann-zeta). Segundo o post do Xena (16/10), a
+formalização de Fermat pelo Claude teve 13 milhões de linhas, escritas em 11
+dias; Kevin Buzzard elogiou o resultado e segue com a sua própria
+formalização, de uma prova mais moderna. Também em setembro: o GPT-6 Astra
+ajudou a chegar a um limite de 186 para intervalos entre primos, com
+formalização em Lean.
 :::
 
 # Agosto: dez avanços
 
+:::hstack
 [OpenAI, 1º de agosto](https://openai.com/index/ten-advances-in-mathematics/):
 dez resultados, cada um resolvendo ou avançando um problema em aberto.
+
+{image "static/images/news-openai-ten-advances.png" (width := "100%")}[OpenAI, 1º ago 2026]
+:::
 
 - Empacotamento de esferas em dimensão alta; códigos binários e esféricos.
 - Grupos não sóficos existem; a conjectura de rigidez de Connes é falsa.
@@ -305,44 +330,53 @@ como o resultado foi produzido.
 
 # Setembro: Navier–Stokes
 
-[OpenAI, 8 de setembro](https://openai.com/index/navier-stokes-solution/): um
-fluido que parte do repouso, com uma força externa suave, desenvolve
-velocidade infinita em tempo finito, com energia finita.
+:::hstack
+{image "static/images/news-openai-navier-stokes.png" (width := "100%")}[OpenAI, 8 set 2026]
 
-- Segundo a OpenAI, isso estabelece as alternativas (C) e (D) do enunciado
-  oficial do Problema do Milênio.
-- Cerca de *10.000 agentes* simultâneos; *88 horas* até a prova.
-- Formalização e verificação em Lean: mais *17 horas*.
-- Prova em Lean: [github.com/openai/NavierStokesAndEuler](https://github.com/openai/NavierStokesAndEuler).
+{image "static/images/news-quanta-navier-stokes.png" (width := "100%")}[Quanta Magazine, 8 set 2026]
+:::
+
+- [Segundo a OpenAI](https://openai.com/index/navier-stokes-solution/), um
+  fluido que parte do repouso, com uma força externa suave, desenvolve
+  velocidade infinita em tempo finito: as alternativas (C) e (D) do Problema
+  do Milênio.
+- Cerca de *10.000 agentes* por *88 horas*; a formalização em Lean levou mais
+  *17 horas*: [github.com/openai/NavierStokesAndEuler](https://github.com/openai/NavierStokesAndEuler).
+- O que ainda é trabalho humano: conferir que o teorema provado em Lean é o
+  problema que se queria resolver ([Quanta](https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/)).
 
 :::notes
 Formular com cuidado: "segundo a OpenAI". O post diz que não pretendem
 reivindicar o prêmio. O mesmo sistema resolveu antes o problema de Euler sem
 força externa. Em paralelo, Levent Alpöge (Anthropic) e Tristan Buckmaster
 (NYU) resolveram o problema de Euler com força externa; a OpenAI reconhece a
-prioridade deles nesse caso. O repositório explica como conferir as provas
-com o Comparator, de forma independente.
+prioridade deles nesse caso. A Quanta chama o resultado de controverso: a
+disputa de prioridade não está esclarecida, e as duas equipes se apoiaram no
+trabalho de Diego Córdoba e Luis Martínez-Zoroa, que Fefferman chama de heróis
+da história. O repositório explica como conferir as provas com o Comparator,
+de forma independente.
 :::
 
 # Só na última semana
 
-- *16/10*: [_How to Formalize All of Mathematics_](https://xenaproject.wordpress.com/2026/10/16/how-to-formalize-all-of-mathematics/),
-  de Avigad, Buzzard, Commelin, Degenne, Morrison, Nash e Topaz. A Mathlib
-  recebeu o *Prêmio Jean-Pierre Demailly 2026* de Ciência Aberta em
-  Matemática.
-- *17/10*: [_Starting a new journal_](https://terrytao.wordpress.com/2026/10/17/starting-a-new-journal/),
-  post de Shaoming Guo no blog de Terence Tao:
+:::hstack
+{image "static/images/news-xena-formalize-all.png" (width := "100%")}[Xena, 16 out 2026]
 
-> To be accepted, a paper will need to have its proofs formally verified in
-  Lean.
+{image "static/images/news-tao-journal.png" (width := "100%")}[Blog de Terence Tao, 17 out 2026]
+:::
+
+- *16/10*: [_How to Formalize All of Mathematics_](https://xenaproject.wordpress.com/2026/10/16/how-to-formalize-all-of-mathematics/).
+  A Mathlib recebeu o *Prêmio Jean-Pierre Demailly 2026*.
+- *17/10*: [_Starting a new journal_](https://terrytao.wordpress.com/2026/10/17/starting-a-new-journal/):
+  uma revista que só aceita artigos com provas verificadas em Lean.
 
 :::notes
-Uma revista de matemática que exige prova verificada em Lean para
-aceitar um artigo. O post é de Shaoming Guo, convidado no blog do Tao. Os
-valores declarados: "Prioritizing understanding over being first" e
-"Ensuring rigor through formal verification". O post do Xena também diz que
-"a lousy formalization of existing results is worse than no formalization at
-all": formalizar bem é um ofício.
+O post do Xena é de Avigad, Buzzard, Commelin, Degenne, Morrison, Nash e
+Topaz. O do blog do Tao é de Shaoming Guo, convidado. Os valores declarados:
+"Prioritizing understanding over being first" e "Ensuring rigor through
+formal verification". O post do Xena também diz que "a lousy formalization of
+existing results is worse than no formalization at all": formalizar bem é um
+ofício.
 :::
 
 # Por que isso importa
@@ -466,7 +500,7 @@ good annotations."
 
 # Tau Ceti: matemática escrita por agentes
 
-[taucetiproject.org](https://taucetiproject.org/), lançado em julho de 2026:
+[taucetiproject.org](https://taucetiproject.org/), desde junho de 2026:
 
 - *Agentes de IA* escrevem as provas em Lean e abrem pull requests.
 - *Matemáticos* definem os alvos, num roteiro revisado por pessoas.

@@ -452,3 +452,12 @@
   max-width: 100%;
   max-height: 504px;
 }
+
+/* Screenshots of news posts (static/images/news-*.png): a thin frame and a
+   soft shadow, so the page backgrounds read as pictures, not slide text. */
+.reveal img[src*="news-"] {
+  border: 1px solid #e2d6c8;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  background: #fff;
+}
