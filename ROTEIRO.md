@@ -14,7 +14,7 @@ sequência são dele.
 | 16h30     | 0    | Abertura, sobre mim, roteiro                         | 1–3            |
 | 16h32     | 2    | Parte 1: o que é o Lean (jogo, em quem confiar)      |                |
 | 16h37     | 7    | Parte 2: a história do Lean (linha do tempo, livro)  |                |
-| 16h42     | 12   | Parte 3: o momento do Lean (competições, 2026, OpenAI, Tao, Xena) | |
+| 16h42     | 12   | Parte 3: o momento do Lean (competições, 2026, labs de IA, Tao, Xena) | |
 | 16h51     | 21   | Parte 4: Mathlib (+ exemplo com `ring`)              |                |
 | 16h56     | 26   | Parte 5: IA e Lean (Tau Ceti, busca binária, zip)    |                |
 | **17h05** | 35   | **Parte 6: ao vivo** (slide "Bingo", depois VS Code) | Ao vivo, Bingo |

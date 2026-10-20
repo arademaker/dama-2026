@@ -303,58 +303,53 @@ ajudou a chegar a um limite de 186 para intervalos entre primos, com
 formalização em Lean.
 :::
 
-# Agosto: dez avanços
+# Os laboratórios de IA entregam provas em Lean
 
 :::hstack
-[OpenAI, 1º de agosto](https://openai.com/index/ten-advances-in-mathematics/):
-dez resultados, cada um resolvendo ou avançando um problema em aberto.
-
 {image "static/images/news-openai-ten-advances.png" (width := "100%")}[OpenAI, 1º ago 2026]
-:::
 
-- Empacotamento de esferas em dimensão alta; códigos binários e esféricos.
-- Grupos não sóficos existem; a conjectura de rigidez de Connes é falsa.
-- Números de Ramsey multicolor (problema de Erdős 183).
-- Complexidade de circuitos aritméticos, repetição paralela quântica, …
+{image "static/images/news-anthropic-flt.png" (width := "100%")}[Anthropic, 4 set 2026]
 
-> Afterward, the model formalized each argument in a Lean certificate.
-
-:::notes
-Resultados de uma versão interna do Astra. Segundo o post, encontrar as
-soluções custaria cerca de US$ 2.000 em tokens. Os manuscritos foram
-preparados por pessoas, com o mesmo modelo, e o modelo depois formalizou cada
-argumento em Lean. Artigo: cdn.openai.com/pdf/ten-proofs-oai.pdf. O post cita
-a declaração de Leiden sobre IA e matemática e defende que a autoria reflita
-como o resultado foi produzido.
-:::
-
-# Setembro: Navier–Stokes
-
-:::hstack
 {image "static/images/news-openai-navier-stokes.png" (width := "100%")}[OpenAI, 8 set 2026]
-
-{image "static/images/news-quanta-navier-stokes.png" (width := "100%")}[Quanta Magazine, 8 set 2026]
 :::
 
-- [Segundo a OpenAI](https://openai.com/index/navier-stokes-solution/), um
-  fluido que parte do repouso, com uma força externa suave, desenvolve
-  velocidade infinita em tempo finito: as alternativas (C) e (D) do Problema
-  do Milênio.
-- Cerca de *10.000 agentes* por *88 horas*; a formalização em Lean levou mais
-  *17 horas*: [github.com/openai/NavierStokesAndEuler](https://github.com/openai/NavierStokesAndEuler).
-- O que ainda é trabalho humano: conferir que o teorema provado em Lean é o
-  problema que se queria resolver ([Quanta](https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/)).
+- *OpenAI*, [1º/8](https://openai.com/index/ten-advances-in-mathematics/):
+  dez problemas em aberto, cada um com um [certificado em Lean](https://github.com/openai/ten-proofs).
+- *Anthropic*, [4/9](https://www.anthropic.com/research/formalizing-fermats-last-theorem):
+  a primeira prova completa do Último Teorema de Fermat conferida por
+  computador, em Lean: 13 milhões de linhas, em 11 dias.
+- *OpenAI*, [8/9](https://openai.com/index/navier-stokes-solution/):
+  Navier–Stokes, um Problema do Milênio, segundo a OpenAI, com a
+  [prova em Lean](https://github.com/openai/NavierStokesAndEuler).
+
+O resultado vem com uma prova que qualquer um pode conferir na máquina.
 
 :::notes
-Formular com cuidado: "segundo a OpenAI". O post diz que não pretendem
-reivindicar o prêmio. O mesmo sistema resolveu antes o problema de Euler sem
-força externa. Em paralelo, Levent Alpöge (Anthropic) e Tristan Buckmaster
-(NYU) resolveram o problema de Euler com força externa; a OpenAI reconhece a
-prioridade deles nesse caso. A Quanta chama o resultado de controverso: a
-disputa de prioridade não está esclarecida, e as duas equipes se apoiaram no
-trabalho de Diego Córdoba e Luis Martínez-Zoroa, que Fefferman chama de heróis
-da história. O repositório explica como conferir as provas com o Comparator,
-de forma independente.
+O recado é sobre o Lean, não sobre a matemática: quando um laboratório de IA
+quer que acreditem num resultado, publica a prova em Lean.
+
+Agosto (OpenAI, "Ten advances"): versão interna do Astra; empacotamento de
+esferas, códigos, grupos não sóficos, conjectura de Connes, Ramsey multicolor
+(Erdős 183), circuitos aritméticos, repetição paralela quântica, entre outros.
+Segundo o post, encontrar as soluções custaria cerca de US$ 2.000 em tokens.
+
+Setembro (OpenAI, Navier–Stokes): um fluido que parte do repouso, com força
+externa suave, desenvolve velocidade infinita em tempo finito; segundo a
+OpenAI, as alternativas (C) e (D) do Problema do Milênio. Cerca de 10.000
+agentes por 88 horas; não pretendem reivindicar o prêmio. A Quanta chama o
+resultado de controverso: a disputa de prioridade com Buckmaster (NYU) e
+Alpöge (Anthropic), que resolveram Euler com força externa, não está
+esclarecida, e as duas equipes se apoiaram no trabalho de Córdoba e
+Martínez-Zoroa. A Quanta também lembra que conferir que o teorema em Lean é o
+problema certo continua sendo trabalho humano.
+
+Anthropic, Fermat: Claude trabalhou de forma quase autônoma por 11 dias,
+com dezenas de agentes, e provou 29.500 teoremas intermediários; a prova é
+mais de 5 vezes o tamanho da Mathlib. Usa só os três axiomas padrão do Lean,
+e um comparador confirmou que o enunciado é o mesmo enunciado de Fermat da
+Mathlib: a conferência do enunciado também está sendo automatizada. Kevin
+Buzzard revisou a prova. Em agosto a Anthropic também publicou resultados
+sobre a função zeta, com formalização em Lean.
 :::
 
 # Só na última semana
