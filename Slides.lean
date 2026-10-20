@@ -564,10 +564,10 @@ do Lean (Infoview) aberto à direita. Se algo der errado, o apêndice tem os
 exemplos em slides.
 :::
 
-# O que o demo mostra
+# O que o demo mostrou
 
-O bingo de Joachim tem 33 recursos do Lean. ✅ o código que vamos escrever
-usa (21 de 33); os outros ficam para outra vez.
+O bingo de Joachim tem 33 recursos do Lean. ✅ o código que escrevemos usa
+(21 de 33); os outros ficam para outra vez.
 
 ::::attr («class» := "feature-table")
 :::table +rowSeps
@@ -623,8 +623,8 @@ Lista do "Lean Highlights Bingo" de Joachim Breitner ([@nomeata](https://github.
 :::
 
 :::notes
-Mostrar rápido, antes de abrir o VS Code: é o mapa do que vai aparecer. Os
-sem ✅ que dá para mostrar se sobrar tempo: notação própria, ir para a
+Mostrar depois do live coding, ao voltar do VS Code: é o resumo do que
+apareceu. Os sem ✅ que dá para mostrar se sobrar tempo: notação própria, ir para a
 definição, incrementalidade, e a notação `do` (em "Se sobrar tempo" no
 roteiro).
 :::

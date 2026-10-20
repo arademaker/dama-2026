@@ -17,7 +17,7 @@ sequência são dele.
 | 16h42     | 12   | Parte 3: o momento do Lean (competições, 2026, labs de IA, Tao, Xena) | 11–16  |
 | 16h51     | 21   | Parte 4: Mathlib (exemplos, táticas da Mathlib e do Lean)             | 17–20  |
 | 16h56     | 26   | Parte 5: IA e Lean (Tau Ceti, lean-zip, busca binária)                | 21–25  |
-| **17h05** | 35   | **Parte 6: ao vivo** (slide "O que o demo mostra", depois VS Code)    | 26–27  |
+| **17h05** | 35   | **Parte 6: ao vivo** (VS Code; depois o slide "O que o demo mostrou") | 26–27  |
 | 17h40     | 70   | Parte 7: CSLib (curta) e Lean nas minhas aulas                        | 28–33  |
 | 17h46     | 76   | Como começar                                                          | 34     |
 | 17h50     | 80   | Obrigado; perguntas                                                   | 35     |
@@ -311,7 +311,7 @@ No slide: *tactic proofs*, *functional induction*, *explicit proof terms*.
 
 ## A lista completa de Joachim
 
-Lista de Joachim (`02_DemoChallenge.lean`), com a tradução. O slide "O que o demo mostra" tem os 33, com ✅ nos 21 que o código do roteiro usa. Nem todos aparecem no roteiro, e isso é de propósito: a lista
+Lista de Joachim (`02_DemoChallenge.lean`), com a tradução. O slide "O que o demo mostrou" tem os 33, com ✅ nos 21 que o código do roteiro usa. Nem todos aparecem no roteiro, e isso é de propósito: a lista
 também mostra recursos do Lean que não dá tempo de demonstrar.
 
 | No demo | Em português | Termo original |
