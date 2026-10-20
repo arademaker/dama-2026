@@ -197,9 +197,13 @@ FRO em jun 2026; o slide "Virou livro" vem logo depois.
 
 # Virou livro
 
+:::hstack
 Kevin Hartnett, [_The Proof in the Code: How a Truth Machine Is Transforming
 Math and AI_](https://www.quantabooks.org/books/the-proof-in-the-code/)
 (Quanta Books, junho de 2026).
+
+{image "static/images/book-proof-in-the-code.png" (width := "55%")}[Capa de The Proof in the Code]
+:::
 
 > Lean is one of the most important things happening to math right now.
 
@@ -209,7 +213,9 @@ Math and AI_](https://www.quantabooks.org/books/the-proof-in-the-code/)
 O livro conta a história do Lean: concebido para conferir código, e
 adotado por um pequeno grupo de matemáticos que viu nele um "oráculo da
 verdade". Também traz a conversa entre Pushmeet Kohli e Leonardo de Moura que
-está na origem da CSLib.
+está na origem da CSLib. Repare na capa: o texto ao fundo é código Lean da
+Mathlib, `exists_infinite_primes`, o mesmo teorema de Euclides que aparece
+no slide "Usando a Mathlib".
 :::
 
 # Parte 3: O momento do Lean
