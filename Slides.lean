@@ -625,6 +625,8 @@ problema que uma biblioteca resolve.
 
 # O que é a CSLib?
 
+{image "static/images/cslib-logo.svg" (width := "22%")}[Logo da CSLib]
+
 > An open-source library of reusable components for proving theorems in
   computer science and writing formally verified code in the Lean
   programming language and proof assistant.
