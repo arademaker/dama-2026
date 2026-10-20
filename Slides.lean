@@ -43,16 +43,16 @@ V SEEMAp, FGV EMAp | 21 de outubro de 2026
 
 # Sobre mim
 
-- *Professor da EMAp* desde 2010: matemática discreta, programação,
-  algoritmos, teoria dos tipos, teoria das categorias.
 - *Mestrado* (UFF, 2005): métodos formais, lógica de reescrita em
   [Maude](https://maude.cs.illinois.edu).
 - *Doutorado* (PUC-Rio, 2010): teoria da prova para lógicas de descrição.
-  Estágios no [SRI](https://www.csl.sri.com/) (PVS) e na Microsoft Research,
+  Estágios no [SRI](https://www.csl.sri.com/) (PVS) e na [Microsoft Research](https://www.microsoft.com/en-us/research/),
   com a equipe do [Z3](https://github.com/Z3Prover/z3).
 - *IBM Research Brasil* (2012–2025): PLN, semântica computacional, ontologias.
-- *Hoje*: diretor da CSLib Initiative, na Renaissance Philanthropy.
-- Na comunidade Lean desde março de 2015.
+
+- *Professor da EMAp* desde 2010: matemática discreta, programação,
+  algoritmos, teoria dos tipos, teoria das categorias, etc.
+- Na comunidade Lean desde março de 2015. Diretor da CSLib Initiative, na Renaissance Philanthropy.
 
 :::notes
 Agradecer à comissão da SEEMAp e ao DAMA. Slide rápido: o fio é lógica
@@ -173,28 +173,33 @@ all": formalizar bem é um ofício.
   * O quê
 *
   * jan
-  * AxiomProver resolve 8 dos 12 problemas do Putnam
+  * [AxiomProver resolve 8 dos 12 problemas do Putnam](https://github.com/AxiomMath/putnam2025)
 *
   * mar
-  * Empacotamento de esferas em dimensão 24 formalizado
+  * [Empacotamento de esferas em dimensões 8 e 24 formalizado](https://www.math.inc/sphere-packing)
+    (resultados de Viazovska, Medalha Fields)
 *
   * abr
-  * ChatGPT 5.5 encontra um resultado de Ramsey verificado em Lean
+  * [ChatGPT 5.5](https://openai.com/index/introducing-gpt-5-5/) encontra um resultado de Ramsey verificado em Lean
 *
   * jul
-  * Lançamento do Tau Ceti
+  * Lançamento do [Tau Ceti](https://taucetiproject.org/)
 *
   * ago
-  * OpenAI: dez problemas em aberto, com certificados em Lean
+  * OpenAI: [dez problemas em aberto](https://openai.com/index/ten-advances-in-mathematics/),
+    com [certificados em Lean](https://github.com/openai/ten-proofs)
 *
   * set
-  * Anthropic formaliza o Último Teorema de Fermat; OpenAI: Navier–Stokes,
-    com prova em Lean
+  * Anthropic [formaliza o Último Teorema de Fermat](https://www.anthropic.com/research/formalizing-fermats-last-theorem);
+    OpenAI: [Navier–Stokes](https://openai.com/index/navier-stokes-solution/),
+    com [prova em Lean](https://github.com/openai/NavierStokesAndEuler)
 :::
 
 :::notes
 Linha do tempo da página da Lean FRO, "A Brief History of Lean"
-(lean-lang.org/fro/about). Segundo o post do Xena (16/10), a formalização de
+(lean-lang.org/fro/about), de onde vêm também os links. Em agosto, a
+Anthropic também publicou resultados sobre a função zeta de Riemann, com
+formalização em Lean (anthropic.com/research/riemann-zeta). Segundo o post do Xena (16/10), a formalização de
 Fermat pelo Claude teve 13 milhões de linhas, escritas em 11 dias; Kevin
 Buzzard elogiou o resultado e segue com a sua própria formalização, de uma
 prova mais moderna. Também em setembro: o GPT-6 Astra ajudou a chegar a um
