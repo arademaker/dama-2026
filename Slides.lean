@@ -566,50 +566,67 @@ exemplos em slides.
 
 # O que o demo mostra
 
-*✓* aparece no demo. Os outros o Lean também tem, mas não cabem em 30
-minutos.
+O bingo de Joachim tem 33 recursos do Lean. ✅ o código que vamos escrever
+usa (21 de 33); os outros ficam para outra vez.
 
+::::attr («class» := "feature-table")
 :::table +rowSeps
 *
-  * ✓ programação funcional básica (*basic functional programming*)
-  * ✓ estruturas (*structures*)
+  * lambdas anônimas (*anonymous lambdas*)
+  * ✅ terminação verificada automaticamente (*automatic termination checking*)
+  * ✅ automação com `grind` (*automation with `grind`*)
 *
-  * ✓ tipos dependentes (*dependent types*)
-  * ✓ avaliar código (*evaluating code*)
+  * ✅ parâmetros automáticos (*auto-params*)
+  * ✅ programação funcional básica (*basic functional programming*)
+  * ✅ sugestões clicáveis (*clickable hints*)
 *
-  * ✓ testes embutidos (*embedded tests*)
-  * ✓ informação ao passar o mouse (*hover*)
+  * notação própria (*custom notation*)
+  * ✅ tipos dependentes (*dependent types*)
+  * notação `do` (*do notation*)
 *
-  * ✓ atualização imutável (*immutable updates*)
-  * ✓ recursão bem fundada (*well-founded recursion*)
+  * `do` com retorno antecipado (*do with early return*)
+  * `do` com atualização mutável (*do with mutable update*)
+  * `do` com iteração paralela (*do with parallel iteration*)
 *
-  * ✓ terminação automática (*automatic termination checking*)
-  * ✓ parâmetros automáticos (*auto-params*)
+  * ✅ teste embutido (*embedded test*)
+  * ✅ avaliar código (*evaluating code*)
+  * ✅ termos de prova explícitos (*explicit proof terms*)
 *
-  * ✓ automação com `grind` (*automation with `grind`*)
-  * ✓ inspecionar o estado do `grind` (*inspecting grind states*)
+  * ✅ indução funcional (*functional induction*)
+  * autocompletar nomes de funções (*function name autocompletion*)
+  * ir para a definição (*go to definition*)
 *
-  * ✓ provas com táticas (*tactic proofs*)
-  * ✓ indução funcional (*functional induction*)
+  * ✅ hover
+  * ✅ atualizações imutáveis (*immutable updates*)
+  * ✅ parâmetros implícitos com táticas (*implicit parameters with auto-tactics*)
 *
-  * ✓ dicas embutidas no texto (*inlay hints*)
-  * ✓ sugestões clicáveis (*clickable hints*)
+  * incrementalidade (*incrementality*)
+  * ✅ dicas embutidas no texto (*inlay hints*)
+  * ✅ inspecionar o estado do `grind` (*inspecting grind states*)
 *
-  * · notação própria (*custom notation*)
-  * · notação `do` (*do notation*)
+  * ✅ argumentos nomeados (*named function arguments*)
+  * ✅ notação de ponto sobrecarregada (*overloaded dot notation*)
+  * verificação de provas em paralelo (*parallel proof checking*)
 *
-  * · lambdas anônimas (*anonymous lambdas*)
-  * · ir para a definição (*go to definition*)
+  * ✅ construtor de estrutura (*structure constructor syntax*)
+  * ✅ provas com táticas (*tactic proofs*)
+  * dica de tipo (*type hint*)
+*
+  * ✅ digitar unicode (*unicode entry*)
+  * dicas para identificador desconhecido (*unknown identifier code hints*)
+  * ✅ recursão bem fundada (*well-founded recursion*)
 :::
+::::
 
 :::attr («class» := "credits")
-Lista adaptada do "Lean Highlights Bingo" de Joachim Breitner ([@nomeata](https://github.com/nomeata)).
+Lista do "Lean Highlights Bingo" de Joachim Breitner ([@nomeata](https://github.com/nomeata)).
 :::
 
 :::notes
-Mostrar rápido, antes de abrir o VS Code: é o mapa do que vai aparecer. A
-lista completa de Joachim tem 33 itens (em `ROTEIRO.md`); o demo mostra
-menos da metade. Os quatro sem ✓ estão em "Se sobrar tempo" no roteiro.
+Mostrar rápido, antes de abrir o VS Code: é o mapa do que vai aparecer. Os
+sem ✅ que dá para mostrar se sobrar tempo: notação própria, ir para a
+definição, incrementalidade, e a notação `do` (em "Se sobrar tempo" no
+roteiro).
 :::
 
 # Parte 7: A CSLib

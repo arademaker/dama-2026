@@ -493,3 +493,7 @@
 .reveal .r-hstack:has(img[src*="news-openai-ten-advances"]) > .r-vstack:nth-child(3) {
   grid-column: 7 / 13; grid-row: 2; margin-top: 0.6em; transform: rotate(-0.6deg);
 }
+
+/* "O que o demo mostra": all 33 items of Joachim's bingo, three columns. */
+.reveal table.feature-table { font-size: 0.56em; }
+.reveal table.feature-table td { padding: 0.25em 0.6em; }
