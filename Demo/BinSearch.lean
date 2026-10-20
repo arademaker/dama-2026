@@ -75,3 +75,17 @@ notation:max m "[" k " := " v "]" => Map.update k v m
 /-- info: { keys := #[1, 3, 5, 7], values := #[1, 3, 5, 7], hSize := _ } -/
 #guard_msgs in
 #eval testMap[0 := 42]
+
+-- Extra, se sobrar tempo: notação `do` (também da versão final de Joachim).
+def Map.sumKeysUntil (p : β → Bool) (m : Map β) : Nat := Id.run do
+  let mut s := 0
+  for k in m.keys, v in m.values do
+    if p v then
+      return s
+    else
+      s := s + k
+  return s
+
+/-- info: 4 -/
+#guard_msgs in
+#eval testMap.sumKeysUntil (· > 3)

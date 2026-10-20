@@ -5,23 +5,23 @@ Slides: <https://arademaker.github.io/dama-2026/>
 
 O live demo é adaptado do "Lean Highlights" de **Joachim Breitner** (Lean FRO):
 <https://github.com/nomeata/lean-highlights-tfp>. A ideia, o exemplo e a
-sequência são dele. Dar o crédito em voz alta ao abrir o VS Code.
+sequência são dele. 
 
 ## A sessão
 
-| Relógio     | Min.  | Bloco                                              | Slides              |
-|-------------|-------|----------------------------------------------------|---------------------|
-| 16h30       | 0     | Abertura, sobre mim, roteiro                       | 1–3                 |
-| 16h32       | 2     | Parte 1: o que é o Lean (jogo, em quem confiar)    |                     |
-| 16h37       | 7     | Parte 2: por que agora (Tao, Xena, OpenAI)         |                     |
-| 16h47       | 17    | Parte 3: momentum (história, olimpíadas, livro)    |                     |
-| 16h51       | 21    | Parte 4: Mathlib (+ exemplo com `ring`)            |                     |
-| 16h56       | 26    | Parte 5: IA e Lean (Tau Ceti, busca binária, zip)  |                     |
-| **17h05**   | 35    | **Parte 6: ao vivo** (slide "Bingo", depois VS Code) | Ao vivo, Bingo    |
-| 17h40       | 70    | Parte 7: CSLib (curta)                             |                     |
-| 17h46       | 76    | Como começar                                       |                     |
-| 17h50       | 80    | Obrigado; perguntas                                |                     |
-| 18h00       | 90    | Fim                                                |                     |
+| Relógio   | Min. | Bloco                                                | Slides         |
+|-----------|------|------------------------------------------------------|----------------|
+| 16h30     | 0    | Abertura, sobre mim, roteiro                         | 1–3            |
+| 16h32     | 2    | Parte 1: o que é o Lean (jogo, em quem confiar)      |                |
+| 16h37     | 7    | Parte 2: por que agora (Tao, Xena, OpenAI)           |                |
+| 16h47     | 17   | Parte 3: momentum (história, olimpíadas, livro)      |                |
+| 16h51     | 21   | Parte 4: Mathlib (+ exemplo com `ring`)              |                |
+| 16h56     | 26   | Parte 5: IA e Lean (Tau Ceti, busca binária, zip)    |                |
+| **17h05** | 35   | **Parte 6: ao vivo** (slide "Bingo", depois VS Code) | Ao vivo, Bingo |
+| 17h40     | 70   | Parte 7: CSLib (curta)                               |                |
+| 17h46     | 76   | Como começar                                         |                |
+| 17h50     | 80   | Obrigado; perguntas                                  |                |
+| 18h00     | 90   | Fim                                                  |                |
 
 Se às **17h10** o demo ainda não começou, cortar a Parte 3 ou a Parte 4 na
 volta. O apêndice (exemplos em slides) é o plano B se o VS Code falhar.
@@ -271,6 +271,26 @@ Bingo: *tactic proofs*, *functional induction*, *explicit proof terms*.
   elemento, para ter um valor a devolver quando o índice é inválido.
 - **Notação**: `notation:max m "[" k " := " v "]" => Map.update k v m`
   e `#eval testMap[0 := 42]` (está no gabarito).
+- **Notação `do`**: somar as chaves até achar um valor que satisfaz `p`
+  (está no gabarito):
+
+  ```lean
+  def Map.sumKeysUntil (p : β → Bool) (m : Map β) : Nat := Id.run do
+    let mut s := 0
+    for k in m.keys, v in m.values do
+      if p v then
+        return s
+      else
+        s := s + k
+    return s
+
+  #eval testMap.sumKeysUntil (· > 3)   -- 4
+  ```
+
+  Parece código imperativo, mas é uma função pura: `let mut` e `s := s + k`
+  (*mutable update*), `for … in …, … in …` percorre os dois vetores juntos
+  (*parallel iteration*), `return` no meio do laço (*early return*), e
+  `(· > 3)` é uma função anônima (*anonymous lambdas*).
 
 ### Se atrasar
 
@@ -288,42 +308,41 @@ Lista de Joachim (`02_DemoChallenge.lean`), com a tradução. O slide "Bingo"
 tem 20 destes. Nem todos aparecem no roteiro, e isso é de propósito: a lista
 também mostra recursos do Lean que não dá tempo de demonstrar.
 
-| Em português | Termo original |
-|---|---|
-| lambdas anônimas | anonymous lambdas |
-| terminação verificada automaticamente | automatic termination checking |
-| automação com `grind` | automation with `grind` |
-| parâmetros automáticos | auto-params |
-| programação funcional básica | basic functional programming |
-| sugestões clicáveis (várias) | clickable hints (multiple) |
-| notação própria | custom notation |
-| tipos dependentes | dependent types |
-| notação `do` | do notation |
-| notação `do` com retorno antecipado | do notation with early return |
-| notação `do` com atualização mutável | do notation with mutable update |
-| notação `do` com iteração paralela | do notation with parallel iteration |
-| teste embutido | embedded test |
-| avaliar código | evaluating code |
-| termos de prova explícitos | explicit proof terms |
-| indução funcional | functional induction |
-| autocompletar nomes de funções | function name autocompletion |
-| ir para a definição | go to definition |
-| hover (informação ao passar o mouse) | hover |
-| atualizações imutáveis | immutable updates |
+| Em português                                  | Termo original                        |
+|-----------------------------------------------|---------------------------------------|
+| lambdas anônimas                              | anonymous lambdas                     |
+| terminação verificada automaticamente         | automatic termination checking        |
+| automação com `grind`                         | automation with `grind`               |
+| parâmetros automáticos                        | auto-params                           |
+| programação funcional básica                  | basic functional programming          |
+| sugestões clicáveis (várias)                  | clickable hints (multiple)            |
+| notação própria                               | custom notation                       |
+| tipos dependentes                             | dependent types                       |
+| notação `do`                                  | do notation                           |
+| notação `do` com retorno antecipado           | do notation with early return         |
+| notação `do` com atualização mutável          | do notation with mutable update       |
+| notação `do` com iteração paralela            | do notation with parallel iteration   |
+| teste embutido                                | embedded test                         |
+| avaliar código                                | evaluating code                       |
+| termos de prova explícitos                    | explicit proof terms                  |
+| indução funcional                             | functional induction                  |
+| autocompletar nomes de funções                | function name autocompletion          |
+| ir para a definição                           | go to definition                      |
+| hover (informação ao passar o mouse)          | hover                                 |
+| atualizações imutáveis                        | immutable updates                     |
 | parâmetros implícitos com táticas automáticas | implicit parameters with auto-tactics |
-| incrementalidade | incrementality |
-| dicas embutidas no texto | inlay hints |
-| inspecionar o estado do `grind` | inspecting grind states |
-| argumentos nomeados | named function arguments |
-| notação de ponto sobrecarregada | overloaded dot notation |
-| verificação de provas em paralelo | parallel proof checking |
-| sintaxe de construtor de estrutura | structure constructor syntax |
-| provas com táticas | tactic proofs |
-| dica de tipo | type hint |
-| digitar unicode | unicode entry |
-| dicas para identificador desconhecido | unknown identifier code hints |
-| recursão bem fundada | well-founded recursion |
+| incrementalidade                              | incrementality                        |
+| dicas embutidas no texto                      | inlay hints                           |
+| inspecionar o estado do `grind`               | inspecting grind states               |
+| argumentos nomeados                           | named function arguments              |
+| notação de ponto sobrecarregada               | overloaded dot notation               |
+| verificação de provas em paralelo             | parallel proof checking               |
+| sintaxe de construtor de estrutura            | structure constructor syntax          |
+| provas com táticas                            | tactic proofs                         |
+| dica de tipo                                  | type hint                             |
+| digitar unicode                               | unicode entry                         |
+| dicas para identificador desconhecido         | unknown identifier code hints         |
+| recursão bem fundada                          | well-founded recursion                |
 
-As linhas de `do` (*do notation*…) e as lambdas anônimas vêm de
-`sumKeysUntil`, que está no repositório de Joachim mas não neste roteiro. Se
-alguém perguntar, é um bom "se sobrar tempo".
+Os itens de `do` (*do notation*…) e as lambdas anônimas só aparecem se der
+tempo de mostrar `sumKeysUntil` (ver "Se sobrar tempo").

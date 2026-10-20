@@ -57,7 +57,8 @@ Sobre o tema da palestra, achamos a proposta muito interessante, principalmente 
 
  - apresentação Joachim Breitner (Lean FRO)
    https://github.com/nomeata/lean-highlights-tfp , live coding
-   mostrando Lean. Ver vídeo em `doc/` também.
+   mostrando Lean. Ver vídeo em `doc/` também. Clone local em
+   `/Users/ar/r/lean-highlights-tfp`
 
  - referencias sobre Lean (histórico, recursos, etc)
    https://leodemoura.github.io/static/marktoberdorf2026/
@@ -73,7 +74,10 @@ Sobre o tema da palestra, achamos a proposta muito interessante, principalmente 
  - https://openai.com/index/navier-stokes-solution/
    - https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf
    - https://github.com/openai/NavierStokesAndEuler
-
+   
+ - https://github.com/anthropics/formal-math (Machine-checked Lean 4
+   formalizations published by Anthropic)
+ 
  - https://terrytao.wordpress.com/2026/10/17/starting-a-new-journal/
  - https://xenaproject.wordpress.com/2026/10/16/how-to-formalize-all-of-mathematics/
  - https://www.quantabooks.org/books/the-proof-in-the-code/
