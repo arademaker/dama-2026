@@ -4,14 +4,16 @@ defaultTargets = ["Slides", "dama-2026"]
 
 # Presentation introducing Lean 4 at the V SEEMAp (FGV EMAp, 2026-10-21),
 # adapted from the Georgia Tech CSLib talk (arademaker/gatech-2026), whose
-# pins and build this project keeps unchanged. Built with verso-slides, which
-# renders a reveal.js deck from a Verso `Slides` document.
+# build it keeps. Built with verso-slides, which renders a reveal.js deck
+# from a Verso `Slides` document.
 #
-# The revision has to match `lean-toolchain` (v4.35.0-rc3). Pinned by SHA
-# past the `v4.35.0-rc3` tag: dd41bad (#80) only bumps the manifest, to
-# verso 2e72881 and SubVerso 892d6dc, whose `highlighted` facet no longer
-# lets each module's build clobber a shared trace (SubVerso #244). Without
-# that, `leanLibCode` resolves only the last-built module. Do not switch to
+# The pins moved from the Georgia Tech ones (v4.35.0-rc3) to v4.36.0-rc1 on
+# 2026-10-20, to show CSLib's latest release; the slides, the quoted CSLib
+# source and every message the live demo relies on were checked to come out
+# the same. The revision has to match `lean-toolchain` (v4.36.0-rc1): this is
+# verso-slides `main` on 2026-10-14, which already carries SubVerso 892d6dc,
+# whose `highlighted` facet no longer lets each module's build clobber a
+# shared trace (SubVerso #244). Do not switch to a moving
 # `main`: verso-slides itself requires `verso` from an *unpinned* `main`,
 # so a `lake update` can drag the whole project to a newer toolchain.
 # `lake-manifest.json` is what freezes that transitive revision -- keep it
@@ -19,7 +21,7 @@ defaultTargets = ["Slides", "dama-2026"]
 [[require]]
 name = "verso-slides"
 git = "https://github.com/leanprover/verso-slides.git"
-rev = "dd41badb53b11f31bba486e2de516148bd889057"
+rev = "2d8e2ccef9876efe8194a6818b46b64f37da515f"
 
 [[lean_lib]]
 name = "Slides"
@@ -37,21 +39,12 @@ root = "Main"
 # definitions (CCS, HML, bisimulation, the time monad), so the library has
 # to be a dependency and not just prose.
 # Pinned by full SHA (not `main`) so the deck still builds on the day of
-# the talk. This SHA's `lean-toolchain` is v4.35.0-rc3, the same tag
+# the talk: the `v4.36.0-rc1` tag, whose `lean-toolchain` is the one
 # `verso-slides` above requires.
 [[require]]
 name = "cslib"
 scope = "leanprover"
-rev = "12ba7cfc8089af0cd9da823196486914e697b99e"
-
-# bignum is no longer quoted by any slide (the s2n-bignum slide of the
-# Georgia Tech deck was dropped), so nothing of it is built. The require
-# stays only so that `lake-manifest.json`, copied from gatech-2026, does not
-# have to be re-resolved: a `lake update` could pull a newer verso.
-[[require]]
-name = "bignum"
-git = "https://github.com/cslib-community/bignum"
-rev = "128c76f6bea26da0ef79399523449b3c38e4dffa"
+rev = "6d9d11371bae527fa615a016da8111bbdeb36f7c"
 
 # Mathlib already arrives transitively via `cslib`, but without a direct
 # `[[require]]` Lake does not give Mathlib's version choices priority for
@@ -63,4 +56,4 @@ rev = "128c76f6bea26da0ef79399523449b3c38e4dffa"
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"
-rev = "c55e6e786f49471c72fbddbec5415808896aec1e"
+rev = "625d8914199bc567cca9b91f90e8e5afafa5ae51"
