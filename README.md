@@ -84,3 +84,10 @@ Sobre o tema da palestra, achamos a proposta muito interessante, principalmente 
  - https://taucetiproject.org/
 
 - cslib
+
+ - projetos na https://github.com/orgs/cslib-community/repositories 
+ 
+ - exemplo de AI gerando código
+   https://github.com/arademaker/lean-binsearch , mas não tem CSLib.
+   
+   

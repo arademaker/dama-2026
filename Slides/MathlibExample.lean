@@ -23,7 +23,7 @@ vertical := true
 
 Teoremas clássicos já estão lá. Basta importar e usar:
 
-```lean
+```lean -stretch
 /-- Euclides: para todo `n` existe um primo maior ou igual a `n`. -/
 example (n : ℕ) : ∃ p, n ≤ p ∧ p.Prime :=
   Nat.exists_infinite_primes n
@@ -47,7 +47,7 @@ gerais sobre raízes de inteiros.
 
 Táticas da Mathlib resolvem classes inteiras de problemas:
 
-```lean
+```lean -stretch
 example (a b : ℝ) : (a + b) ^ 2 = a ^ 2 + 2 * a * b + b ^ 2 := by
   ring
 

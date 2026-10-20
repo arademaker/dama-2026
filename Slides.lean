@@ -131,9 +131,9 @@ O Lean separa *quem procura* a prova de *quem confere* a prova.
 
 :::notes
 12:00. Este é o slide-chave para o resto da palestra: é por isso que faz
-sentido deixar uma IA escrever provas. O Comparator, ferramenta da FRO,
-confere provas com mais de uma implementação de kernel. Conferir a citação no
-post antes da palestra.
+sentido deixar uma IA escrever provas. Há várias implementações
+independentes do kernel, e o Comparator, ferramenta da FRO, confere as provas
+em mais de uma delas.
 :::
 
 # Parte 2: Por que Lean, e por que agora
@@ -187,22 +187,23 @@ all": formalizar bem é um ofício.
   * Lançamento do Tau Ceti
 *
   * ago
-  * OpenAI e Anthropic anunciam resultados com Lean
+  * OpenAI: [progresso em 10 problemas de pesquisa](https://openai.com/index/ten-advances-in-mathematics/),
+    com certificados em Lean; Anthropic: resultados sobre a função zeta de
+    Riemann, formalizados em Lean
 *
   * set
-  * Anthropic formaliza o Último Teorema de Fermat; resultados sobre
-    Navier–Stokes verificados em Lean
+  * Anthropic formaliza o Último Teorema de Fermat; OpenAI, Alpöge e
+    Buckmaster: [resultados sobre Navier–Stokes](https://openai.com/index/navier-stokes-solution/)
+    (problema do milênio) verificados em Lean
 :::
-
-Mais: [dez avanços em matemática](https://openai.com/index/ten-advances-in-mathematics/)
-e [Navier–Stokes](https://openai.com/index/navier-stokes-solution/) (OpenAI).
 
 :::notes
 15:00. Linha do tempo da página da Lean FRO, "A Brief History of Lean"
-(lean-lang.org/fro/about). Os dois posts da OpenAI não puderam ser lidos na
-preparação (erro 403): abrir antes da palestra e conferir o que dizem. O post
-do Xena descreve a formalização de Fermat como 13 milhões de linhas escritas
-pelo Claude em 11 dias; confirmar antes de citar o número.
+(lean-lang.org/fro/about). Segundo o post do Xena (16/10), a formalização de
+Fermat pelo Claude teve 13 milhões de linhas, escritas em 11 dias; Kevin
+Buzzard elogiou o resultado e segue com a sua própria formalização, de uma
+prova mais moderna. Também em setembro: o GPT-6 Astra ajudou a chegar a um
+limite de 186 para intervalos entre primos, com formalização em Lean.
 :::
 
 # Por que isso importa
@@ -319,7 +320,7 @@ Criada em julho de 2017, em Lean 3. Aberta e mantida pela comunidade. *Hoje*:
 :::hstack
 - *280.000+* teoremas formalizados.
 - *2,4M+* linhas de Lean. *50.000+* linhas de extensões.
-- *750+* contribuidores.
+- *950* contribuidores e *65* revisores.
 - *1.500+* classes de tipos, *20.000+* instâncias.
 - [github.com/leanprover-community/mathlib4](https://github.com/leanprover-community/mathlib4)
 
@@ -327,8 +328,9 @@ Criada em julho de 2017, em Lean 3. Aberta e mantida pela comunidade. *Hoje*:
 :::
 
 :::notes
-25:45. Números do deck FROCON 2026 de Leo. O post do Xena (16/10) fala em 950
-contribuidores e 65 revisores até hoje. As extensões (táticas, linters,
+25:45. Teoremas, linhas, classes e instâncias: deck FROCON 2026 de Leo.
+Contribuidores e revisores: post do Xena (16/10/2026). A Mathlib recebeu o
+Prêmio Jean-Pierre Demailly 2026 de Ciência Aberta em Matemática. As extensões (táticas, linters,
 automação) foram escritas pela comunidade sem coordenação do time do Lean.
 :::
 
@@ -385,15 +387,19 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 - Modelos de linguagem *erram com confiança*. O kernel não aceita confiança.
 - Para treinar com reforço, um agente precisa de um sinal de recompensa que
   ele *não consiga trapacear*. Uma prova conferida é esse sinal.
-- A Mathlib é também um *dado*: 200.000+ teoremas, escritos e anotados por
-  pessoas.
+- A Mathlib é também um *dado*: centenas de milhares de teoremas, escritos
+  e anotados por pessoas.
 
 Leituras: [_Proof Assistants in the Age of AI_](https://leodemoura.github.io/blog/2026-2-18-proof-assistants-in-the-age-of-ai/),
 [_Teaching AI to Make Proof Automation Work_](https://leodemoura.github.io/blog/2026-3-14-teaching-ai-to-make-proof-automation-work/),
-[_Why Lean?_](https://leodemoura.github.io/blog/2026-4-2-why-lean/)
+[_Why Lean?_](https://leodemoura.github.io/blog/2026-4-2-why-lean/) ·
+Comunidade: [FMxAI](https://fmxai.org), métodos formais × IA
 
 :::notes
-33:15. Do segundo post: a proposta é usar as anotações humanas da Mathlib
+33:15. FMxAI é a série de encontros, só para convidados, organizada pela
+Atlas Computing, onde trabalhei no projeto Specification IDE: "Proof-grade
+software, at the speed of AI". A próxima edição é em Londres, em março de
+2027. Do segundo post: a proposta é usar as anotações humanas da Mathlib
 (`[simp]`, `[grind]`) como base supervisionada, para ensinar IA a escrever
 boas anotações. "Most mathematicians can write proofs, but they can't write
 good annotations."
@@ -416,6 +422,37 @@ Mathlib*.
 extensão de Carathéodory na fronteira, dualidade de Schur–Weyl. Pergunta para
 a plateia: o que muda no trabalho do matemático quando escrever a prova deixa
 de ser o gargalo?
+:::
+
+# Um exemplo pequeno: busca binária
+
+[lean-binsearch](https://github.com/arademaker/lean-binsearch): implementação
+e prova feitas com o [Claude Code](https://claude.ai/code), 283 linhas. Para
+confiar no resultado, basta ler dois enunciados:
+
+```code lean
+theorem bsearch_sound (l : List Nat) (target : Nat) (i : Nat) :
+    bsearch l target = some i → l[i]? = some target
+
+theorem bsearch_complete (l : List Nat) (target : Nat)
+    (hs : Sorted l) (hm : target ∈ l) :
+    ∃ i, bsearch l target = some i
+```
+
+- *Correção*: se devolve `i`, então `target` está na posição `i`.
+- *Completude*: se a lista está ordenada e contém `target`, a busca acha.
+
+:::fragment
+Mas o projeto define o seu próprio `Sorted`, e não usa nem a Mathlib nem a
+CSLib. Cada projeto reinventando o vocabulário: é esse o problema que uma
+biblioteca resolve.
+:::
+
+:::notes
+35:30. Este bloco é citado, não conferido pelo deck: o projeto usa outra versão
+do Lean (v4.29.0). A recursão é bem fundada, na medida `hi + 1 - lo`. Pergunta
+para a plateia: o enunciado de completude precisa da hipótese `Sorted l`, e o
+de correção não. Por quê?
 :::
 
 # Software também: lean-zip
@@ -487,6 +524,44 @@ seguir explica melhor do que a lista.
 :::notes
 58:00. O CSwL é feito aqui: quem está no curso já está usando Lean. Os três
 projetos usam a CSLib e devolvem para ela o que é geral.
+:::
+
+# A comunidade em volta da CSLib
+
+[github.com/cslib-community](https://github.com/orgs/cslib-community/repositories):
+projetos construídos com, em volta de, e para a CSLib.
+
+:::table +colHeaders +rowSeps
+*
+  * Projeto
+  * O quê
+*
+  * `CSwL`
+  * Semântica computacional com Lean (o livro do curso da EMAp)
+*
+  * `fad`
+  * Projeto de algoritmos funcionais
+*
+  * `AlgoLib`
+  * Algoritmos em grafos, com provas de correção e de tempo
+*
+  * `alc`
+  * A lógica de descrição básica, ALC
+*
+  * `sqlean`
+  * Formalização do SQLite em Lean
+*
+  * `bignum`
+  * Porte das provas do s2n-bignum (Amazon) para Lean
+*
+  * `EpsilonEridani`
+  * Agentes de IA escrevem o Lean; pessoas decidem o que vale provar
+:::
+
+:::notes
+59:00. É onde os projetos vivem antes de levar à CSLib o que for geral. Bons
+pontos de partida para IC e TCC: cada um tem pedaços pequenos e bem
+delimitados.
 :::
 
 # Como começar

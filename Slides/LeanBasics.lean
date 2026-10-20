@@ -23,7 +23,7 @@ vertical := true
 Funcional, com tipos estáticos, compilada para C. Funções são definidas por
 casos, e `#eval` roda o código:
 
-```lean
+```lean -stretch
 /- !hide -/
 namespace LeanBasics
 /- !end hide -/
@@ -50,7 +50,7 @@ padrões. Para os demais, é só uma definição por casos, como no quadro.
 
 # ...tipos, listas e estruturas
 
-```lean
+```lean -stretch
 /- !hide -/
 namespace LeanBasics
 /- !end hide -/
@@ -84,7 +84,7 @@ divisão inteira, propositalmente: pergunte o que acontece com a lista vazia
 Uma proposição é um *tipo*; uma prova é um *programa* desse tipo. O Lean
 confere a prova como confere o tipo de qualquer outro termo.
 
-```lean
+```lean -stretch
 /- !hide -/
 namespace LeanBasics
 /- !end hide -/
@@ -114,7 +114,7 @@ e a prova é por indução, como no curso de Matemática Discreta.
 
 Uma afirmação falsa não passa, por mais convincente que pareça:
 
-```lean +error
+```lean +error -stretch
 /- !hide -/
 namespace LeanBasics
 /- !end hide -/
@@ -125,11 +125,15 @@ end LeanBasics
 /- !end hide -/
 ```
 
-O contraexemplo é `n = 0`: em `Nat`, `0 - 1 = 0`.
+O contraexemplo é `n = 0`, porque em `Nat` temos `0 - 1 = 0`:
+
+```lean -stretch
+#eval (0 - 1 + 1 : Nat)
+```
 
 Com a hipótese certa, a mesma tática fecha a prova:
 
-```lean
+```lean -stretch
 /- !hide -/
 namespace LeanBasics
 /- !end hide -/
