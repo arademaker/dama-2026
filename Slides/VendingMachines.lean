@@ -217,9 +217,9 @@ Uma lógica modal para sistemas de transições rotuladas. As fórmulas
 descrevem que ações um estado pode fazer, e o que vale depois delas:
 
 $$`\begin{aligned}
-s \models \langle a\rangle\,\varphi &\iff \exists s'.\; s \xrightarrow{a} s' \text{ and } s' \models \varphi
+s \models \langle a\rangle\,\varphi &\iff \exists s'.\; s \xrightarrow{a} s' \text{ e } s' \models \varphi
   && \text{algum } a \text{ é possível, e depois } \varphi \\
-s \models [a]\,\varphi &\iff \forall s'.\; s \xrightarrow{a} s' \text{ implies } s' \models \varphi
+s \models [a]\,\varphi &\iff \forall s'.\; s \xrightarrow{a} s' \text{ implica } s' \models \varphi
   && \text{depois de todo } a,\ \varphi
 \end{aligned}`
 
