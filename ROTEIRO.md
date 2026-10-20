@@ -13,8 +13,8 @@ sequência são dele.
 |-----------|------|------------------------------------------------------|----------------|
 | 16h30     | 0    | Abertura, sobre mim, roteiro                         | 1–3            |
 | 16h32     | 2    | Parte 1: o que é o Lean (jogo, em quem confiar)      |                |
-| 16h37     | 7    | Parte 2: por que agora (Tao, Xena, OpenAI)           |                |
-| 16h47     | 17   | Parte 3: momentum (história, olimpíadas, livro)      |                |
+| 16h37     | 7    | Parte 2: a história do Lean (linha do tempo, livro)  |                |
+| 16h42     | 12   | Parte 3: o momento do Lean (olimpíadas, 2026, OpenAI, Tao, Xena) |    |
 | 16h51     | 21   | Parte 4: Mathlib (+ exemplo com `ring`)              |                |
 | 16h56     | 26   | Parte 5: IA e Lean (Tau Ceti, busca binária, zip)    |                |
 | **17h05** | 35   | **Parte 6: ao vivo** (slide "Bingo", depois VS Code) | Ao vivo, Bingo |
@@ -23,8 +23,9 @@ sequência são dele.
 | 17h50     | 80   | Obrigado; perguntas                                  |                |
 | 18h00     | 90   | Fim                                                  |                |
 
-Se às **17h10** o demo ainda não começou, cortar a Parte 3 ou a Parte 4 na
-volta. O apêndice (exemplos em slides) é o plano B se o VS Code falhar.
+Se às **17h00** a Parte 5 ainda não começou, encurtar a Parte 4 (pular o
+exemplo da Mathlib) e a Parte 5 (pular Tau Ceti ou lean-zip), para o demo
+começar até 17h10. O apêndice (exemplos em slides) é o plano B se o VS Code falhar.
 
 ## Antes de começar (no auditório)
 
