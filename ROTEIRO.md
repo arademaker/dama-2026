@@ -18,11 +18,11 @@ sequência são dele.
 | 16h51     | 21   | Parte 4: Mathlib (exemplos, táticas da Mathlib e do Lean)             | 17–20  |
 | 16h56     | 26   | Parte 5: IA e Lean (Tau Ceti, lean-zip, busca binária)                | 21–25  |
 | **17h05** | 35   | **Parte 6: ao vivo** (slide "O que o demo mostra", depois VS Code)    | 26–27  |
-| 17h40     | 70   | Parte 7: CSLib (curta)                                                | 28–32  |
-| 17h46     | 76   | Como começar                                                          | 33     |
-| 17h50     | 80   | Obrigado; perguntas                                                   | 34     |
+| 17h40     | 70   | Parte 7: CSLib (curta) e Lean nas minhas aulas                        | 28–33  |
+| 17h46     | 76   | Como começar                                                          | 34     |
+| 17h50     | 80   | Obrigado; perguntas                                                   | 35     |
 | 18h00     | 90   | Fim                                                                   |        |
-| —         | —    | Apêndice: exemplos em slides, plano B                                 | 35–39  |
+| —         | —    | Apêndice: exemplos em slides, plano B                                 | 36–40  |
 
 Os números são os que aparecem no canto de cada slide; o slide 20 tem
 sub-slides (seta para baixo). Se às **17h00** a Parte 5 ainda não começou, encurtar a Parte 4 (pular o

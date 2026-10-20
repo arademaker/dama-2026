@@ -759,6 +759,32 @@ pontos de partida para IC e TCC: cada um tem pedaços pequenos e bem
 delimitados.
 :::
 
+# Lean nas minhas aulas
+
+*Na EMAp*
+- Matemática Discreta ([material](https://arademaker.github.io/teaching/)).
+- [Técnicas e Análise de Algoritmos](https://github.com/emap-20261-taa)
+  (TAA, mestrado; antes Estruturas de Dados e Algoritmos), com o livro
+  [_Functional Algorithms Design_](https://github.com/cslib-community/fad).
+- [Recuperação de Dados e PLN](https://github.com/emap-nlp) (graduação em
+  Ciência de Dados e IA), com o livro [CSwL](https://www.cslib.io/CSwL/).
+- Curso de verão de Lean, e eletivas sobre Lean e métodos formais.
+
+*Fora*
+- [Programming with Proofs](https://github.com/ua-PwP-2026), Universidade de
+  Aveiro (2026).
+
+Dois deles estão na [lista de cursos com Lean](https://leanprover-community.github.io/teaching/courses.html)
+da comunidade, que já passou de 50 cursos universitários.
+
+:::notes
+Na lista da comunidade: "Formal Proofs and Software Verification" (FGV, 2025)
+e "Algorithms and Data Structures" (FGV, 2024). Os cursos de 2026 (TAA,
+Aveiro, PLN) ainda não estão lá; Joachim Breitner pediu, em 2025, que os
+cursos fossem registrados, porque a FRO usa a lista para mostrar a adoção do
+Lean. Convite: quem gostou do que viu hoje, essas são as disciplinas.
+:::
+
 # Como começar
 
 %%%
