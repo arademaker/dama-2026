@@ -51,11 +51,11 @@ Quinze meses e meio depois do primeiro commit:
 `leanprover/cslib`, `main` em `c149a9d` (2026-10-01).
 
 :::notes
-Counts from `cslib-stats.md`, with comments stripped before counting
-declarations. Contributors are distinct people who authored or co-authored a
-commit, plus six credited only in file headers; bots excluded. In the last two
-weeks alone: 64 commits and 17% more lines. The code slides elaborate against
-the slightly older pin `12ba7cf`.
+Contagens de `cslib-stats.md`, sem comentários. Contribuidores são as
+pessoas distintas que assinaram ou coassinaram um commit, mais seis
+creditadas só nos cabeçalhos dos arquivos; robôs não contam. Só nas duas
+semanas anteriores: 64 commits e 17% mais linhas. Os slides com código usam
+a tag v4.36.0-rc1 da CSLib (16/10), mais recente que estes números.
 :::
 
 # O que tem dentro

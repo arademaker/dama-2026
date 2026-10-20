@@ -31,7 +31,11 @@ começar até 17h10. O apêndice (exemplos em slides) é o plano B se o VS Code 
 
 ## Antes de começar (no auditório)
 
-- [ ] `git pull` e `make demo` no notebook (o gabarito compila).
+- [ ] **Na véspera:** abrir a pasta `dama-2026` no VS Code, abrir
+      `Demo/BinSearch.lean` e esperar o Lean terminar. O projeto usa Lean
+      v4.36.0-rc1 e a CSLib v4.36.0-rc1, já compilados neste Mac; não deve
+      haver nada para baixar no auditório.
+- [ ] `make demo` no notebook (o gabarito e as etapas compilam).
 - [ ] Abrir a pasta `dama-2026` no VS Code e esperar o Lean carregar.
 - [ ] Abrir `Demo/BinSearchLive.lean` (para escrever) e deixar
       `Demo/BinSearch.lean` (gabarito) numa aba ao lado.
