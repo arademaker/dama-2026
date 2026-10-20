@@ -279,36 +279,50 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 
 :::table +colHeaders +rowSeps
 *
-  * Ano
+  * Quando
   * Marco
 *
-  * 2013
-  * Primeiro commit (Leonardo de Moura, Microsoft Research)
+  * jul 2013
+  * [Primeiro commit](https://github.com/leanprover/lean3), de Leonardo de Moura
 *
-  * 2017
-  * Lean 3; nasce a mathlib
+  * jan 2017
+  * Lean 3; em julho nasce a [mathlib](https://github.com/leanprover-community/mathlib3)
 *
-  * 2019
-  * Natural Number Game
+  * out 2019
+  * [Natural Number Game](https://adam.math.hhu.de/#/g/leanprover-community/nng4) 1.0
 *
-  * 2021
-  * Liquid Tensor Experiment concluído (desafio de Peter Scholze)
+  * jul 2021
+  * [Liquid Tensor Experiment](https://www.quantamagazine.org/lean-computer-program-confirms-peter-scholze-proof-20210728/)
+    concluído (desafio de Peter Scholze)
 *
-  * 2023
-  * Lean FRO fundada; Lean 4.0; mathlib portada para Lean 4
+  * jul–set 2023
+  * [Lean FRO](https://lean-lang.org/fro/) fundada;
+    [Mathlib](https://github.com/leanprover-community/mathlib4) portada para
+    Lean 4; Lean 4.0
 *
-  * 2024
-  * Harmonic, primeira startup baseada em Lean; AlphaProof, prata na IMO
+  * jun–jul 2024
+  * [Harmonic](https://harmonic.fun/), primeira startup baseada em Lean;
+    [AlphaProof](https://deepmind.google/discover/blog/ai-solves-imo-problems-at-silver-medal-level/),
+    prata na IMO
 *
-  * 2025
-  * Mathlib Initiative; tática `grind`; 50+ cursos universitários com Lean
+  * mai–set 2025
+  * [50+ cursos](https://leanprover-community.github.io/teaching/courses.html)
+    universitários; tática [`grind`](https://lean-lang.org/doc/reference/latest/releases/v4.22.0/#release-v4___22___0);
+    [Mathlib Initiative](https://mathlib-initiative.org/)
+*
+  * jun 2026
+  * A história vira livro: [_The Proof in the Code_](https://www.quantabooks.org/books/the-proof-in-the-code/)
 :::
 
 :::notes
 Fonte: "A Brief History of Lean", lean-lang.org/fro/about. A FRO é uma
 organização sem fins lucrativos sob a Convergent Research, fundada por
-Leonardo de Moura e Sebastian Ullrich. A página diz julho de 2023 para a
-fundação; o post "Why Lean?" diz agosto. Não citar o mês.
+Leonardo de Moura e Sebastian Ullrich. Meses, pela página: mathlib, jul
+2017; porte para Lean 4 e fundação da FRO, jul 2023 (o post "Why Lean?" diz
+agosto para a FRO); Lean 4.0, set 2023; Harmonic, jun 2024; AlphaProof, jul
+2024; 50+ cursos, mai 2025; `grind`, ago 2025 (Lean 4.22); Mathlib
+Initiative, set 2025. O LTE começou em dez 2020. O livro de Hartnett está na linha do tempo da
+FRO em jun 2026; o slide "Virou livro" vem logo depois.
 :::
 
 # IA nas olimpíadas
@@ -317,13 +331,14 @@ fundação; o post "Why Lean?" diz agosto. Não citar o mês.
 - *IMO 2025*: Aristotle (Harmonic), nível ouro; SEED Prover (ByteDance),
   nível prata.
 
-As três equipes trabalharam sobre um assistente de provas com tipos
-expressivos, uma grande biblioteca e um ecossistema programável: o Lean
-(Leonardo de Moura, [_Proof Assistants in the Age of AI_](https://leodemoura.github.io/blog/2026-2-18-proof-assistants-in-the-age-of-ai/),
+*As três usaram Lean.*
+
+Por quê: tipos expressivos, uma grande biblioteca e um ecossistema
+programável (Leonardo de Moura, [_Proof Assistants in the Age of AI_](https://leodemoura.github.io/blog/2026-2-18-proof-assistants-in-the-age-of-ai/),
 fevereiro de 2026).
 
 :::notes
-As três usaram Lean. Pushmeet Kohli (DeepMind) creditou a
+Pushmeet Kohli (DeepMind) creditou a
 "extensibility and verification capabilities" do Lean. No mesmo post, sobre
 o uso de IA na própria FRO: "we cannot imagine building Lean without it".
 :::
