@@ -711,8 +711,9 @@ projetos construídos com, em volta de, e para a CSLib.
   * Semântica computacional com Lean, o livro do curso de PLN da EMAp deste
     semestre, escrito em Verso como estes slides
 *
-  * `fad`
-  * Projeto de algoritmos funcionais
+  * [`fad`](https://github.com/cslib-community/fad)
+  * _Functional Algorithms Design_, o livro do curso de Estruturas de Dados e
+    Algoritmos da EMAp, que também será escrito em Verso
 *
   * `AlgoLib`
   * Algoritmos em grafos, com provas de correção e de tempo
