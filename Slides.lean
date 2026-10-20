@@ -564,41 +564,42 @@ do Lean (Infoview) aberto à direita. Se algo der errado, o apêndice tem os
 exemplos em slides.
 :::
 
-# Bingo
+# O que o demo mostra
 
-Marque o que aparecer durante a demonstração:
+*✓* aparece no demo. Os outros o Lean também tem, mas não cabem em 30
+minutos.
 
 :::table +rowSeps
 *
-  * programação funcional básica (*basic functional programming*)
-  * estruturas (*structures*)
+  * ✓ programação funcional básica (*basic functional programming*)
+  * ✓ estruturas (*structures*)
 *
-  * tipos dependentes (*dependent types*)
-  * avaliar código (*evaluating code*)
+  * ✓ tipos dependentes (*dependent types*)
+  * ✓ avaliar código (*evaluating code*)
 *
-  * testes embutidos (*embedded tests*)
-  * informação ao passar o mouse (*hover*)
+  * ✓ testes embutidos (*embedded tests*)
+  * ✓ informação ao passar o mouse (*hover*)
 *
-  * atualização imutável (*immutable updates*)
-  * recursão bem fundada (*well-founded recursion*)
+  * ✓ atualização imutável (*immutable updates*)
+  * ✓ recursão bem fundada (*well-founded recursion*)
 *
-  * terminação automática (*automatic termination checking*)
-  * parâmetros automáticos (*auto-params*)
+  * ✓ terminação automática (*automatic termination checking*)
+  * ✓ parâmetros automáticos (*auto-params*)
 *
-  * automação com `grind` (*automation with `grind`*)
-  * inspecionar o estado do `grind` (*inspecting grind states*)
+  * ✓ automação com `grind` (*automation with `grind`*)
+  * ✓ inspecionar o estado do `grind` (*inspecting grind states*)
 *
-  * provas com táticas (*tactic proofs*)
-  * indução funcional (*functional induction*)
+  * ✓ provas com táticas (*tactic proofs*)
+  * ✓ indução funcional (*functional induction*)
 *
-  * dicas embutidas no texto (*inlay hints*)
-  * sugestões clicáveis (*clickable hints*)
+  * ✓ dicas embutidas no texto (*inlay hints*)
+  * ✓ sugestões clicáveis (*clickable hints*)
 *
-  * notação própria (*custom notation*)
-  * notação `do` (*do notation*)
+  * · notação própria (*custom notation*)
+  * · notação `do` (*do notation*)
 *
-  * lambdas anônimas (*anonymous lambdas*)
-  * ir para a definição (*go to definition*)
+  * · lambdas anônimas (*anonymous lambdas*)
+  * · ir para a definição (*go to definition*)
 :::
 
 :::attr («class» := "credits")
@@ -606,8 +607,9 @@ Lista adaptada do "Lean Highlights Bingo" de Joachim Breitner ([@nomeata](https:
 :::
 
 :::notes
-A lista completa (33 itens) está em `ROTEIRO.md`, para imprimir. Pedir
-para a plateia gritar "bingo!" quando completar uma linha.
+Mostrar rápido, antes de abrir o VS Code: é o mapa do que vai aparecer. A
+lista completa de Joachim tem 33 itens (em `ROTEIRO.md`); o demo mostra
+menos da metade. Os quatro sem ✓ estão em "Se sobrar tempo" no roteiro.
 :::
 
 # Parte 7: A CSLib

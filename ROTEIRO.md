@@ -9,21 +9,23 @@ sequência são dele.
 
 ## A sessão
 
-| Relógio   | Min. | Bloco                                                | Slides         |
-|-----------|------|------------------------------------------------------|----------------|
-| 16h30     | 0    | Abertura, sobre mim, roteiro                         | 1–3            |
-| 16h32     | 2    | Parte 1: o que é o Lean (jogo, em quem confiar)      |                |
-| 16h37     | 7    | Parte 2: a história do Lean (linha do tempo, livro)  |                |
-| 16h42     | 12   | Parte 3: o momento do Lean (competições, 2026, labs de IA, Tao, Xena) | |
-| 16h51     | 21   | Parte 4: Mathlib (+ exemplo com `ring`)              |                |
-| 16h56     | 26   | Parte 5: IA e Lean (Tau Ceti, busca binária, zip)    |                |
-| **17h05** | 35   | **Parte 6: ao vivo** (slide "Bingo", depois VS Code) | Ao vivo, Bingo |
-| 17h40     | 70   | Parte 7: CSLib (curta)                               |                |
-| 17h46     | 76   | Como começar                                         |                |
-| 17h50     | 80   | Obrigado; perguntas                                  |                |
-| 18h00     | 90   | Fim                                                  |                |
+| Relógio   | Min. | Bloco                                                                 | Slides |
+|-----------|------|-----------------------------------------------------------------------|--------|
+| 16h30     | 0    | Abertura, sobre mim, roteiro                                          | 1–3    |
+| 16h32     | 2    | Parte 1: o que é o Lean (jogo, em quem confiar)                       | 4–7    |
+| 16h37     | 7    | Parte 2: a história do Lean (linha do tempo, livro)                   | 8–10   |
+| 16h42     | 12   | Parte 3: o momento do Lean (competições, 2026, labs de IA, Tao, Xena) | 11–16  |
+| 16h51     | 21   | Parte 4: Mathlib (exemplos, táticas da Mathlib e do Lean)             | 17–20  |
+| 16h56     | 26   | Parte 5: IA e Lean (Tau Ceti, lean-zip, busca binária)                | 21–25  |
+| **17h05** | 35   | **Parte 6: ao vivo** (slide "O que o demo mostra", depois VS Code)    | 26–27  |
+| 17h40     | 70   | Parte 7: CSLib (curta)                                                | 28–32  |
+| 17h46     | 76   | Como começar                                                          | 33     |
+| 17h50     | 80   | Obrigado; perguntas                                                   | 34     |
+| 18h00     | 90   | Fim                                                                   |        |
+| —         | —    | Apêndice: exemplos em slides, plano B                                 | 35–39  |
 
-Se às **17h00** a Parte 5 ainda não começou, encurtar a Parte 4 (pular o
+Os números são os que aparecem no canto de cada slide; o slide 20 tem
+sub-slides (seta para baixo). Se às **17h00** a Parte 5 ainda não começou, encurtar a Parte 4 (pular o
 exemplo da Mathlib) e a Parte 5 (pular Tau Ceti ou lean-zip), para o demo
 começar até 17h10. O apêndice (exemplos em slides) é o plano B se o VS Code falhar.
 
@@ -82,7 +84,7 @@ structure Map β where
   o hover mostra o tipo e a documentação.
 - Dizer: chaves ordenadas num vetor, valores em outro, na mesma posição.
 
-Bingo: *structures*, *unicode entry*, *hover*.
+No slide: *structures*, *unicode entry*, *hover*.
 
 ### Etapa 2: `update` com busca binária (5 min, até 17h12)
 
@@ -114,7 +116,7 @@ where
 - Não há prova de terminação: o Lean descobriu sozinho que `j - i` diminui.
 - `m.keys[mid]!`: o `!` confere o índice em tempo de execução.
 
-Bingo: *basic functional programming*, *inlay hints*, *immutable updates*,
+No slide: *basic functional programming*, *inlay hints*, *immutable updates*,
 *automatic termination checking*, *overloaded dot notation*.
 
 ### Etapa 3: testar (4 min, até 17h16)
@@ -157,7 +159,7 @@ Corrigir (e mostrar que agora o segundo teste falha, como deveria):
 Atualizar a docstring do segundo teste pela lâmpada:
 `values := #[1, 3, 5, 7]`.
 
-Bingo: *evaluating code*, *embedded test*, *clickable hints*.
+No slide: *evaluating code*, *embedded test*, *clickable hints*.
 
 ### Etapa 4: índices seguros, o Lean pede provas (6 min, até 17h22)
 
@@ -192,7 +194,7 @@ failed to prove index is valid, possible solutions: …
 - Os `if h :` podem virar `if _ :` (não usamos os nomes; o `grind` acha os
   fatos no contexto sozinho).
 
-Bingo: *dependent types*, *auto-params*, *implicit parameters with
+No slide: *dependent types*, *auto-params*, *implicit parameters with
 auto-tactics*, *automation with `grind`*.
 
 ### Etapa 5: `grind` acha um contraexemplo (3 min, até 17h25)
@@ -208,7 +210,7 @@ que exige prova:
 caso com `m.values.size = 0` e `m.keys.size ≠ 0`. **Nada impede um `Map` com
 mais chaves que valores.** O `grind` encontrou um contraexemplo de verdade.
 
-Bingo: *inspecting grind states*.
+No slide: *inspecting grind states*.
 
 ### Etapa 6: um invariante na estrutura (5 min, até 17h30)
 
@@ -258,7 +260,7 @@ theorem Map.update_go_eq_self (m : Map β) (h : k ∉ m.keys)
   `(fun_induction Map.update.go) <;> grind`. Clicar na sugestão.
 - Fechar o teorema principal: `:= Map.update_go_eq_self m h ..`
 
-Bingo: *tactic proofs*, *functional induction*, *explicit proof terms*.
+No slide: *tactic proofs*, *functional induction*, *explicit proof terms*.
 
 ### Se sobrar tempo
 
@@ -303,10 +305,10 @@ Bingo: *tactic proofs*, *functional induction*, *explicit proof terms*.
   mostrar o `try?`.
 - Em último caso: abrir o gabarito e percorrer.
 
-## Bingo completo
+## A lista completa de Joachim
 
-Lista de Joachim (`02_DemoChallenge.lean`), com a tradução. O slide "Bingo"
-tem 20 destes. Nem todos aparecem no roteiro, e isso é de propósito: a lista
+Lista de Joachim (`02_DemoChallenge.lean`), com a tradução. O slide "O que o
+demo mostra" tem 20 destes, com ✓ nos 16 que aparecem no roteiro. Nem todos aparecem no roteiro, e isso é de propósito: a lista
 também mostra recursos do Lean que não dá tempo de demonstrar.
 
 | Em português                                  | Termo original                        |
