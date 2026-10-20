@@ -312,22 +312,19 @@ formalização em Lean.
 
 # Os laboratórios de IA entregam provas em Lean
 
-:::hstack
-{image "static/images/news-openai-ten-advances.png" (width := "100%")}[OpenAI, 1º ago 2026]
-
-{image "static/images/news-anthropic-flt.png" (width := "100%")}[Anthropic, 4 set 2026]
-
-{image "static/images/news-openai-navier-stokes.png" (width := "100%")}[OpenAI, 8 set 2026]
+:::table
+*
+  * [{image "static/images/news-openai-ten-advances.png" (width := "100%")}[OpenAI, 1º ago 2026]](https://openai.com/index/ten-advances-in-mathematics/)
+  * [{image "static/images/news-anthropic-flt.png" (width := "100%")}[Anthropic, 4 set 2026]](https://www.anthropic.com/research/formalizing-fermats-last-theorem)
+  * [{image "static/images/news-openai-navier-stokes.png" (width := "100%")}[OpenAI, 8 set 2026]](https://openai.com/index/navier-stokes-solution/)
+*
+  * *OpenAI*, 1º/8: dez problemas em aberto, cada um com um
+    [certificado em Lean](https://github.com/openai/ten-proofs).
+  * *Anthropic*, 4/9: a primeira prova completa do Último Teorema de Fermat
+    conferida por computador, em Lean: 13 milhões de linhas, em 11 dias.
+  * *OpenAI*, 8/9: Navier–Stokes, um Problema do Milênio, segundo a OpenAI,
+    com a [prova em Lean](https://github.com/openai/NavierStokesAndEuler).
 :::
-
-- *OpenAI*, [1º/8](https://openai.com/index/ten-advances-in-mathematics/):
-  dez problemas em aberto, cada um com um [certificado em Lean](https://github.com/openai/ten-proofs).
-- *Anthropic*, [4/9](https://www.anthropic.com/research/formalizing-fermats-last-theorem):
-  a primeira prova completa do Último Teorema de Fermat conferida por
-  computador, em Lean: 13 milhões de linhas, em 11 dias.
-- *OpenAI*, [8/9](https://openai.com/index/navier-stokes-solution/):
-  Navier–Stokes, um Problema do Milênio, segundo a OpenAI, com a
-  [prova em Lean](https://github.com/openai/NavierStokesAndEuler).
 
 O resultado vem com uma prova que qualquer um pode conferir na máquina.
 
