@@ -51,11 +51,13 @@
   display: flex;
   align-items: center;
   gap: 0;
-  margin-bottom: 0.5em;
+  /* Compact: the header was added late, to slides laid out without it. */
+  margin-bottom: 0.2em;
 }
 .slide-header img {
-  height: 43px;
+  height: 28px;
   flex-shrink: 0;
+  margin-right: 0.4em;
 }
 .slide-header::after {
   content: '';
@@ -496,4 +498,49 @@
 
 /* "O que o demo mostra": all 33 items of Joachim's bingo, three columns. */
 .reveal table.feature-table { font-size: 0.56em; }
-.reveal table.feature-table td { padding: 0.25em 0.6em; }
+.reveal table.feature-table td { padding: 0.18em 0.6em; }
+
+/* ── Two visual zones ──
+   Up to Part 6 the deck wears Lean's colours, those of Leo de Moura's
+   FROCON 2026 deck (teal #0891b2, blue #0073A3, slate text), to match the
+   Lean logo. From the Part 7 section break on, CSLib's sienna palette.
+   Main.lean (`themeZones`) gives that break the class `cslib-zone`; the `~`
+   selectors below carry the palette to every later slide and their nested
+   vertical slides. Every colour above goes through these variables. */
+.reveal .slides section {
+  --cslib-primary: #0891b2;
+  --cslib-primary-dark: #0e7490;
+  --cslib-accent: #0073A3;
+  --cslib-surface: #cffafe;
+  --cslib-tint: #ecfeff;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+}
+.reveal .slides section.cslib-zone,
+.reveal .slides section.cslib-zone ~ section,
+.reveal .slides section.cslib-zone ~ section section {
+  --cslib-primary: #A0522D;
+  --cslib-primary-dark: #8B4513;
+  --cslib-accent: #D35400;
+  --cslib-surface: #E5D0BA;
+  --cslib-tint: #f7efe6;
+  --text-dark: #2F1A0F;
+  --text-muted: #5C3A21;
+}
+/* Navigation chrome sits outside the slides: neutral in both zones. */
+.reveal .controls, .reveal .progress { color: #64748b; }
+
+/* Lean-zone section breaks and the title band: white text on Leo's blue. */
+/* `!important` to beat the section-break rule above, which is one too. */
+.reveal .slides section[data-background-gradient*="#0073A3"] h1,
+.reveal .slides section[data-background-gradient*="#0073A3"] h2,
+.reveal .slides section[data-background-gradient*="#0073A3"] p,
+.reveal .slides section[data-background-gradient*="#0073A3"] li,
+.reveal .slides section[data-background-gradient*="#0073A3"] strong {
+  color: #ffffff !important;
+}
+.reveal .slides section[data-background-gradient*="#0073A3"] a { color: #cffafe; }
+.reveal .title-slide h1,
+.reveal .title-slide .meta,
+.reveal .title-slide .meta strong,
+.reveal .title-slide .date { color: #ffffff; }

@@ -32,7 +32,7 @@ open VersoSlides
 # Lean 4: matemática, código e IA no mesmo lugar
 
 %%%
-backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
+backgroundGradient := "linear-gradient(135deg, #0891b2 5%, #0073A3 55%, #005a80 100%)"
 %%%
 
 Alexandre Rademaker
@@ -80,7 +80,7 @@ deck foi gerado. Primeira metade em slides, segunda metade ao vivo.
 # Parte 1: O que é o Lean
 
 %%%
-backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
+backgroundGradient := "linear-gradient(135deg, #0891b2 5%, #0073A3 55%, #005a80 100%)"
 %%%
 
 :::notes
@@ -139,7 +139,7 @@ em mais de uma delas.
 # Parte 2: A história do Lean
 
 %%%
-backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
+backgroundGradient := "linear-gradient(135deg, #0891b2 5%, #0073A3 55%, #005a80 100%)"
 %%%
 
 :::notes
@@ -203,7 +203,7 @@ Kevin Hartnett, [_The Proof in the Code: How a Truth Machine Is Transforming
 Math and AI_](https://www.quantabooks.org/books/the-proof-in-the-code/)
 (Quanta Books, junho de 2026).
 
-{image "static/images/book-proof-in-the-code.png" (width := "55%")}[Capa de The Proof in the Code]
+{image "static/images/book-proof-in-the-code.png" (width := "48%")}[Capa de The Proof in the Code]
 :::
 
 > Lean is one of the most important things happening to math right now.
@@ -222,7 +222,7 @@ no slide "Usando a Mathlib".
 # Parte 3: O momento do Lean
 
 %%%
-backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
+backgroundGradient := "linear-gradient(135deg, #0891b2 5%, #0073A3 55%, #005a80 100%)"
 %%%
 
 Avanços na matemática, e com IA.
@@ -368,9 +368,9 @@ sobre a função zeta, com formalização em Lean.
 # Só na última semana
 
 :::hstack
-{image "static/images/news-xena-formalize-all.png" (width := "100%")}[Xena, 16 out 2026]
+{image "static/images/news-xena-formalize-all.png" (width := "82%")}[Xena, 16 out 2026]
 
-{image "static/images/news-tao-journal.png" (width := "100%")}[Blog de Terence Tao, 17 out 2026]
+{image "static/images/news-tao-journal.png" (width := "92%")}[Blog de Terence Tao, 17 out 2026]
 :::
 
 - *16/10*: [_How to Formalize All of Mathematics_](https://xenaproject.wordpress.com/2026/10/16/how-to-formalize-all-of-mathematics/).
@@ -407,7 +407,7 @@ mais perigoso, o de provar a coisa errada.
 # Parte 4: A Mathlib
 
 %%%
-backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
+backgroundGradient := "linear-gradient(135deg, #0891b2 5%, #0073A3 55%, #005a80 100%)"
 %%%
 
 :::notes
@@ -425,7 +425,7 @@ Criada em julho de 2017, em Lean 3. Aberta e mantida pela comunidade. *Hoje*:
 - *1.500+* classes de tipos, *20.000+* instâncias.
 - [github.com/leanprover-community/mathlib4](https://github.com/leanprover-community/mathlib4)
 
-{image "static/images/mathlib-deps.png" (width := "100%")}[Grafo de dependências da Mathlib]
+{image "static/images/mathlib-deps.png" (width := "88%")}[Grafo de dependências da Mathlib]
 :::
 
 :::notes
@@ -476,7 +476,7 @@ página da visão geral ao vivo, se houver tempo.
 # Parte 5: IA e Lean
 
 %%%
-backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
+backgroundGradient := "linear-gradient(135deg, #0891b2 5%, #0073A3 55%, #005a80 100%)"
 %%%
 
 :::notes
@@ -549,7 +549,7 @@ entra a CSLib.
 # Parte 6: Ao vivo
 
 %%%
-backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
+backgroundGradient := "linear-gradient(135deg, #0891b2 5%, #0073A3 55%, #005a80 100%)"
 %%%
 
 Vamos escrever juntos um programa em Lean, com provas, no VS Code.

@@ -28,9 +28,9 @@ def config : Config := {
 /-- The title slide. The layout is the two-part one of Leo de Moura's FROCON
 2026 deck: a logo on white, then a band with the title, the speaker and
 affiliation, and the venue and date at the bottom. The identity is CSLib's,
-from the www.cslib.io sources (`~/r/cslib-community.github.io`): the brown
-gradient of its home-page hero. This talk is about Lean in general, so the
-logo on white is Lean's (`static/images/lean-logo.png`), not CSLib's. The styles are
+the blue of Leo's FROCON 2026 deck, to match the Lean logo on white
+(`static/images/lean-logo.png`): the deck keeps Lean's colours up to Part 6
+and switches to CSLib's at Part 7 (see `themeZones`). The styles are
 `.title-slide` in `static/custom.css`.
 
 Verso markdown cannot emit this markup, so `main` swaps it in for the first
@@ -39,14 +39,14 @@ holds the same text, and is what you see if the swap ever stops matching.
 Keep the two in sync.
 
 The background is two layers over the whole window: white down to 25%, then
-the CSLib gradient. The edge sits at the same 25% as `.title-slide .top-area`,
+the blue gradient. The edge sits at the same 25% as `.title-slide .top-area`,
 and the two line up whenever the window is at least 16:9, as a projector is.
 (Leo's deck gets a full-bleed band from `disableLayout`, but that also stops
 reveal.js from scaling every other slide.) -/
 def titleSlide : String :=
   "<section class=\"title-slide\" data-background-gradient=\"" ++
   "linear-gradient(to bottom, #ffffff 0%, #ffffff 25%, transparent 25%), " ++
-  "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)\">\n" ++
+  "linear-gradient(135deg, #0891b2 5%, #0073A3 55%, #005a80 100%)\">\n" ++
   "  <div class=\"top-area\"><img class=\"logo\" src=\"lean-logo.png\" alt=\"Lean\"></div>\n" ++
   "  <div class=\"title-band\">\n" ++
   "    <h1>Lean 4: matemática, código e IA no mesmo lugar</h1>\n" ++
@@ -105,16 +105,55 @@ where
       else none
     | _ => none
 
+/-- The header of an ordinary slide, as in Leo's FROCON 2026 deck: a logo
+followed by a line (`.slide-header` in `static/custom.css`). -/
+def slideHeader (logo alt : String) : String :=
+  "<div class=\"slide-header\"><img src=\"" ++ logo ++ "\" alt=\"" ++ alt ++ "\"></div>"
+
+/-- Put `header` at the top of every ordinary slide in `html`: a plain
+`<section>` whose first element is its title, `<h2>` (or `<h3>` in a vertical
+group). Section breaks carry attributes, and vertical groups open with a
+nested `<section>`, so neither is touched. -/
+def insertHeaders (header html : String) : String :=
+  match html.splitOn "<section>" with
+  | [] => html
+  | first :: rest =>
+    first ++ String.join (rest.map fun piece =>
+      let start := piece.dropWhile Char.isWhitespace
+      if start.startsWith "<h2>" || start.startsWith "<h3>" then
+        "<section>" ++ header ++ piece
+      else "<section>" ++ piece)
+
+/-- The text of the section break where the deck turns from Lean to CSLib. -/
+def cslibPart : String := "Parte 7: A CSLib"
+
+/-- Two visual zones. Up to Part 6 the slides wear Lean's colours and logo;
+from the Part 7 break on, CSLib's. The break gets the class `cslib-zone`,
+which `static/custom.css` uses (with `~`) to switch the palette for it and
+every slide after it. -/
+def themeZones (html : String) : Except String String :=
+  match html.splitOn cslibPart with
+  | [before, after] =>
+    match (before.splitOn "<section").reverse with
+    | breakTag :: earlier@(_ :: _) =>
+      let lean := "<section".intercalate earlier.reverse
+      .ok (insertHeaders (slideHeader "lean-logo.png" "Lean") lean ++
+        "<section class=\"cslib-zone\"" ++ breakTag ++ cslibPart ++
+        insertHeaders (slideHeader "cslib-logo.svg" "CSLib") after)
+    | _ => .error "no section opens before the Part 7 title"
+  | _ => .error s!"expected exactly one \"{cslibPart}\" in the deck"
+
 public def main : IO UInt32 := do
   let rc ← slidesMain (config := config) (doc := %doc Slides)
   if rc != 0 then return rc
   let out := config.outputDir
   IO.FS.writeBinFile (out / "lean-logo.png") (← IO.FS.readBinFile "static/images/lean-logo.png")
+  IO.FS.writeFile (out / "cslib-logo.svg") (← IO.FS.readFile "static/images/cslib-logo.svg")
   -- `include_str` above is only re-read when this file recompiles, so a CSS
   -- edit alone would ship a stale stylesheet. Copy the current one.
   IO.FS.writeFile (out / customCss.filename) (← IO.FS.readFile "static/custom.css")
   let htmlPath := out / "index.html"
-  match swapTitleSlide (← IO.FS.readFile htmlPath) with
+  match swapTitleSlide (← IO.FS.readFile htmlPath) >>= themeZones with
   | .ok html =>
     IO.FS.writeFile htmlPath (diagramWidthsInSlidePixels (externalLinksInNewTab html)); return 0
-  | .error e => IO.eprintln s!"title slide: {e}"; return 1
+  | .error e => IO.eprintln s!"post-processing: {e}"; return 1
