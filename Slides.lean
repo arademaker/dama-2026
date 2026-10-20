@@ -312,25 +312,33 @@ formalização em Lean.
 
 # Os laboratórios de IA entregam provas em Lean
 
-:::table
-*
-  * [{image "static/images/news-openai-ten-advances.png" (width := "100%")}[OpenAI, 1º ago 2026]](https://openai.com/index/ten-advances-in-mathematics/)
-  * [{image "static/images/news-anthropic-flt.png" (width := "100%")}[Anthropic, 4 set 2026]](https://www.anthropic.com/research/formalizing-fermats-last-theorem)
-  * [{image "static/images/news-openai-navier-stokes.png" (width := "100%")}[OpenAI, 8 set 2026]](https://openai.com/index/navier-stokes-solution/)
-*
-  * *OpenAI*, 1º/8: dez problemas em aberto, cada um com um
-    [certificado em Lean](https://github.com/openai/ten-proofs).
-  * *Anthropic*, 4/9: a primeira prova completa do Último Teorema de Fermat
-    conferida por computador, em Lean: 13 milhões de linhas, em 11 dias.
-  * *OpenAI*, 8/9: Navier–Stokes, um Problema do Milênio, segundo a OpenAI,
-    com a [prova em Lean](https://github.com/openai/NavierStokesAndEuler).
+::::hstack
+:::vstack
+[{image "static/images/news-openai-ten-advances.png" (width := "100%")}[OpenAI, 1º ago 2026]](https://openai.com/index/ten-advances-in-mathematics/)
+
+*OpenAI*, 1º/8: dez problemas em aberto, cada um com um
+[certificado em Lean](https://github.com/openai/ten-proofs).
 :::
 
-O resultado vem com uma prova que qualquer um pode conferir na máquina.
+:::vstack
+[{image "static/images/news-anthropic-flt.png" (width := "100%")}[Anthropic, 4 set 2026]](https://www.anthropic.com/research/formalizing-fermats-last-theorem)
+
+*Anthropic*, 4/9: a primeira prova completa do Último Teorema de Fermat
+conferida por computador, em Lean: 13 milhões de linhas, em 11 dias.
+:::
+
+:::vstack
+[{image "static/images/news-openai-navier-stokes.png" (width := "100%")}[OpenAI, 8 set 2026]](https://openai.com/index/navier-stokes-solution/)
+
+*OpenAI*, 8/9: Navier–Stokes, um Problema do Milênio, segundo a OpenAI, com a
+[prova em Lean](https://github.com/openai/NavierStokesAndEuler).
+:::
+::::
 
 :::notes
 O recado é sobre o Lean, não sobre a matemática: quando um laboratório de IA
-quer que acreditem num resultado, publica a prova em Lean.
+quer que acreditem num resultado, publica a prova em Lean. Fechar com: o
+resultado vem com uma prova que qualquer um pode conferir na máquina.
 
 Agosto (OpenAI, "Ten advances"): versão interna do Astra; empacotamento de
 esferas, códigos, grupos não sóficos, conjectura de Connes, Ramsey multicolor
@@ -666,21 +674,25 @@ com o projeto aberto, como na Mathlib (que tem a sua Mathlib Initiative). A
 Renaissance Philanthropy cuida da infraestrutura: RH, jurídico, finanças.
 :::
 
-# CSLib no ensino
+# Projetos que usam a CSLib
+
+Projetos independentes, que não são da CSLib: dependem dela e devolvem a ela o
+que é geral. A CSLib Initiative apoia e colabora para que usem a CSLib.
 
 - [Software Foundations in Lean](https://github.com/plclub/sf-in-lean/):
   Benjamin Pierce, Michael Hicks e Harry Goldstein reescrevem em Lean o
   [_Software Foundations_](https://softwarefoundations.cis.upenn.edu), o texto
   clássico de métodos formais, escrito originalmente em Rocq (antes Coq).
-- [Functional Algorithm Design](https://github.com/cslib-community/fad):
-  algoritmos funcionais, com provas.
-- [Computational Semantics with Lean](https://www.cslib.io/CSwL/): o
-  livro do curso de PLN da EMAp, deste semestre, escrito em Verso como estes
-  slides.
+- [PolyFun](https://github.com/Verified-zkEVM/PolyFun) (Verified-zkEVM):
+  interação tipada entre programas e sistemas, com functores polinomiais e
+  árvores de interação. Mantém uma área, `ToCslib`, com o que vai subir para
+  a CSLib.
 
 :::notes
-O CSwL é feito aqui: quem está no curso já está usando Lean. Os três
-projetos usam a CSLib e devolvem para ela o que é geral.
+Um curso clássico e uma biblioteca de verificação de software: dois tipos de
+"projeto puxador". O PolyFun nasceu do VCVio, usado em criptografia, e fixa a
+CSLib na versão v4.35.0. Projetos como esses dizem à CSLib o que falta, e o
+que eles produzem de geral volta para a biblioteca.
 :::
 
 # A comunidade em volta da CSLib
@@ -693,8 +705,9 @@ projetos construídos com, em volta de, e para a CSLib.
   * Projeto
   * O quê
 *
-  * `CSwL`
-  * Semântica computacional com Lean (o livro do curso da EMAp)
+  * [`CSwL`](https://www.cslib.io/CSwL/)
+  * Semântica computacional com Lean, o livro do curso de PLN da EMAp deste
+    semestre, escrito em Verso como estes slides
 *
   * `fad`
   * Projeto de algoritmos funcionais
