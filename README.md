@@ -101,6 +101,8 @@ Sobre o tema da palestra, achamos a proposta muito interessante, principalmente 
  - exemplo de AI gerando código
    https://github.com/arademaker/lean-binsearch , mas não tem CSLib.
    
+ - https://arademaker.github.io/gatech-2026/ clone at
+   `/Users/ar/r/arademaker/gatech-2026`
 
 # Pendências
 

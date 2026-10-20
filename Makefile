@@ -4,7 +4,9 @@ EXE := dama-2026
 # Modules quoted by `leanLibCode` blocks in Slides/, as Lake facet keys.
 # Each one's SubVerso `highlighted` facet is built before the deck elaborates.
 # This avoids duplicate racing jobs (see #15435)
-QUOTED := @cslib/+Cslib.Algorithms.Lean.MergeSort.MergeSort
+QUOTED := @cslib/+Cslib.Algorithms.Lean.MergeSort.MergeSort \
+          @cslib/+Cslib.Languages.CCS.Semantics \
+          @cslib/+Cslib.Logics.HML.Basic
 
 .PHONY: all slides highlighted serve cache clean demo
 

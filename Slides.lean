@@ -23,6 +23,7 @@ public import Slides.MathlibExample
 public import Slides.WhereItStands
 public import Slides.Sorting
 public import Slides.BinSearchAI
+public import Slides.VendingMachines
 
 open VersoSlides
 
@@ -642,7 +643,9 @@ problema que uma biblioteca resolve.
 [cslib.io](https://www.cslib.io/)
 
 :::notes
-Dirijo a CSLib Initiative na Renaissance Philanthropy, que apoia a
+Dois exemplos da CSLib no apêndice, se sobrar tempo ou alguém perguntar:
+a ordenação com custo (`TimeM`) e as máquinas de vendas (CCS, bissimulação,
+lógica de Hennessy–Milner). Dirijo a CSLib Initiative na Renaissance Philanthropy, que apoia a
 biblioteca; a biblioteca em si é da comunidade. Mantenha curto: o exemplo a
 seguir explica melhor do que a lista.
 :::
@@ -784,5 +787,7 @@ Exemplos em slides, para o caso de a demonstração ao vivo falhar.
 {include 1 Slides.LeanBasics}
 
 {include 1 Slides.Sorting}
+
+{include 1 Slides.VendingMachines}
 
 {include 1 Slides.WhereItStands}
