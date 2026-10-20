@@ -461,7 +461,26 @@ a plateia: o que muda no trabalho do matemático quando escrever a prova deixa
 de ser o gargalo?
 :::
 
-# Um exemplo pequeno: busca binária
+# Software também: lean-zip
+
+[lean-zip](https://github.com/kim-em/lean-zip) (Kim Morrison): DEFLATE em Lean
+puro, com um teorema conferido pelo kernel: descomprimir desfaz comprimir,
+para toda entrada e todo nível. Cerca de 1.100 teoremas, nenhum `sorry`.
+
+- *Escrito por agentes de IA*, com pouca supervisão.
+- *A prova é o portão*: um PR só entrava se a prova continuasse valendo.
+- *Por isso otimizar é seguro*: ficou mais rápido que o `miniz_oxide` do Rust
+  com a mesma taxa de compressão.
+
+:::notes
+Fatos do README do lean-zip (set/2026): cerca de 32 mil linhas de
+prova; no nível 6, uns 30% mais rápido que o `miniz_oxide` com a mesma taxa.
+Kim: a prova de correção "allows us to let AIs loose optimizing the code".
+Transição: para fazer isso com software em geral, falta vocabulário. É aí que
+entra a CSLib.
+:::
+
+# Um exemplo: busca binária escrita por IA
 
 [lean-binsearch](https://github.com/arademaker/lean-binsearch): implementação
 e prova feitas com o [Claude Code](https://claude.ai/code), 283 linhas. Para
@@ -480,9 +499,8 @@ theorem bsearch_complete (l : List Nat) (target : Nat)
 - *Completude*: se a lista está ordenada e contém `target`, a busca acha.
 
 :::fragment
-Mas o projeto define o seu próprio `Sorted`, e não usa nem a Mathlib nem a
-CSLib. Cada projeto reinventando o vocabulário: é esse o problema que uma
-biblioteca resolve.
+E se escrevêssemos uma busca binária juntos, agora, deixando o Lean nos
+corrigir?
 :::
 
 :::notes
@@ -490,25 +508,6 @@ Este bloco é citado, não conferido pelo deck: o projeto usa outra versão
 do Lean (v4.29.0). A recursão é bem fundada, na medida `hi + 1 - lo`. Pergunta
 para a plateia: o enunciado de completude precisa da hipótese `Sorted l`, e o
 de correção não. Por quê?
-:::
-
-# Software também: lean-zip
-
-[lean-zip](https://github.com/kim-em/lean-zip) (Kim Morrison): DEFLATE em Lean
-puro, com um teorema conferido pelo kernel: descomprimir desfaz comprimir,
-para toda entrada e todo nível. Cerca de 1.100 teoremas, nenhum `sorry`.
-
-- *Escrito por agentes de IA*, com pouca supervisão.
-- *A prova é o portão*: um PR só entrava se a prova continuasse valendo.
-- *Por isso otimizar é seguro*: ficou mais rápido que o `miniz_oxide` do Rust
-  com a mesma taxa de compressão.
-
-:::notes
-Fatos do README do lean-zip (set/2026): cerca de 32 mil linhas de
-prova; no nível 6, uns 30% mais rápido que o `miniz_oxide` com a mesma taxa.
-Kim: a prova de correção "allows us to let AIs loose optimizing the code".
-Transição: para fazer isso com software em geral, falta vocabulário. É aí que
-entra a CSLib.
 :::
 
 # Parte 6: Ao vivo
@@ -542,7 +541,7 @@ Marque o que aparecer durante a demonstração:
   * avaliar código (*evaluating code*)
 *
   * testes embutidos (*embedded tests*)
-  * notação própria (*custom notation*)
+  * informação ao passar o mouse (*hover*)
 *
   * atualização imutável (*immutable updates*)
   * recursão bem fundada (*well-founded recursion*)
@@ -574,6 +573,10 @@ para a plateia gritar "bingo!" quando completar uma linha.
 %%%
 backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
 %%%
+
+A busca binária escrita pela IA definia o seu próprio `Sorted`, sem usar a
+Mathlib nem a CSLib. Cada projeto reinventando o vocabulário: é esse o
+problema que uma biblioteca resolve.
 
 :::notes
 70:00.

@@ -31,10 +31,13 @@ serve: slides
 cache:
 	lake exe cache get
 
-# The live demo's answer key must still compile with this toolchain. It is not
-# part of the `Slides` library: the live file is meant to be incomplete.
+# The live demo's answer key and its per-step snapshots must still compile
+# with this toolchain. Not part of the `Slides` library: the live file is meant
+# to be incomplete, and Etapa5 ends on a `grind` failure on purpose.
+DEMO_OK := Demo/BinSearch.lean $(foreach n,1 2 3 4 6 7,Demo/Etapas/Etapa$(n).lean)
+
 demo:
-	lake env lean Demo/BinSearch.lean
+	@for f in $(DEMO_OK); do echo "lake env lean $$f"; lake env lean $$f || exit 1; done
 
 clean:
 	rm -rf _slides

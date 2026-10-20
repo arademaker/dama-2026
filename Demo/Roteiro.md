@@ -40,11 +40,34 @@ volta. O apêndice (exemplos em slides) é o plano B se o VS Code falhar.
 - [ ] Navegador numa aba com <https://loogle.lean-lang.org>.
 - [ ] Notificações desligadas (Não perturbe).
 
+## Os arquivos
+
+- `Demo/BinSearchLive.lean`: o arquivo para escrever ao vivo, só com os
+  títulos das etapas.
+- `Demo/Etapas/Etapa1.lean` … `Etapa7.lean`: o arquivo inteiro como fica ao
+  **fim** de cada etapa. Se atrasar ou se perder, copiar a etapa anterior e
+  seguir dali. Para não digitar a estrutura do zero, dá para começar colando a
+  Etapa 1. A Etapa 5 termina com o erro do `grind`, de propósito.
+- `Demo/BinSearch.lean`: o gabarito final (Etapa 7 + a notação extra).
+
+`make demo` compila o gabarito e as etapas 1–4, 6 e 7.
+
+## Como este roteiro foi feito
+
+A sequência foi reconstruída a partir da gravação de Joachim (quadros a cada
+20 segundos, de 14:00 a 58:00, e uma transcrição automática do áudio). Pode
+haver passos menores entre dois quadros que não aparecem aqui. Cada etapa e
+cada erro citado abaixo foi conferido com o toolchain deste projeto.
+
+Antes da palestra: assistir o trecho 14:20–51:00 da gravação com este roteiro
+impresso, e fazer um ensaio cronometrado. Joachim levou cerca de 37 minutos
+nesse trecho, com perguntas; este roteiro tem 30.
+
 ## O demo, passo a passo (≈ 30 min)
 
 Em cada etapa: o que digitar, o que o Lean responde, e o que dizer. O ritmo
 de Joachim: **deixar o Lean reclamar, ler a mensagem em voz alta, e só então
-corrigir**. Os erros abaixo foram conferidos com o toolchain deste projeto.
+corrigir**.
 
 ### Etapa 1: a estrutura (2 min, até 17h07)
 
@@ -63,7 +86,8 @@ Bingo: *structures*, *unicode entry*, *hover*.
 ### Etapa 2: `update` com busca binária (5 min, até 17h12)
 
 ```lean
-def Map.update (k : Nat) (v : β) (m : Map β) := go 0 m.keys.size
+def Map.update (k : Nat) (v : β) (m : Map β) : Map β :=
+  go 0 m.keys.size
 where
   go (i j : Nat) :=
     if i ≥ j then
@@ -80,6 +104,8 @@ where
           go mid j
 ```
 
+- O tipo de retorno `: Map β` é importante: sem ele, quando `go` ganhar
+  hipóteses na etapa 4, os testes quebram com erros confusos.
 - Mostrar o `{β}` cinza depois de `Map.update`: o Lean deduziu o parâmetro
   implícito (*inlay hint*).
 - `{ m with values := … }`: cria uma cópia com um campo trocado (*immutable
@@ -143,19 +169,25 @@ failed to prove index is valid, possible solutions: …
 
 - Ler as sugestões em voz alta. Dizer: o Lean não aceita um acesso que
   *pode* sair do vetor; ele quer uma prova.
+- Os testes também ficam vermelhos ("Aborting evaluation since the expression
+  depends on the 'sorry' axiom"): enquanto o código tem erro, o Lean não roda.
+  É esperado.
 - Dar nome à condição, `if h : i + 1 = j then`: o fato entra no contexto,
   mas ainda falta relacionar `j` com o tamanho.
 - Acrescentar a `go` as hipóteses de que precisamos:
   `go (i j : Nat) (hi : i ≤ j) (hj : j < m.keys.size) :=`
 - Apagar também o `!` de `m.keys[mid]!`.
-- As chamadas recursivas reclamam. Pôr `_ _` (`go i mid _ _`): o Lean mostra
-  o que falta provar (`⊢ i ≤ mid`, `⊢ mid < m.keys.size`).
+- As chamadas reclamam: `go i mid` agora espera duas provas ("Application
+  type mismatch … i ≤ mid → mid < m.keys.size → Map β"), e `go 0 m.keys.size`
+  também. Pôr `_ _` (`go i mid _ _`): o Lean mostra o que falta provar
+  (`⊢ i ≤ mid`, `⊢ mid < m.keys.size`).
 - Trocar cada `_` por `(by grind)`. Tudo some.
 - Melhor: mover a prova para a declaração (*auto-param*), e limpar as
   chamadas:
   `go (i j : Nat) (hi : i ≤ j := by grind) (hj : j < m.keys.size := by grind) :=`
-- Agora `go 0 m.keys.size` reclama: `m.keys.size < m.keys.size` é falso! Trocar
-  `<` por `≤` em `hj`.
+- Agora `go 0 m.keys.size` reclama ("could not synthesize default value for
+  parameter 'hj' using tactics"): ali `hj` diria `m.keys.size < m.keys.size`,
+  que é falso! Trocar `<` por `≤` em `hj`.
 - Os `if h :` podem virar `if _ :` (não usamos os nomes; o `grind` acha os
   fatos no contexto sozinho).
 
