@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 460" font-family="'Open Sans', Arial, sans-serif" role="img"><title>Merged pull requests per month, July 2025 to September 2026</title>
+<line x1="70" x2="1170" y1="420.0" y2="420.0" stroke="#e7dfd6"/>
+<text x="60" y="425.0" text-anchor="end" font-size="15" fill="#7a6a5e">0</text>
+<line x1="70" x2="1170" y1="320.0" y2="320.0" stroke="#e7dfd6"/>
+<text x="60" y="325.0" text-anchor="end" font-size="15" fill="#7a6a5e">25</text>
+<line x1="70" x2="1170" y1="220.0" y2="220.0" stroke="#e7dfd6"/>
+<text x="60" y="225.0" text-anchor="end" font-size="15" fill="#7a6a5e">50</text>
+<line x1="70" x2="1170" y1="120.0" y2="120.0" stroke="#e7dfd6"/>
+<text x="60" y="125.0" text-anchor="end" font-size="15" fill="#7a6a5e">75</text>
+<line x1="70" x2="1170" y1="20.0" y2="20.0" stroke="#e7dfd6"/>
+<text x="60" y="25.0" text-anchor="end" font-size="15" fill="#7a6a5e">100</text>
+<path d="M73.0,420V352.0q0,-4 4,-4H136.3q4,0 4,4V420Z" fill="#c9a88a"/>
+<text x="106.7" y="444" text-anchor="middle" font-size="15" fill="#7a6a5e">Jul '25</text>
+<path d="M146.3,420V336.0q0,-4 4,-4H209.7q4,0 4,4V420Z" fill="#c9a88a"/>
+<path d="M219.7,420V364.0q0,-4 4,-4H283.0q4,0 4,4V420Z" fill="#c9a88a"/>
+<path d="M293.0,420V280.0q0,-4 4,-4H356.3q4,0 4,4V420Z" fill="#c9a88a"/>
+<text x="326.7" y="444" text-anchor="middle" font-size="15" fill="#7a6a5e">Oct</text>
+<path d="M366.3,420V292.0q0,-4 4,-4H429.7q4,0 4,4V420Z" fill="#c9a88a"/>
+<path d="M439.7,420V264.0q0,-4 4,-4H503.0q4,0 4,4V420Z" fill="#c9a88a"/>
+<path d="M513.0,420V228.0q0,-4 4,-4H576.3q4,0 4,4V420Z" fill="#c9a88a"/>
+<text x="546.7" y="444" text-anchor="middle" font-size="15" fill="#7a6a5e">Jan '26</text>
+<path d="M586.3,420V248.0q0,-4 4,-4H649.7q4,0 4,4V420Z" fill="#c9a88a"/>
+<path d="M659.7,420V244.0q0,-4 4,-4H723.0q4,0 4,4V420Z" fill="#c9a88a"/>
+<path d="M733.0,420V248.0q0,-4 4,-4H796.3q4,0 4,4V420Z" fill="#c9a88a"/>
+<text x="766.7" y="444" text-anchor="middle" font-size="15" fill="#7a6a5e">Apr</text>
+<path d="M806.3,420V248.0q0,-4 4,-4H869.7q4,0 4,4V420Z" fill="#c9a88a"/>
+<path d="M879.7,420V264.0q0,-4 4,-4H943.0q4,0 4,4V420Z" fill="#c9a88a"/>
+<path d="M953.0,420V252.0q0,-4 4,-4H1016.3q4,0 4,4V420Z" fill="#c9a88a"/>
+<text x="986.7" y="444" text-anchor="middle" font-size="15" fill="#7a6a5e">Jul</text>
+<path d="M1026.3,420V228.0q0,-4 4,-4H1089.7q4,0 4,4V420Z" fill="#c9a88a"/>
+<path d="M1099.7,420V84.0q0,-4 4,-4H1163.0q4,0 4,4V420Z" fill="#A0522D"/>
+<text x="1133.3" y="70.0" text-anchor="middle" font-size="20" font-weight="700" fill="#2F1A0F">85</text>
+</svg>

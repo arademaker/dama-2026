@@ -1,0 +1,107 @@
+# Builds the deck and publishes it to GitHub Pages
+# (https://arademaker.github.io/dama-2026/). The site is public: speaker
+# notes ship inside index.html. See "Deployment" in README.md.
+#
+# Follows CSwL's `pages.yml` (cslib-community/CSwL), adapted to this repo's
+# build (`make slides` writes `_slides/`).
+
+name: Build Slides
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  # Allows triggering the deploy by hand, from the "Actions" tab.
+  workflow_dispatch:
+
+# Permissions required by the Pages deploy:
+#   contents: read   — to check out the repository
+#   pages: write     — to publish
+#   id-token: write  — OIDC authentication with the Pages API
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time. `cancel-in-progress: false` because canceling a
+# deploy mid-flight could leave the published site in an inconsistent
+# state: the new push waits instead.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # Installs elan and the toolchain named in `lean-toolchain`.
+      # `build`/`test` are off: the targets are requested explicitly below.
+      # `use-mathlib-cache` is off because `lake exe cache get` runs after
+      # restoring `.lake` (otherwise it would download all of Mathlib
+      # before the restore, on every run).
+      # `use-github-cache` is off because the cache is handled in the steps
+      # below.
+      - uses: leanprover/lean-action@v1
+        with:
+          build: false
+          test: false
+          use-mathlib-cache: false
+          use-github-cache: false
+
+      # The cache is handled by hand, not by `lean-action`, because that
+      # action saves the cache BEFORE the deck is generated.
+      - name: Restore Lake cache
+        uses: actions/cache/restore@v5
+        with:
+          path: .lake
+          key: lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}
+          restore-keys: lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}
+
+      # A half-cached package (with no usable `.git`) makes Lake fail to
+      # resolve dependencies; it's cheaper to re-clone.
+      - name: Remove corrupted cached packages
+        run: |
+          if [ -d .lake/packages ]; then
+            find .lake/packages -mindepth 1 -maxdepth 1 -type d | while read -r package; do
+              if ! git -C "$package" rev-parse HEAD >/dev/null 2>&1; then
+                echo "Removing corrupted cached package: $package"
+                rm -rf "$package"
+              fi
+            done
+          fi
+
+      # Downloads Mathlib's precompiled `.olean`s. Without this the build
+      # blows past the runner's time budget.
+      - name: Mathlib cache
+        run: lake exe cache get
+
+      - name: Build the deck
+        run: make slides
+
+      - name: Save Lake cache
+        if: success() && github.ref == 'refs/heads/main'
+        uses: actions/cache/save@v5
+        with:
+          path: .lake
+          key: lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}
+
+      - name: Upload the Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _slides
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    # Only `main` goes live: a pull request or a `workflow_dispatch` on
+    # another branch builds (useful to check), but doesn't publish.
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

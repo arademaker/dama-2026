@@ -1,0 +1,42 @@
+# The exe name comes from `lakefile.toml`'s `[[lean_exe]]`.
+EXE := dama-2026
+
+# Modules quoted by `leanLibCode` blocks in Slides/, as Lake facet keys.
+# Each one's SubVerso `highlighted` facet is built before the deck elaborates.
+# This avoids duplicate racing jobs (see #15435)
+QUOTED := @cslib/+Cslib.Foundations.Semantics.LTS.Basic \
+          @cslib/+Cslib.Foundations.Semantics.LTS.Bisimulation \
+          @cslib/+Cslib.Computability.Automata.NA.Basic \
+          @cslib/+Cslib.Languages.CCS.Semantics \
+          @cslib/+Cslib.Logics.HML.Basic \
+          @cslib/+Cslib.Algorithms.Lean.MergeSort.MergeSort \
+          @bignum/+Bignum.Component.Basic \
+          @bignum/+Bignum.Arm.Instruction
+
+.PHONY: all slides highlighted serve cache clean
+
+all: slides
+
+# Builds the highlighted code needed to quote library sources
+highlighted:
+	lake build $(foreach m,$(QUOTED),'$(m):highlighted')
+
+# Writes _slides/index.html. Depends on the whole Lake build, so the first
+# run compiles CSLib from source.
+slides: highlighted
+	lake exe $(EXE)
+
+# reveal.js needs to be served over HTTP; opening index.html from the
+# filesystem leaves the vendored assets unreachable. `verso-serve` is
+# Verso's own development server, so no separate one is needed.
+serve: slides
+	lake exe verso-serve _slides
+
+# Mathlib binaries. Reaches us through cslib; see the require order note in
+# lakefile.toml for why this is expected to succeed rather than fall back to
+# building from source.
+cache:
+	lake exe cache get
+
+clean:
+	rm -rf _slides

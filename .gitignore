@@ -1,0 +1,7 @@
+.DS_Store
+/.lake
+_slides/
+doc/*.pptx
+lake.log
+lake-tail.log
+README.md~

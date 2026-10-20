@@ -1,0 +1,65 @@
+name = "dama-2026"
+version = "0.1.0"
+defaultTargets = ["Slides", "dama-2026"]
+
+# Presentation about CSLib at the Foundations of AI Seminar Series
+# (Georgia Institute of Technology). Built with verso-slides, which
+# renders a reveal.js deck from a Verso `Slides` document.
+#
+# The revision has to match `lean-toolchain` (v4.35.0-rc3). Pinned by SHA
+# past the `v4.35.0-rc3` tag: dd41bad (#80) only bumps the manifest, to
+# verso 2e72881 and SubVerso 892d6dc, whose `highlighted` facet no longer
+# lets each module's build clobber a shared trace (SubVerso #244). Without
+# that, `leanLibCode` resolves only the last-built module. Do not switch to
+# `main`: verso-slides itself requires `verso` from an *unpinned* `main`,
+# so a `lake update` can drag the whole project to a newer toolchain.
+# `lake-manifest.json` is what freezes that transitive revision -- keep it
+# versioned.
+[[require]]
+name = "verso-slides"
+git = "https://github.com/leanprover/verso-slides.git"
+rev = "dd41badb53b11f31bba486e2de516148bd889057"
+
+[[lean_lib]]
+name = "Slides"
+# `Slides.lean` plus the slide modules under `Slides/`, which it includes.
+globs = ["Slides", "Slides.+"]
+# `leanLibCode` quotes CSLib and bignum source and checks it still matches
+# the highlighted JSON of each quoted module. `make highlighted` is used instead
+# of `needs` targets here to work around an upstream issue.
+
+[[lean_exe]]
+name = "dama-2026"
+root = "Main"
+
+# CSLib is the subject of the talk: the slides elaborate real `Cslib.*`
+# definitions (CCS, HML, bisimulation, the time monad), so the library has
+# to be a dependency and not just prose.
+# Pinned by full SHA (not `main`) so the deck still builds on the day of
+# the talk. This SHA's `lean-toolchain` is v4.35.0-rc3, the same tag
+# `verso-slides` above requires.
+[[require]]
+name = "cslib"
+scope = "leanprover"
+rev = "12ba7cfc8089af0cd9da823196486914e697b99e"
+
+# bignum is quoted, not used: the s2n-bignum slide shows its HOL Light
+# component model with `leanLibCode`, so the quotation is checked against the
+# source. Only the quoted modules and their imports are built. Pinned by SHA; its own
+# toolchain is v4.34.0, but it builds with ours.
+[[require]]
+name = "bignum"
+git = "https://github.com/cslib-community/bignum"
+rev = "128c76f6bea26da0ef79399523449b3c38e4dffa"
+
+# Mathlib already arrives transitively via `cslib`, but without a direct
+# `[[require]]` Lake does not give Mathlib's version choices priority for
+# the dependencies it shares with verso (`plausible`, `Cli`, `batteries`).
+# Those stay pinned to older revisions and `lake exe cache get` then
+# refuses to fetch, because the hashes would not match -- which means
+# building Mathlib from source, in CI too. Has to stay last in the file.
+# The revision is the one `cslib` itself pins.
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "c55e6e786f49471c72fbddbec5415808896aec1e"
