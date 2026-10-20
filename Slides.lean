@@ -63,8 +63,8 @@ de volta às provas, com o Lean.
 # Roteiro
 
 1. *O que é o Lean*: uma linguagem de programação que também confere provas.
-2. *Por que agora*: o que aconteceu nas últimas semanas, e nos últimos meses.
-3. *O momentum*: de projeto de pesquisa a infraestrutura.
+2. *A história do Lean*: de projeto de pesquisa a infraestrutura.
+3. *O momento do Lean*: avanços na matemática, e com IA.
 4. *A Mathlib*: a biblioteca de matemática.
 5. *IA e Lean*: por que um verificador é o parceiro natural de um modelo.
 6. *Ao vivo*: um programa com provas, escrito aqui, no VS Code.
@@ -134,7 +134,7 @@ independentes do kernel, e o Comparator, ferramenta da FRO, confere as provas
 em mais de uma delas.
 :::
 
-# Parte 2: Por que Lean, e por que agora
+# Parte 2: A história do Lean
 
 %%%
 backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
@@ -144,25 +144,101 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 7:00.
 :::
 
-# Só na última semana
+# Uma breve história
 
-- *16/10*: [_How to Formalize All of Mathematics_](https://xenaproject.wordpress.com/2026/10/16/how-to-formalize-all-of-mathematics/),
-  de Avigad, Buzzard, Commelin, Degenne, Morrison, Nash e Topaz. A Mathlib
-  recebeu o *Prêmio Jean-Pierre Demailly 2026* de Ciência Aberta em
-  Matemática.
-- *17/10*: [_Starting a new journal_](https://terrytao.wordpress.com/2026/10/17/starting-a-new-journal/),
-  post de Shaoming Guo no blog de Terence Tao:
-
-> To be accepted, a paper will need to have its proofs formally verified in
-  Lean.
+:::table +colHeaders +rowSeps
+*
+  * Quando
+  * Marco
+*
+  * jul 2013
+  * [Primeiro commit](https://github.com/leanprover/lean3), de Leonardo de Moura
+*
+  * jan 2017
+  * Lean 3; em julho nasce a [mathlib](https://github.com/leanprover-community/mathlib3)
+*
+  * out 2019
+  * [Natural Number Game](https://adam.math.hhu.de/#/g/leanprover-community/nng4) 1.0
+*
+  * jul 2021
+  * [Liquid Tensor Experiment](https://www.quantamagazine.org/lean-computer-program-confirms-peter-scholze-proof-20210728/)
+    concluído (desafio de Peter Scholze)
+*
+  * jul–set 2023
+  * [Lean FRO](https://lean-lang.org/fro/) fundada;
+    [Mathlib](https://github.com/leanprover-community/mathlib4) portada para
+    Lean 4; Lean 4.0
+*
+  * jun–jul 2024
+  * [Harmonic](https://harmonic.fun/), primeira startup baseada em Lean;
+    [AlphaProof](https://deepmind.google/discover/blog/ai-solves-imo-problems-at-silver-medal-level/),
+    prata na IMO
+*
+  * mai–set 2025
+  * [50+ cursos](https://leanprover-community.github.io/teaching/courses.html)
+    universitários; tática [`grind`](https://lean-lang.org/doc/reference/latest/releases/v4.22.0/#release-v4___22___0);
+    [Mathlib Initiative](https://mathlib-initiative.org/)
+*
+  * jun 2026
+  * A história vira livro: [_The Proof in the Code_](https://www.quantabooks.org/books/the-proof-in-the-code/)
+:::
 
 :::notes
-Uma revista de matemática que exige prova verificada em Lean para
-aceitar um artigo. O post é de Shaoming Guo, convidado no blog do Tao. Os
-valores declarados: "Prioritizing understanding over being first" e
-"Ensuring rigor through formal verification". O post do Xena também diz que
-"a lousy formalization of existing results is worse than no formalization at
-all": formalizar bem é um ofício.
+Fonte: "A Brief History of Lean", lean-lang.org/fro/about. A FRO é uma
+organização sem fins lucrativos sob a Convergent Research, fundada por
+Leonardo de Moura e Sebastian Ullrich. Meses, pela página: mathlib, jul
+2017; porte para Lean 4 e fundação da FRO, jul 2023 (o post "Why Lean?" diz
+agosto para a FRO); Lean 4.0, set 2023; Harmonic, jun 2024; AlphaProof, jul
+2024; 50+ cursos, mai 2025; `grind`, ago 2025 (Lean 4.22); Mathlib
+Initiative, set 2025. O LTE começou em dez 2020. O livro de Hartnett está na linha do tempo da
+FRO em jun 2026; o slide "Virou livro" vem logo depois.
+:::
+
+# Virou livro
+
+Kevin Hartnett, [_The Proof in the Code: How a Truth Machine Is Transforming
+Math and AI_](https://www.quantabooks.org/books/the-proof-in-the-code/)
+(Quanta Books, junho de 2026).
+
+> Lean is one of the most important things happening to math right now.
+
+  — Grant Sanderson (3Blue1Brown)
+
+:::notes
+O livro conta a história do Lean: concebido para conferir código, e
+adotado por um pequeno grupo de matemáticos que viu nele um "oráculo da
+verdade". Também traz a conversa entre Pushmeet Kohli e Leonardo de Moura que
+está na origem da CSLib.
+:::
+
+# Parte 3: O momento do Lean
+
+%%%
+backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
+%%%
+
+Avanços na matemática, e com IA.
+
+:::notes
+12:00. Em ordem cronológica, das olimpíadas de 2024 até a semana passada.
+:::
+
+# IA nas olimpíadas
+
+- *IMO 2024*: AlphaProof (Google DeepMind), nível prata.
+- *IMO 2025*: Aristotle (Harmonic), nível ouro; SEED Prover (ByteDance),
+  nível prata.
+
+*As três usaram Lean.*
+
+Por quê: tipos expressivos, uma grande biblioteca e um ecossistema
+programável (Leonardo de Moura, [_Proof Assistants in the Age of AI_](https://leodemoura.github.io/blog/2026-2-18-proof-assistants-in-the-age-of-ai/),
+fevereiro de 2026).
+
+:::notes
+Pushmeet Kohli (DeepMind) creditou a
+"extensibility and verification capabilities" do Lean. No mesmo post, sobre
+o uso de IA na própria FRO: "we cannot imagine building Lean without it".
 :::
 
 # 2026 até aqui
@@ -248,6 +324,27 @@ prioridade deles nesse caso. O repositório explica como conferir as provas
 com o Comparator, de forma independente.
 :::
 
+# Só na última semana
+
+- *16/10*: [_How to Formalize All of Mathematics_](https://xenaproject.wordpress.com/2026/10/16/how-to-formalize-all-of-mathematics/),
+  de Avigad, Buzzard, Commelin, Degenne, Morrison, Nash e Topaz. A Mathlib
+  recebeu o *Prêmio Jean-Pierre Demailly 2026* de Ciência Aberta em
+  Matemática.
+- *17/10*: [_Starting a new journal_](https://terrytao.wordpress.com/2026/10/17/starting-a-new-journal/),
+  post de Shaoming Guo no blog de Terence Tao:
+
+> To be accepted, a paper will need to have its proofs formally verified in
+  Lean.
+
+:::notes
+Uma revista de matemática que exige prova verificada em Lean para
+aceitar um artigo. O post é de Shaoming Guo, convidado no blog do Tao. Os
+valores declarados: "Prioritizing understanding over being first" e
+"Ensuring rigor through formal verification". O post do Xena também diz que
+"a lousy formalization of existing results is worse than no formalization at
+all": formalizar bem é um ofício.
+:::
+
 # Por que isso importa
 
 Uma prova gerada por IA pode ter milhares de linhas. *Quem confere?*
@@ -263,101 +360,6 @@ problema certo.
 Ligar com o slide "Em quem confiar?". Para quem faz matemática
 aplicada: o enunciado continua sendo trabalho humano, e é onde mora o erro
 mais perigoso, o de provar a coisa errada.
-:::
-
-# Parte 3: O momentum do Lean
-
-%%%
-backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
-%%%
-
-:::notes
-17:00.
-:::
-
-# Uma breve história
-
-:::table +colHeaders +rowSeps
-*
-  * Quando
-  * Marco
-*
-  * jul 2013
-  * [Primeiro commit](https://github.com/leanprover/lean3), de Leonardo de Moura
-*
-  * jan 2017
-  * Lean 3; em julho nasce a [mathlib](https://github.com/leanprover-community/mathlib3)
-*
-  * out 2019
-  * [Natural Number Game](https://adam.math.hhu.de/#/g/leanprover-community/nng4) 1.0
-*
-  * jul 2021
-  * [Liquid Tensor Experiment](https://www.quantamagazine.org/lean-computer-program-confirms-peter-scholze-proof-20210728/)
-    concluído (desafio de Peter Scholze)
-*
-  * jul–set 2023
-  * [Lean FRO](https://lean-lang.org/fro/) fundada;
-    [Mathlib](https://github.com/leanprover-community/mathlib4) portada para
-    Lean 4; Lean 4.0
-*
-  * jun–jul 2024
-  * [Harmonic](https://harmonic.fun/), primeira startup baseada em Lean;
-    [AlphaProof](https://deepmind.google/discover/blog/ai-solves-imo-problems-at-silver-medal-level/),
-    prata na IMO
-*
-  * mai–set 2025
-  * [50+ cursos](https://leanprover-community.github.io/teaching/courses.html)
-    universitários; tática [`grind`](https://lean-lang.org/doc/reference/latest/releases/v4.22.0/#release-v4___22___0);
-    [Mathlib Initiative](https://mathlib-initiative.org/)
-*
-  * jun 2026
-  * A história vira livro: [_The Proof in the Code_](https://www.quantabooks.org/books/the-proof-in-the-code/)
-:::
-
-:::notes
-Fonte: "A Brief History of Lean", lean-lang.org/fro/about. A FRO é uma
-organização sem fins lucrativos sob a Convergent Research, fundada por
-Leonardo de Moura e Sebastian Ullrich. Meses, pela página: mathlib, jul
-2017; porte para Lean 4 e fundação da FRO, jul 2023 (o post "Why Lean?" diz
-agosto para a FRO); Lean 4.0, set 2023; Harmonic, jun 2024; AlphaProof, jul
-2024; 50+ cursos, mai 2025; `grind`, ago 2025 (Lean 4.22); Mathlib
-Initiative, set 2025. O LTE começou em dez 2020. O livro de Hartnett está na linha do tempo da
-FRO em jun 2026; o slide "Virou livro" vem logo depois.
-:::
-
-# IA nas olimpíadas
-
-- *IMO 2024*: AlphaProof (Google DeepMind), nível prata.
-- *IMO 2025*: Aristotle (Harmonic), nível ouro; SEED Prover (ByteDance),
-  nível prata.
-
-*As três usaram Lean.*
-
-Por quê: tipos expressivos, uma grande biblioteca e um ecossistema
-programável (Leonardo de Moura, [_Proof Assistants in the Age of AI_](https://leodemoura.github.io/blog/2026-2-18-proof-assistants-in-the-age-of-ai/),
-fevereiro de 2026).
-
-:::notes
-Pushmeet Kohli (DeepMind) creditou a
-"extensibility and verification capabilities" do Lean. No mesmo post, sobre
-o uso de IA na própria FRO: "we cannot imagine building Lean without it".
-:::
-
-# Virou livro
-
-Kevin Hartnett, [_The Proof in the Code: How a Truth Machine Is Transforming
-Math and AI_](https://www.quantabooks.org/books/the-proof-in-the-code/)
-(Quanta Books, junho de 2026).
-
-> Lean is one of the most important things happening to math right now.
-
-  — Grant Sanderson (3Blue1Brown)
-
-:::notes
-O livro conta a história do Lean: concebido para conferir código, e
-adotado por um pequeno grupo de matemáticos que viu nele um "oráculo da
-verdade". Também traz a conversa entre Pushmeet Kohli e Leonardo de Moura que
-está na origem da CSLib.
 :::
 
 # Parte 4: A Mathlib
