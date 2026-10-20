@@ -669,8 +669,9 @@ Renaissance Philanthropy cuida da infraestrutura: RH, jurídico, finanças.
 # CSLib no ensino
 
 - [Software Foundations in Lean](https://github.com/plclub/sf-in-lean/):
-  Benjamin Pierce, Michael Hicks e Harry Goldstein adaptam o texto clássico
-  de métodos formais para Lean.
+  Benjamin Pierce, Michael Hicks e Harry Goldstein reescrevem em Lean o
+  [_Software Foundations_](https://softwarefoundations.cis.upenn.edu), o texto
+  clássico de métodos formais, escrito originalmente em Rocq (antes Coq).
 - [Functional Algorithm Design](https://github.com/cslib-community/fad):
   algoritmos funcionais, com provas.
 - [Computational Semantics with Lean](https://www.cslib.io/CSwL/): o
