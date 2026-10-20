@@ -569,8 +569,8 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 
 Vamos escrever juntos um programa em Lean, com provas, no VS Code.
 
-A ideia e o roteiro são do *live demo* de Joachim Breitner (Lean FRO):
-[github.com/nomeata/lean-highlights-tfp](https://github.com/nomeata/lean-highlights-tfp).
+A ideia e o roteiro são do [*live demo*](https://github.com/nomeata/lean-highlights-tfp)
+de Joachim Breitner (Lean FRO).
 
 :::notes
 35:00. Abrir o VS Code em `Demo/BinSearchLive.lean`; o roteiro está em
