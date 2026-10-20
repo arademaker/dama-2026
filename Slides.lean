@@ -523,7 +523,7 @@ A ideia e o roteiro são do *live demo* de Joachim Breitner (Lean FRO):
 
 :::notes
 35:00. Abrir o VS Code em `Demo/BinSearchLive.lean`; o roteiro está em
-`Demo/Roteiro.md` e o gabarito em `Demo/BinSearch.lean`. Fonte grande, painel
+`ROTEIRO.md` e o gabarito em `Demo/BinSearch.lean`. Fonte grande, painel
 do Lean (Infoview) aberto à direita. Se algo der errado, o apêndice tem os
 exemplos em slides.
 :::
@@ -557,6 +557,12 @@ Marque o que aparecer durante a demonstração:
 *
   * dicas embutidas no texto (*inlay hints*)
   * sugestões clicáveis (*clickable hints*)
+*
+  * notação própria (*custom notation*)
+  * notação `do` (*do notation*)
+*
+  * lambdas anônimas (*anonymous lambdas*)
+  * ir para a definição (*go to definition*)
 :::
 
 :::attr («class» := "credits")
@@ -564,7 +570,7 @@ Lista adaptada do "Lean Highlights Bingo" de Joachim Breitner ([@nomeata](https:
 :::
 
 :::notes
-A lista completa (33 itens) está em `Demo/Roteiro.md`, para imprimir. Pedir
+A lista completa (33 itens) está em `ROTEIRO.md`, para imprimir. Pedir
 para a plateia gritar "bingo!" quando completar uma linha.
 :::
 

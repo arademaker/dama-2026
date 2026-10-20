@@ -285,7 +285,8 @@ Bingo: *tactic proofs*, *functional induction*, *explicit proof terms*.
 ## Bingo completo
 
 Lista de Joachim (`02_DemoChallenge.lean`), com a tradução. O slide "Bingo"
-tem 16 destes.
+tem 20 destes. Nem todos aparecem no roteiro, e isso é de propósito: a lista
+também mostra recursos do Lean que não dá tempo de demonstrar.
 
 | Em português | Termo original |
 |---|---|
@@ -324,4 +325,5 @@ tem 16 destes.
 | recursão bem fundada | well-founded recursion |
 
 As linhas de `do` (*do notation*…) e as lambdas anônimas vêm de
-`sumKeysUntil`, que está no repositório de Joachim mas não neste roteiro.
+`sumKeysUntil`, que está no repositório de Joachim mas não neste roteiro. Se
+alguém perguntar, é um bom "se sobrar tempo".

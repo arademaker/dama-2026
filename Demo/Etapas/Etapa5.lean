@@ -2,7 +2,7 @@
 Busca binária ao vivo, etapa 5 de 7: o arquivo como fica ao fim da etapa.
 Adaptado do live demo de Joachim Breitner (Lean FRO):
 https://github.com/nomeata/lean-highlights-tfp
-Ver `Demo/Roteiro.md`.
+Ver `ROTEIRO.md`.
 Esta etapa termina com um erro de propósito: o `grind` falha.
 -/
 

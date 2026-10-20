@@ -5,7 +5,7 @@ Adaptado do live demo "Lean Highlights" de Joachim Breitner (Lean FRO):
 https://github.com/nomeata/lean-highlights-tfp (`Highlights/03_BinSearch.lean`).
 A ideia, o exemplo e a sequência da demonstração são dele.
 
-Este arquivo é o ponto de chegada do roteiro em `Demo/Roteiro.md`, na
+Este arquivo é o ponto de chegada do roteiro em `ROTEIRO.md`, na
 ordem em que Joachim escreve o código ao vivo. Difere um pouco da versão
 final do repositório dele: lá, `go` só tem o parâmetro `hj`, calcula `mid`
 antes do caso base e grava em `mid`.
