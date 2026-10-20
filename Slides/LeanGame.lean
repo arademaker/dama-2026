@@ -1,4 +1,4 @@
-/- Lean is a "Game": a top-level slide of the deck, included by `Slides.lean`. -/
+/- O Lean é um "jogo": um slide de topo do deck, incluído por `Slides.lean`. -/
 module
 
 public import VersoSlides
@@ -27,7 +27,7 @@ set_option verso.slides.panel false
 set_option linter.unusedVariables false
 set_option maxHeartbeats 1000000
 
-#doc (Slides) "Lean is a \"Game\"" =>
+#doc (Slides) "O Lean é um \"jogo\"" =>
 
 ```lean +panel
 /- !hide -/
@@ -45,10 +45,16 @@ end LeanIntro
 /- !end hide -/
 ```
 
-The "game board": you see goals and hypotheses, then apply "moves" (tactics).
-*Each tactic transforms the game board.*
+O "tabuleiro": você vê as metas e as hipóteses, e faz "jogadas" (táticas).
+*Cada tática transforma o tabuleiro.*
+
+:::attr («class» := "credits")
+Exemplo do deck FROCON 2026 de Leo de Moura ([@leodemoura](https://github.com/leodemoura)).
+:::
 
 :::notes
-2:15. From Leo's deck. Click a tactic: the panel on the right shows the goals
-and hypotheses it leaves, the "game board".
+Clique em cada tática: o painel à direita mostra as metas e hipóteses que
+ela deixa. `intro` desmonta a hipótese "n é ímpar" em `k₁` e `e₁`; `simp`
+reescreve; `exists` escolhe a testemunha; `lia` fecha a aritmética. Vá
+devagar aqui: é a primeira prova "de verdade" da palestra.
 :::

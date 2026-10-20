@@ -1,40 +1,33 @@
 /-
-Slides for the Foundations of AI Seminar Series, Georgia Tech,
-Monday 2026-10-05, 3-4pm ET (Klaus 2456 + Zoom). One hour with Q&A, so the
-deck is paced for about 50 minutes; the speaker notes carry a running clock.
+Slides para a V SEEMAp (Semana de Extensão da EMAp, FGV), quarta-feira
+2026-10-21, 16h30-18h, Auditório 1429. Público: graduação e pós da EMAp, sem
+pressupor Lean nem programação funcional. A sessão tem 90 minutos; o deck é
+pensado para uns 70, com perguntas no fim. As notas trazem um relógio
+aproximado.
 
-Built from three sources:
-  * the `alexandre/generated-draft` framing (Parts 1, 3, 4),
-  * Jesse Alama's two worked examples (Part 2), with the HML proofs ported to
-    the `Cslib.Logic.Modal` API,
-  * the "checker says no" beat from
-    `jesse/examples-and-deck`.
+Adaptado da palestra sobre CSLib na Georgia Tech (arademaker/gatech-2026),
+com mais contexto e exemplos mais lentos, e com a CSLib no fim em vez de no
+centro. A ordem segue os tópicos do README.
 
-Speaker notes ship inside the generated `index.html`: treat them as public.
-No Initiative financials anywhere in this file.
+As notas do apresentador vão dentro do `index.html` gerado: são públicas.
+Nada de finanças da Initiative neste arquivo.
 -/
 module
 
 public import VersoSlides
--- The deck's top-level slides that have Lean code or vertical sub-slides live
--- in `Slides/`, one per file, and are included below with `{include 1 …}`.
--- Editing a slide in this file re-elaborates only this file; editing one in
--- `Slides/` rebuilds that file and this one.
+-- Os slides com código Lean ou sub-slides verticais ficam em `Slides/`, um por
+-- arquivo, e são incluídos abaixo com `{include 1 …}`.
+public import Slides.LeanBasics
 public import Slides.LeanGame
+public import Slides.MathlibExample
 public import Slides.WhereItStands
-public import Slides.Governance
-public import Slides.Contributing
-public import Slides.SemanticSpine
-public import Slides.VendingMachines
 public import Slides.Sorting
-public import Slides.FAD
-public import Slides.Bignum
 
 open VersoSlides
 
-#doc (Slides) "CSLib: The Lean Computer Science Library" =>
+#doc (Slides) "Lean 4: matemática, código e IA no mesmo lugar" =>
 
-# CSLib: The Lean Computer Science Library
+# Lean 4: matemática, código e IA no mesmo lugar
 
 %%%
 backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
@@ -42,534 +35,481 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 
 Alexandre Rademaker
 
-CSLib Initiative, Renphil | FGV/EMAp
+FGV/EMAp | CSLib Initiative, Renphil
 
-Foundations of AI Seminar Series, Georgia Tech | October 5, 2026
+V SEEMAp, FGV EMAp | 21 de outubro de 2026
 
-[arademaker.github.io/gatech-2026](https://arademaker.github.io/gatech-2026/)
+[arademaker.github.io/dama-2026](https://arademaker.github.io/dama-2026/)
 
-# About me
+# Sobre mim
 
-- *MSc in CS* (UFF, 2005): formal methods, rewriting logic in
+- *Professor da EMAp* desde 2010: matemática discreta, programação,
+  algoritmos, teoria dos tipos, teoria das categorias.
+- *Mestrado* (UFF, 2005): métodos formais, lógica de reescrita em
   [Maude](https://maude.cs.illinois.edu).
-- *PhD in CS* (PUC-Rio, 2010): proof theory for description logics.
-  Internships at [SRI](https://www.csl.sri.com/~shankar/) (PVS, 2009) and
-  Microsoft Research, with the [Z3](https://github.com/Z3Prover/z3) team (2008).
-- *IBM Research Brazil* (2012–2025): NLP, computational semantics, ontologies.
-- *FGV/EMAp*, professor since 2010: discrete mathematics, programming,
-  algorithms, type theory, category theory.
-- In the Lean community since March 2015.
+- *Doutorado* (PUC-Rio, 2010): teoria da prova para lógicas de descrição.
+  Estágios no [SRI](https://www.csl.sri.com/) (PVS) e na Microsoft Research,
+  com a equipe do [Z3](https://github.com/Z3Prover/z3).
+- *IBM Research Brasil* (2012–2025): PLN, semântica computacional, ontologias.
+- *Hoje*: diretor da CSLib Initiative, na Renaissance Philanthropy.
+- Na comunidade Lean desde março de 2015.
 
 :::notes
-0:00. Thank the organisers. One hour including questions: aim to finish the
-last slide at 50:00, leaving about 10 minutes for questions. Keep this slide
-short: the thread is logic and formal methods, then language and knowledge
-representation, now back to proofs with Lean.
+0:00. Agradecer à comissão da SEEMAp e ao DAMA. Slide rápido: o fio é lógica
+e métodos formais, depois linguagem e representação de conhecimento, e agora
+de volta às provas, com o Lean.
 :::
 
-# What this talk is about
+# Roteiro
 
-- *The library.* What CSLib is, where it stands, how it is governed, how to
-  contribute.
-- *The API, concretely.* Two worked examples, type-checked against CSLib
-  while this deck was built.
-- *The Initiative.* What Renaissance Philanthropy supports, and why that is
-  not the same thing as the library.
-- *The ecosystem, and AI.* Textbooks, courses and verification projects built
-  on CSLib; CSLib as data for AI, and AI as a CSLib contributor.
+1. *O que é o Lean*: uma linguagem de programação que também confere provas.
+2. *Por que agora*: o que aconteceu nas últimas semanas, e nos últimos meses.
+3. *O momentum*: de projeto de pesquisa a infraestrutura.
+4. *A Mathlib*: a biblioteca de matemática.
+5. *IA e Lean*: por que um verificador é o parceiro natural de um modelo.
+6. *A CSLib*: fazer pela computação o que a Mathlib fez pela matemática.
+7. *Como começar.*
 
 :::notes
-0:45. Every `lean` block in the middle third elaborates against a pinned CSLib
-revision; the outputs on screen were computed by Lean at build time.
+1:00. Avisar que todo bloco de código nos slides foi conferido pelo Lean
+quando o deck foi gerado: as saídas na tela foram calculadas pela máquina.
 :::
 
-# What is Lean?
-
-{image "static/images/lean-logo.png" (width := "18%")}[Lean logo]
-
-[lean-lang.org](https://lean-lang.org): _a proof assistant and programming language that is
-transforming how we approach mathematics, software verification, and AI._
-
-Lean provides *machine-checkable proofs*.
-
-Lean addresses the *trust bottleneck*.
-
-Lean is implemented in Lean, and is *very extensible* and *scalable*.
-
-It is based on dependent type theory.
-
-Small *trusted* kernel. Proofs can be exported and independently checked.
-
-*325,000+* unique installations: [VS Code](https://marketplace.visualstudio.com/items?itemName=leanprover.lean4) (184K) + [Open VSX](https://open-vsx.org/extension/leanprover/lean4) (141K).
-
-:::attr («class» := "credits")
-This and the next two slides are adapted from the FROCON 2026 deck of Leo de Moura ([@leodemoura](https://github.com/leodemoura)).
-:::
-
-:::notes
-1:30. Adapted from Leo de Moura's FROCON 2026 deck. The audience may not know
-Lean: one minute on what it is, one on what using it feels like, then Mathlib,
-which later slides keep referring to.
-:::
-
-{include 1 Slides.LeanGame}
-
-# Mathlib: The Lean Mathematical Library
-
-Created in July 2017, in Lean 3 during [Big Proof](https://www.newton.ac.uk/event/bpr/). An open-source, community-driven library. *Today*:
-
-:::hstack
-- *280,000+* formalized theorems.
-- *2.4M+* lines of Lean. *50,000+* lines of extensions.
-- *750+* contributors.
-- *1,500+* type classes, *20,000+* instances.
-- [github.com/leanprover-community/mathlib4](https://github.com/leanprover-community/mathlib4)
-
-{image "static/images/mathlib-deps.png" (width := "100%")}[Mathlib dependency graph]
-:::
-
-:::notes
-3:00. Figures from Leo's FROCON 2026 deck. Mathlib is the model CSLib follows:
-one shared library, community review, and everything else depends on it.
-CSLib itself depends on Mathlib.
-:::
-
-# Why a library, and why now
-
-- AI writes more and more of the world's code. Tests sample inputs; a proof covers all of them.
-- But a proof needs a *statement*, and a statement needs vocabulary: transition systems, logics, semantics, cost models.
-- CSLib's aim: that vocabulary for computer science, shared, and checked by Lean's kernel.
-
-
-> AI-based provers are bottlenecked by the abstractions available in the
-  underlying proof assistant.
-
-  — Barrett et al., CSLib: Towards a Lean Computer Science Library, CACM
-  (forthcoming)
-
-
-:::notes
-3:30. Quote from the CACM article (Barrett et al.). This replaces the usual
-"AI wrote a verified codec" opening: the audience should meet CSLib first.
-lean-zip comes back in Part 3, where it belongs.
-:::
-
-# Part 1: The Library
+# Parte 1: O que é o Lean
 
 %%%
 backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
 %%%
 
 :::notes
-5:00.
+2:00.
 :::
 
+# O que é o Lean?
 
-# What is CSLib?
+{image "static/images/lean-logo.png" (width := "18%")}[Logo do Lean]
 
-> An open-source library of reusable components for proving theorems in computer science and writing formally verified code in the Lean programming language and proof assistant.
+[lean-lang.org](https://lean-lang.org): _a proof assistant and programming
+language that is transforming how we approach mathematics, software
+verification, and AI._
 
-Two pillars:
+- Uma *linguagem de programação funcional* e um *assistente de provas*, no
+  mesmo sistema.
+- Provas *conferidas pela máquina*, por um *kernel* pequeno e confiável.
+- Baseado em *teoria dos tipos dependentes*.
+- Escrito em Lean, e *muito extensível*: a comunidade cria suas próprias
+  táticas e notações.
+- *325.000+* instalações únicas da extensão para VS Code.
 
-1. *Formalizing computer science in Lean.* Models of computation, semantics, logics, algorithms and data structures with correctness *and* complexity proofs.
-2. *Reasoning about everyday code.* Boole, an intermediate verification language embedded in Lean, as the bridge from mainstream imperative code to CSLib's machinery.
+:::attr («class» := "credits")
+Este slide e o do "jogo" são adaptados do deck FROCON 2026 de Leo de Moura ([@leodemoura](https://github.com/leodemoura)).
+:::
+
+:::notes
+2:15. Criado por Leonardo de Moura em 2013, na Microsoft Research; hoje
+mantido pela Lean FRO, uma organização sem fins lucrativos. Contagem de
+instalações: VS Code (184 mil) + Open VSX (141 mil), números do deck de Leo.
+:::
+
+{include 1 Slides.LeanBasics}
+
+{include 1 Slides.LeanGame}
+
+# Em quem confiar?
+
+O Lean separa *quem procura* a prova de *quem confere* a prova.
+
+- Táticas, automação, e agora modelos de IA, *procuram* provas. Podem ser
+  grandes, complicados, cheios de bugs.
+- O *kernel* só *confere* o termo de prova final. É pequeno, e pode ser
+  reimplementado de forma independente.
+- Para confiar num teorema, basta ler o *enunciado* e confiar no kernel.
+
+> If your proof type-checks, it's correct.
+
+  — Leonardo de Moura, [_Why Lean?_](https://leodemoura.github.io/blog/2026-4-2-why-lean/) (abril de 2026)
+
+:::notes
+12:00. Este é o slide-chave para o resto da palestra: é por isso que faz
+sentido deixar uma IA escrever provas. O Comparator, ferramenta da FRO,
+confere provas com mais de uma implementação de kernel. Conferir a citação no
+post antes da palestra.
+:::
+
+# Parte 2: Por que Lean, e por que agora
+
+%%%
+backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
+%%%
+
+:::notes
+13:00.
+:::
+
+# Só na última semana
+
+- *16/10*: [_How to Formalize All of Mathematics_](https://xenaproject.wordpress.com/2026/10/16/how-to-formalize-all-of-mathematics/),
+  de Avigad, Buzzard, Commelin, Degenne, Morrison, Nash e Topaz. A Mathlib
+  recebeu o *Prêmio Jean-Pierre Demailly 2026* de Ciência Aberta em
+  Matemática.
+- *17/10*: [_Starting a new journal_](https://terrytao.wordpress.com/2026/10/17/starting-a-new-journal/),
+  post de Shaoming Guo no blog de Terence Tao:
+
+> To be accepted, a paper will need to have its proofs formally verified in
+  Lean.
+
+:::notes
+13:15. Uma revista de matemática que exige prova verificada em Lean para
+aceitar um artigo. O post é de Shaoming Guo, convidado no blog do Tao. Os
+valores declarados: "Prioritizing understanding over being first" e
+"Ensuring rigor through formal verification". O post do Xena também diz que
+"a lousy formalization of existing results is worse than no formalization at
+all": formalizar bem é um ofício.
+:::
+
+# 2026 até aqui
+
+:::table +colHeaders +rowSeps
+*
+  * Quando
+  * O quê
+*
+  * jan
+  * AxiomProver resolve 8 dos 12 problemas do Putnam
+*
+  * mar
+  * Empacotamento de esferas em dimensão 24 formalizado
+*
+  * abr
+  * ChatGPT 5.5 encontra um resultado de Ramsey verificado em Lean
+*
+  * jul
+  * Lançamento do Tau Ceti
+*
+  * ago
+  * OpenAI e Anthropic anunciam resultados com Lean
+*
+  * set
+  * Anthropic formaliza o Último Teorema de Fermat; resultados sobre
+    Navier–Stokes verificados em Lean
+:::
+
+Mais: [dez avanços em matemática](https://openai.com/index/ten-advances-in-mathematics/)
+e [Navier–Stokes](https://openai.com/index/navier-stokes-solution/) (OpenAI).
+
+:::notes
+15:00. Linha do tempo da página da Lean FRO, "A Brief History of Lean"
+(lean-lang.org/fro/about). Os dois posts da OpenAI não puderam ser lidos na
+preparação (erro 403): abrir antes da palestra e conferir o que dizem. O post
+do Xena descreve a formalização de Fermat como 13 milhões de linhas escritas
+pelo Claude em 11 dias; confirmar antes de citar o número.
+:::
+
+# Por que isso importa
+
+Uma prova gerada por IA pode ter milhares de linhas. *Quem confere?*
+
+- Revisão humana não escala.
+- Teste não serve: um teorema fala de *todos* os casos.
+- O kernel do Lean confere, e não se cansa.
+
+O gargalo deixa de ser *escrever* a prova e passa a ser *enunciar* o
+problema certo.
+
+:::notes
+18:00. Ligar com o slide "Em quem confiar?". Para quem faz matemática
+aplicada: o enunciado continua sendo trabalho humano, e é onde mora o erro
+mais perigoso, o de provar a coisa errada.
+:::
+
+# Parte 3: O momentum do Lean
+
+%%%
+backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
+%%%
+
+:::notes
+20:00.
+:::
+
+# Uma breve história
+
+:::table +colHeaders +rowSeps
+*
+  * Ano
+  * Marco
+*
+  * 2013
+  * Primeiro commit (Leonardo de Moura, Microsoft Research)
+*
+  * 2017
+  * Lean 3; nasce a mathlib
+*
+  * 2019
+  * Natural Number Game
+*
+  * 2021
+  * Liquid Tensor Experiment concluído (desafio de Peter Scholze)
+*
+  * 2023
+  * Lean FRO fundada; Lean 4.0; mathlib portada para Lean 4
+*
+  * 2024
+  * Harmonic, primeira startup baseada em Lean; AlphaProof, prata na IMO
+*
+  * 2025
+  * Mathlib Initiative; tática `grind`; 50+ cursos universitários com Lean
+:::
+
+:::notes
+20:15. Fonte: "A Brief History of Lean", lean-lang.org/fro/about. A FRO é uma
+organização sem fins lucrativos sob a Convergent Research, fundada por
+Leonardo de Moura e Sebastian Ullrich. A página diz julho de 2023 para a
+fundação; o post "Why Lean?" diz agosto. Não citar o mês.
+:::
+
+# IA nas olimpíadas
+
+- *IMO 2024*: AlphaProof (Google DeepMind), nível prata.
+- *IMO 2025*: Aristotle (Harmonic), nível ouro; SEED Prover (ByteDance),
+  nível prata.
+
+As três equipes trabalharam sobre um assistente de provas com tipos
+expressivos, uma grande biblioteca e um ecossistema programável: o Lean
+(Leonardo de Moura, [_Proof Assistants in the Age of AI_](https://leodemoura.github.io/blog/2026-2-18-proof-assistants-in-the-age-of-ai/),
+fevereiro de 2026).
+
+:::notes
+23:00. As três usaram Lean. Pushmeet Kohli (DeepMind) creditou a
+"extensibility and verification capabilities" do Lean. No mesmo post, sobre
+o uso de IA na própria FRO: "we cannot imagine building Lean without it".
+:::
+
+# Virou livro
+
+Kevin Hartnett, [_The Proof in the Code: How a Truth Machine Is Transforming
+Math and AI_](https://www.quantabooks.org/books/the-proof-in-the-code/)
+(Quanta Books, junho de 2026).
+
+> Lean is one of the most important things happening to math right now.
+
+  — Grant Sanderson (3Blue1Brown)
+
+:::notes
+24:30. O livro conta a história do Lean: concebido para conferir código, e
+adotado por um pequeno grupo de matemáticos que viu nele um "oráculo da
+verdade". Também traz a conversa entre Pushmeet Kohli e Leonardo de Moura que
+está na origem da CSLib.
+:::
+
+# Parte 4: A Mathlib
+
+%%%
+backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
+%%%
+
+:::notes
+25:30.
+:::
+
+# Mathlib: a biblioteca de matemática do Lean
+
+Criada em julho de 2017, em Lean 3. Aberta e mantida pela comunidade. *Hoje*:
+
+:::hstack
+- *280.000+* teoremas formalizados.
+- *2,4M+* linhas de Lean. *50.000+* linhas de extensões.
+- *750+* contribuidores.
+- *1.500+* classes de tipos, *20.000+* instâncias.
+- [github.com/leanprover-community/mathlib4](https://github.com/leanprover-community/mathlib4)
+
+{image "static/images/mathlib-deps.png" (width := "100%")}[Grafo de dependências da Mathlib]
+:::
+
+:::notes
+25:45. Números do deck FROCON 2026 de Leo. O post do Xena (16/10) fala em 950
+contribuidores e 65 revisores até hoje. As extensões (táticas, linters,
+automação) foram escritas pela comunidade sem coordenação do time do Lean.
+:::
+
+# O que tem dentro
+
+:::table +colHeaders +rowSeps
+*
+  * Área
+  * Exemplos
+*
+  * Álgebra
+  * Grupos, anéis, corpos, teoria dos números, álgebra homológica
+*
+  * Álgebra linear
+  * Espaços vetoriais, matrizes, formas bilineares
+*
+  * Topologia e análise
+  * Espaços de Banach e Hilbert, medida e integração, análise complexa e de Fourier
+*
+  * Probabilidade
+  * Variáveis aleatórias, processos estocásticos
+*
+  * Geometria
+  * Variedades, geometria riemanniana e algébrica
+*
+  * Combinatória
+  * Grafos, teoria de Ramsey, combinatória aditiva
+*
+  * Lógica e computação
+  * Computabilidade, teoria dos modelos, teoria dos conjuntos
+:::
+
+[Visão geral da Mathlib](https://leanprover-community.github.io/mathlib-overview.html)
+
+:::notes
+27:00. Boa parte do currículo da graduação da EMAp está aqui. Vale mostrar a
+página da visão geral ao vivo, se houver tempo.
+:::
+
+{include 1 Slides.MathlibExample}
+
+# Parte 5: IA e Lean
+
+%%%
+backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
+%%%
+
+:::notes
+33:00.
+:::
+
+# Um verificador é o parceiro natural de um modelo
+
+- Modelos de linguagem *erram com confiança*. O kernel não aceita confiança.
+- Para treinar com reforço, um agente precisa de um sinal de recompensa que
+  ele *não consiga trapacear*. Uma prova conferida é esse sinal.
+- A Mathlib é também um *dado*: 200.000+ teoremas, escritos e anotados por
+  pessoas.
+
+Leituras: [_Proof Assistants in the Age of AI_](https://leodemoura.github.io/blog/2026-2-18-proof-assistants-in-the-age-of-ai/),
+[_Teaching AI to Make Proof Automation Work_](https://leodemoura.github.io/blog/2026-3-14-teaching-ai-to-make-proof-automation-work/),
+[_Why Lean?_](https://leodemoura.github.io/blog/2026-4-2-why-lean/)
+
+:::notes
+33:15. Do segundo post: a proposta é usar as anotações humanas da Mathlib
+(`[simp]`, `[grind]`) como base supervisionada, para ensinar IA a escrever
+boas anotações. "Most mathematicians can write proofs, but they can't write
+good annotations."
+:::
+
+# Tau Ceti: matemática escrita por agentes
+
+[taucetiproject.org](https://taucetiproject.org/), lançado em julho de 2026:
+
+- *Agentes de IA* escrevem as provas em Lean e abrem pull requests.
+- *Matemáticos* definem os alvos, num roteiro revisado por pessoas.
+- *Revisores de IA* julgam cada PR por critérios fixos e abertos.
+- Todo teorema é conferido pela máquina: sem `sorry`, sem axiomas extras.
+
+Segundo o post do Xena (16/10), o Tau Ceti já é um pouco *maior que a
+Mathlib*.
+
+:::notes
+35:00. Exemplos que a página confere a cada build: teorema de Burnside,
+extensão de Carathéodory na fronteira, dualidade de Schur–Weyl. Pergunta para
+a plateia: o que muda no trabalho do matemático quando escrever a prova deixa
+de ser o gargalo?
+:::
+
+# Software também: lean-zip
+
+[lean-zip](https://github.com/kim-em/lean-zip) (Kim Morrison): DEFLATE em Lean
+puro, com um teorema conferido pelo kernel: descomprimir desfaz comprimir,
+para toda entrada e todo nível. Cerca de 1.100 teoremas, nenhum `sorry`.
+
+- *Escrito por agentes de IA*, com pouca supervisão.
+- *A prova é o portão*: um PR só entrava se a prova continuasse valendo.
+- *Por isso otimizar é seguro*: ficou mais rápido que o `miniz_oxide` do Rust
+  com a mesma taxa de compressão.
+
+:::notes
+37:00. Fatos do README do lean-zip (set/2026): cerca de 32 mil linhas de
+prova; no nível 6, uns 30% mais rápido que o `miniz_oxide` com a mesma taxa.
+Kim: a prova de correção "allows us to let AIs loose optimizing the code".
+Transição: para fazer isso com software em geral, falta vocabulário. É aí que
+entra a CSLib.
+:::
+
+# Parte 6: A CSLib
+
+%%%
+backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
+%%%
+
+:::notes
+38:30.
+:::
+
+# O que é a CSLib?
+
+> An open-source library of reusable components for proving theorems in
+  computer science and writing formally verified code in the Lean
+  programming language and proof assistant.
+
+- *Formalizar a ciência da computação*: modelos de computação, semântica,
+  lógicas, algoritmos e estruturas de dados, com provas de correção *e* de
+  complexidade.
+- *Raciocinar sobre código do dia a dia*: Boole, uma linguagem intermediária
+  de verificação embutida no Lean.
+- Depende da Mathlib, e não refaz o que a Mathlib já tem.
 
 [github.com/leanprover/cslib](https://github.com/leanprover/cslib) ·
 [cslib.io](https://www.cslib.io/)
 
 :::notes
-5:10. Pillar 2 is the most ambitious bet, and it is still early: most of today's code is
-Pillar 1.
-:::
-
-
-# Why a unified library?
-
-Formal-methods work tends to produce *isolated artifacts*: a semantics here, a memory model there, a process calculus somewhere else.
-
-> The formalizations are designed to form a coherent and integrated framework
-  rather than a collection of unrelated modules.
-
-  — Barrett et al., CSLib: Towards a Lean Computer Science Library, CACM
-  (forthcoming)
-
-Mathlib is a dependency:
-
-- CSLib reuses its mathematics, style guide and linters, and many definitions.
-- The rule: do not rebuild what Mathlib already has.
-- The boundary is not always obvious. Mathlib also has [DFA](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Computability/DFA.html), [context-free grammars](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Computability/ContextFreeGrammar.html) and [graphs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Combinatorics/Graph/Basic.html), `RegularExpressions`, etc; all of them, computer science concepts.
-
-:::notes
-6:25. "Unified" is the paper's word ("a unified body of formalizations").
-"Without a library like this, every researcher has to rebuild all the
-foundations before they can even begin" (Renaissance Philanthropy Q&A).
-Examples of the boundary: Mathlib's `ContextFreeGrammar` and its new `Graph`
-(Mathlib.Combinatorics.Graph.Basic), next to CSLib's own automata built on
-LTS; where graph definitions should live was a long #CSLib Zulip thread
-("New graph definitions"). CSLib imports Mathlib's `Language`,
-`RegularExpressions`, `DFA` and `TuringMachine.Tape`.
-:::
-
-
-# How it started
-
-Some independent efforts converged around July, 2025, bringing together
-Clark Barrett, Swarat Chaudhuri, Jim Grundy (Amazon), Pushmeet Kohli, Fabrizio
-Montesi and Leonardo de Moura:
-
-- Clark Barrett and Swarat Chaudhuri were discussing shared infrastructure
-  for formal computer science.
-- Pushmeet Kohli had raised the same idea with Leonardo de Moura (Kevin
-  Hartnett, [_The Proof in the Code_](https://www.quantabooks.org/books/the-proof-in-the-code/), 2026).
-- Fabrizio Montesi had independently started a `cslib` repository.
-- Amazon and Google DeepMind funded two technical-lead positions.
-- Renaissance Philanthropy came in to build the Initiative around it.
-
-Supporting organisations listed on [cslib.io](https://cslib.io): Amazon, Google DeepMind, FORM, Renaissance Philanthropy, Stanford Center for Automated Reasoning.
-
-:::notes
-7:40. Source: the Renaissance Philanthropy Q&A (August 2026). The repository's
-first commit is 2025-06-17; the technical leads started in August 2025.
-The Kohli–de Moura conversation is from Hartnett's book (Quanta Books, June
-2026). Montesi's Lean Together 2026 slides ("A convergence of ambitions in
-2025") list Barrett, Chaudhuri, Jim Grundy, Kohli, Montesi and de Moura.
+38:45. Dirijo a CSLib Initiative na Renaissance Philanthropy, que apoia a
+biblioteca; a biblioteca em si é da comunidade. Mantenha curto: o exemplo a
+seguir explica melhor do que a lista.
 :::
 
 {include 1 Slides.WhereItStands}
 
-{include 1 Slides.Governance}
-
-# CSLib at FLoC 2026
-
-Two papers, two complementary views of the same library:
-
-- *Computer Science as Infrastructure: the Spine of CSLib.* Christopher
-  Henson and Fabrizio Montesi. Founding technical principles, reusable
-  semantic interfaces (reduction and labelled transition systems), proof
-  automation, CI for Mathlib compatibility.
-  [arXiv:2602.15078](https://arxiv.org/abs/2602.15078)
-- *CSLib: The Lean Computer Science Library.* Presented by Clark Barrett and
-  Sorrachai Yingchareonthawornchai; the vision paper of the steering
-  committee and technical leads, forthcoming in CACM.
-  [arXiv:2602.04846](https://arxiv.org/abs/2602.04846)
-
-:::notes
-11:25. Pointers for the theory-minded part of the audience. The first is the
-"how it is built" paper; the second is the "why and where to" paper.
-:::
-
-{include 1 Slides.Contributing}
-
-# Part 2: The API, Concretely
-
-%%%
-backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
-%%%
-
-Every Lean block from here on is elaborated against CSLib at `12ba7cf`,
-unless the slide says it is quoting.
-
-:::notes
-13:50.
-:::
-
-{include 1 Slides.SemanticSpine}
-
-{include 1 Slides.VendingMachines}
-
 {include 1 Slides.Sorting}
 
-# Part 3: The CSLib Initiative
+# CSLib no ensino
+
+- [Software Foundations in Lean](https://github.com/plclub/sf-in-lean/):
+  Benjamin Pierce, Michael Hicks e Harry Goldstein adaptam o texto clássico
+  de métodos formais para Lean.
+- [Functional Algorithm Design](https://github.com/cslib-community/fad):
+  algoritmos funcionais, com provas.
+- [Computational Semantics with Lean](https://emap-nlp.github.io/book/): o
+  livro do curso de PLN da EMAp, deste semestre, escrito em Verso como estes
+  slides.
+
+:::notes
+58:00. O CSwL é feito aqui: quem está no curso já está usando Lean. Os três
+projetos usam a CSLib e devolvem para ela o que é geral.
+:::
+
+# Como começar
 
 %%%
 backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
 %%%
 
-:::notes
-36:45.
-:::
-
-# Opensource Library ≠ Initiative
-
-:::table +colHeaders +rowSeps
-*
-  * The library
-  * The Initiative
-*
-  * `leanprover/cslib`, open source
-  * A programme at Renaissance Philanthropy
-*
-  * Community-governed; mostly volunteers
-  * A director and a small team
-*
-  * Decides its own technical direction
-  * Helps CSLib growth; does not lead it
-*
-  * Grows organically
-  * Invests where growth *won't* happen on its own
-:::
-
-Modelled on the Mathlib Initiative: a thriving open-source project, paired
-with a dedicated team for work that is hard to sustain on volunteer effort.
+- *Jogar*: [Natural Number Game](https://adam.math.hhu.de/#/g/leanprover-community/nng4).
+- *Programar*: [Functional Programming in Lean](https://lean-lang.org/functional_programming_in_lean/).
+- *Provar*: [Theorem Proving in Lean 4](https://lean-lang.org/theorem_proving_in_lean4/)
+  e [Mathematics in Lean](https://leanprover-community.github.io/mathematics_in_lean/).
+- *Aprofundar*: [_Lean 4 for Program Verification in the Age of AI_](https://leodemoura.github.io/static/marktoberdorf2026/),
+  quatro aulas de Leonardo de Moura (Marktoberdorf, agosto de 2026).
+- *Conversar*: o [Zulip do Lean](https://leanprover.zulipchat.com).
+- *Contribuir*: Mathlib e CSLib aceitam PRs, e revisar também é contribuir.
 
 :::notes
-36:55. Renaissance Philanthropy supplies the organisational infrastructure:
-HR, legal, finance. The Initiative does not own the library.
+60:00. Para quem quer fazer IC ou TCC com Lean: me procurem. Passar o link do
+deck de novo.
 :::
 
-# The Initiative's four goals
-
-:::table +colHeaders +rowSeps
-*
-  * Goal
-  * What it means
-*
-  * *G1*: Sustain organic growth
-  * Review workflow, CI and DevOps, documentation
-*
-  * *G2*: Demonstrate value
-  * Pulling projects; an open AI dataset
-*
-  * *G3*: Focused technical investment
-  * Boole, semantics, specification logics, RAM model ...
-*
-  * *G4*: Support community efforts
-  * Software Foundations in Lean, Separation Logic, Signal Shot (BAIF, Crypto)
-:::
-
-:::notes
-37:55. The diagnosis behind G1: CSLib's problem is not lack of interest.
-Contributors are joining and PRs are flowing; the risk is lack of structure.
-G3 is where dedicated effort goes: areas that will not mature through
-volunteer work alone. G4 is coordination, not ownership.
-:::
-
-# Pulling projects
-
-The most important idea in the plan:
-
-> External formalisation efforts that *demand new CSLib primitives* and
-  *upstream their general results back*.
-
-- They aim at software the world uses every day.
-- Their requirements decide what CSLib builds next.
-- The general pieces they produce come back to the library.
-
-:::fragment
-The test they impose: general lemmas must be *separable from project code*.
-If that is hard, the API is wrong.
-:::
-
-:::notes
-39:10. "CSLib is never the end goal but a shared foundation that grows
-stronger with each one." lean-zip, next slide, is the example we use today.
-:::
-
-# Learning from lean-zip
-
-[lean-zip](https://github.com/kim-em/lean-zip) (Kim Morrison): DEFLATE in pure
-Lean, with a kernel-checked theorem that decompression inverts compression,
-for every input and every level. About 1,100 theorems, no `sorry`.
-
-- *Written by AI agents, loosely supervised.* Agents claimed issues, worked
-  in their own git worktrees, and opened pull requests.
-- *The proof is the gate.* A PR could not merge unless the round-trip proof
-  still went through.
-- *So optimisation is safe to automate.* It ended up faster than Rust's
-  `miniz_oxide` at the same compression ratio.
-
-:::fragment
-For the Initiative: learn from this way of building verified software, and
-upstream to CSLib whatever is general.
-:::
-
-:::notes
-40:10. A new way of doing software verification, not just a verified codec.
-Facts from the lean-zip README (2026-09): about 32k lines of proof; at level
-6, about 30% faster than `miniz_oxide` at equal ratio. The full history,
-including the agents' plans and per-session logs, is kept at the `pre-split`
-tag. Kim's own words, from "Why Lean is faster than Rust" (July 2026): the
-library is proved correct, which "allows us to let AIs loose optimizing the
-code, requiring that they update the proof whenever the implementation
-materially changes". lean-zip does not depend on CSLib today.
-:::
-
-# Part 4: CSLib in the Wild
-
-%%%
-backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
-%%%
-
-:::notes
-41:25.
-:::
-
-# Software Foundations in Lean
-
-Benjamin Pierce (Penn), Michael Hicks (Penn and AWS) and Harry Goldstein (Buffalo) are adapting
-[Software Foundations](https://github.com/plclub/sf-in-lean/) (also [here](https://sf-in-lean.torus.icu)), the standard introduction to interactive theorem proving, to Lean.
-
-- Courses that draw on CSLib and contribute back to it.
-- A pipeline from students to library contributors.
-- A planned follow-up course on *agentic proof engineering*.
-
-:::fragment
-Teaching is the maturity test that matters most: it forces the API to be
-explainable.
-:::
-
-:::notes
-41:35. updated. links to the repo
-:::
-
-{include 1 Slides.FAD}
-
-# A course book in progress: CSwL
-
-[Computational Semantics with Lean](https://emap-nlp.github.io/book/)
-([repo](https://github.com/cslib-community/CSwL)) brings van Eijck and Unger's
-[_Computational Semantics with Functional Programming_](https://staff.fnwi.uva.nl/d.j.n.vaneijck2/cs/)
-from Haskell to Lean, while the FGV/EMAp course runs.
-
-- *Now:* stay close to the book, the safe route while students follow it.
-- *Next weeks:* reuse what is already mapped:
-  [grammars](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Computability/ContextFreeGrammar.html),
-  [propositional](https://api.cslib.io/docs/Cslib/Logics/Propositional/Defs.html)
-  and [modal](https://api.cslib.io/docs/Cslib/Logics/Modal/Basic.html) logic,
-  [LTS](https://api.cslib.io/docs/Cslib/Foundations/Semantics/LTS/Basic.html).
-- *Then:* contribute what CSLib lacks: first-order logic,
-  [feature structures](https://en.wikipedia.org/wiki/Feature_structure) and
-  their unification.
-
-With Software Foundations in Lean and FAD: CSLib as a base for teaching.
-
-:::notes
-43:20. A Verso book, like these slides. Grammars are Mathlib's
-`ContextFreeGrammar`; the logics and LTS are CSLib's. The course runs
-this semester, so the first pass follows the original closely; the mapping to
-Mathlib and CSLib is done and lands chapter by chapter in the next weeks. Where
-the library's shape differs from the book's (CSLib's `Satisfies`, for
-instance), the book's presentation is the one that moves. First-order logic and
-feature-structure unification go the other way: the book's needs become CSLib
-pull requests.
-:::
-
-{include 1 Slides.Bignum}
-
-# The community organisation
-
-[github.com/cslib-community](https://github.com/cslib-community): *home for
-community projects built with, around, and for CSLib.*
-
-- *fad*: functional algorithm design.
-- *CSwL*: computational semantics.
-- *bignum*: s2n-bignum in Lean.
-- *AlgoLib*: graph algorithms, flows, union–find, with correctness and
-  running-time proofs.
-
-Where projects live *before* anything is upstreamed.
-
-:::notes
-45:05. The org is the staging area for pulling projects: general results move
-into `leanprover/cslib`, project-specific code stays here.
-:::
-
-# Part 5: CSLib for AI, and with AI
-
-%%%
-backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
-%%%
-
-:::notes
-45:35.
-:::
-
-# For AI
-
-> The ideal outcome would be a "flywheel" in which both AI and human experts
-  become progressively more efficient at producing new knowledge.
-
-  — Barrett et al., CSLib: Towards a Lean Computer Science Library, CACM
-  (forthcoming)
-
-- CSLib as *vocabulary*: definitions an AI can state specifications in.
-- CSLib as *data*: a planned regular dataset of goal states, tactic traces
-  and cost annotations, in Mathlib's format.
-- The kernel as the gate: RL agents find every shortcut; the kernel is the
-  one thing they cannot fake.
-
-:::notes
-45:45. Quote from the CACM article. The dataset is a G2 deliverable, format-
-compatible with Mathlib's pipeline so labs can consume both.
-:::
-
-# With AI
-
-- CSLib ships an `AGENTS.md`: build, lint and test instructions for coding
-  agents.
-- It follows Mathlib's disclosure rule:
-
-> If you use artificial intelligence ... please explain this in the PR
-  description. Explain which tool(s) you used and how you used it.
-
-- Two reports from this year:
-  - [July, on Zulip](https://leanprover.zulipchat.com/#narrow/channel/513188-CSLib/topic/Claude.20find.20a.20novel.20proof.2C.20in.20untyped.20lambda.20calculus/near/612724597):
-    a proof about η-reduction and strong normalisation, invented by Claude
-    and checked with Aristotle, found in no paper or textbook
-    ([#860](https://github.com/leanprover/cslib/pull/860)).
-  - [September, cut elimination for linear logic](https://github.com/leanprover/cslib/pull/944):
-    AI agents that "until recently failed badly" now carry out the proof;
-    the library itself has grown enough "to give useful context".
-
-:::notes
-46:45. Why disclose: tools make different mistakes than humans, so reviewers
-need to know which they are looking for. Both pull requests are still open.
-#860 (lengyijun) proves `sn_eta_steps_inv`; the key idea is a counter on
-parallel η-reduction. #944 is Fabrizio Montesi's: he had used cut elimination
-as a test for AI agents for a while, and credits CSLib's logic developments,
-READMEs and `modal` grind set with the change. That is the argument of this
-talk from the other side: the library is becoming context for AI.
-:::
-
-# The open question
-
-Not whether AI writes Lean. What a *library* has to look like for AI-written
-contributions to be reviewable.
-
-- Specifications humans can read.
-- Small, stable interfaces that proofs can target.
-- Review that scales with volume.
-
-:::fragment
-The community is discussing how humans and agents should coordinate. One idea
-on the table: *blueprints written by humans*, stating the intent that both
-people and agents then work toward.
-:::
-
-:::notes
-48:00. This is the bridge back to the seminar's theme. The blueprint idea is
-from the "Blueprint" topic on the CSLib Zulip (September 2026); present it as
-an open discussion, not anyone's position. End of content; the rest is a call
-to action.
-:::
-
-# Getting involved
-
-%%%
-backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
-%%%
-
-- Depend on CSLib in your project, and tell us what is missing.
-- Bring a pulling project.
-- Review a PR, or join the weekly meeting.
-- Say hello on the #CSLib channel of the Lean Zulip.
-
-:::notes
-49:00. Steer questions toward: what would you want CSLib to have that it
-doesn't?
-:::
-
-# Thank You
+# Obrigado
 
 %%%
 backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
@@ -577,17 +517,12 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 
 *Alexandre Rademaker*
 
-CSLib Initiative, Renaissance Philanthropy · FGV/EMAp
+FGV/EMAp · CSLib Initiative, Renaissance Philanthropy
 
-[cslib.io](https://www.cslib.io/) ·
-[github.com/leanprover/cslib](https://github.com/leanprover/cslib)
-
-Further reading: Barrett et al., _CSLib: Towards a Lean Computer Science
-Library_ (CACM, forthcoming; arXiv:2602.04846). Henson and Montesi,
-_Computer Science as Infrastructure_ (FLoC 2026; arXiv:2602.15078).
+[arademaker.github.io/dama-2026](https://arademaker.github.io/dama-2026/)
 
 `alexandre.rademaker@renphil.org`
 
 :::notes
-49:45. Questions.
+62:00. Perguntas.
 :::

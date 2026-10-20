@@ -30,6 +30,15 @@ https://arademaker.github.io/gatech-2026/
 
 Sobre o tema da palestra, achamos a proposta muito interessante, principalmente pela adaptação voltada para os estudantes da graduação.
 
+# Demanda consolidada
+
+- Convite da Comissão Organizadora da V SEEMAp (DAMA, FGV-RJ) para uma
+  palestra de ~1h sobre Lean 4, para graduação e pós da EMAp.
+- Tema acordado: adaptar a palestra da Georgia Tech
+  (arademaker.github.io/gatech-2026), com mais contexto e exemplos mais
+  lentos, voltada para a graduação.
+- Presencial: Auditório 1429, 21/10/2026, 16h30 às 18h.
+
 # Goal
 
 1. resumir seção acima das mensagens para consolidar a demanda.

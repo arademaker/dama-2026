@@ -1,4 +1,4 @@
-/- Where it stands today: a top-level slide of the deck, included by `Slides.lean`. -/
+/- Onde a CSLib está hoje: um slide de topo do deck, incluído por `Slides.lean`. -/
 module
 
 public import VersoSlides
@@ -13,94 +13,94 @@ set_option verso.slides.panel false
 set_option linter.unusedVariables false
 set_option maxHeartbeats 1000000
 
-#doc (Slides) "Where it stands today" =>
+#doc (Slides) "Onde a CSLib está hoje" =>
 
 %%%
 vertical := true
 %%%
 
-Fifteen and a half months after the first commit:
+Quinze meses e meio depois do primeiro commit:
 
 :::table +colHeaders +rowSeps
 *
-  * Metric
-  * Value
+  * Métrica
+  * Valor
 *
-  * Lean files in `Cslib/`
+  * Arquivos Lean em `Cslib/`
   * 253
 *
-  * Non-empty lines
+  * Linhas não vazias
   * 33,727
 *
-  * Theorems and lemmas
+  * Teoremas e lemas
   * 2,579
 *
-  * Definitions, structures, classes
+  * Definições, estruturas, classes
   * 1,179
 *
-  * Contributors
+  * Contribuidores
   * 57
 *
-  * Merged pull requests
+  * Pull requests aceitos
   * 622
 *
-  * GitHub stars / forks
+  * Estrelas / forks no GitHub
   * 728 / 202
 :::
 
-`leanprover/cslib` `main` at `c149a9d` (2026-10-01).
+`leanprover/cslib`, `main` em `c149a9d` (2026-10-01).
 
 :::notes
-8:40. Counts from `cslib-stats.md`, with comments stripped before counting
+Counts from `cslib-stats.md`, with comments stripped before counting
 declarations. Contributors are distinct people who authored or co-authored a
 commit, plus six credited only in file headers; bots excluded. In the last two
 weeks alone: 64 commits and 17% more lines. The code slides elaborate against
 the slightly older pin `12ba7cf`.
 :::
 
-# What is in it
+# O que tem dentro
 
 :::table +colHeaders +rowSeps
 *
-  * Area
-  * Lines
-  * Highlights
+  * Área
+  * Linhas
+  * Destaques
 *
   * `Computability`
   * 12,319
-  * Automata, Turing machines, URM, circuits, FLP
+  * Autômatos, máquinas de Turing, URM, circuitos, FLP
 *
   * `Foundations`
   * 7,836
-  * LTS, bisimulation, relations, monads, data, syntax
+  * LTS, bissimulação, relações, mônadas, dados, sintaxe
 *
   * `Languages`
   * 7,004
-  * λ-calculi, F<:, CCS, choreographies, processes
+  * Cálculos λ, F<:, CCS, coreografias, processos
 *
   * `Logics`
   * 3,327
-  * Linear, modal, HML, propositional
+  * Linear, modal, HML, proposicional
 *
   * `Crypto`
   * 1,423
-  * Perfect secrecy, secret sharing, commitments, PRGs
+  * Sigilo perfeito, compartilhamento de segredos, PRGs
 *
   * `MachineLearning`
   * 872
-  * PAC learning, VC dimension
+  * Aprendizado PAC, dimensão VC
 *
   * `Algorithms`
   * 660
-  * Time monad, sorting, Diffie–Hellman
+  * Mônada de tempo, ordenação, Diffie–Hellman
 *
   * `Probability`
   * 251
-  * PMF, statistical distance
+  * PMF, distância estatística
 :::
 
 :::notes
-9:25. Computability is now the largest area, 36.5% of the lines, and took
+Computability is now the largest area, 36.5% of the lines, and took
 most of the recent growth: Sam Schlesinger's Boolean circuits, with Shannon's
 lower bound and Lupanov's construction, and Christian Reitwiessner's
 multi-tape Turing machines. Automata include two-way and ω-automata.

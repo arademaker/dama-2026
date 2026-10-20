@@ -2,8 +2,9 @@ name = "dama-2026"
 version = "0.1.0"
 defaultTargets = ["Slides", "dama-2026"]
 
-# Presentation about CSLib at the Foundations of AI Seminar Series
-# (Georgia Institute of Technology). Built with verso-slides, which
+# Presentation introducing Lean 4 at the V SEEMAp (FGV EMAp, 2026-10-21),
+# adapted from the Georgia Tech CSLib talk (arademaker/gatech-2026), whose
+# pins and build this project keeps unchanged. Built with verso-slides, which
 # renders a reveal.js deck from a Verso `Slides` document.
 #
 # The revision has to match `lean-toolchain` (v4.35.0-rc3). Pinned by SHA
@@ -24,7 +25,7 @@ rev = "dd41badb53b11f31bba486e2de516148bd889057"
 name = "Slides"
 # `Slides.lean` plus the slide modules under `Slides/`, which it includes.
 globs = ["Slides", "Slides.+"]
-# `leanLibCode` quotes CSLib and bignum source and checks it still matches
+# `leanLibCode` quotes CSLib source and checks it still matches
 # the highlighted JSON of each quoted module. `make highlighted` is used instead
 # of `needs` targets here to work around an upstream issue.
 
@@ -43,10 +44,10 @@ name = "cslib"
 scope = "leanprover"
 rev = "12ba7cfc8089af0cd9da823196486914e697b99e"
 
-# bignum is quoted, not used: the s2n-bignum slide shows its HOL Light
-# component model with `leanLibCode`, so the quotation is checked against the
-# source. Only the quoted modules and their imports are built. Pinned by SHA; its own
-# toolchain is v4.34.0, but it builds with ours.
+# bignum is no longer quoted by any slide (the s2n-bignum slide of the
+# Georgia Tech deck was dropped), so nothing of it is built. The require
+# stays only so that `lake-manifest.json`, copied from gatech-2026, does not
+# have to be re-resolved: a `lake update` could pull a newer verso.
 [[require]]
 name = "bignum"
 git = "https://github.com/cslib-community/bignum"

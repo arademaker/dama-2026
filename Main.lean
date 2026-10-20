@@ -28,9 +28,9 @@ def config : Config := {
 /-- The title slide. The layout is the two-part one of Leo de Moura's FROCON
 2026 deck: a logo on white, then a band with the title, the speaker and
 affiliation, and the venue and date at the bottom. The identity is CSLib's,
-from the www.cslib.io sources (`~/r/cslib-community.github.io`): its logo
-(`static/svg/cslib-logo-lines.svg` there, `static/cslib-logo.svg` here, with
-the site's text colour as fill) and the brown gradient of its home-page hero. The styles are
+from the www.cslib.io sources (`~/r/cslib-community.github.io`): the brown
+gradient of its home-page hero. This talk is about Lean in general, so the
+logo on white is Lean's (`static/images/lean-logo.png`), not CSLib's. The styles are
 `.title-slide` in `static/custom.css`.
 
 Verso markdown cannot emit this markup, so `main` swaps it in for the first
@@ -47,14 +47,14 @@ def titleSlide : String :=
   "<section class=\"title-slide\" data-background-gradient=\"" ++
   "linear-gradient(to bottom, #ffffff 0%, #ffffff 25%, transparent 25%), " ++
   "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)\">\n" ++
-  "  <div class=\"top-area\"><img class=\"logo\" src=\"cslib-logo.svg\" alt=\"CSLib\"></div>\n" ++
+  "  <div class=\"top-area\"><img class=\"logo\" src=\"lean-logo.png\" alt=\"Lean\"></div>\n" ++
   "  <div class=\"title-band\">\n" ++
-  "    <h1>CSLib: The Lean Computer Science Library</h1>\n" ++
+  "    <h1>Lean 4: matemática, código e IA no mesmo lugar</h1>\n" ++
   "    <div class=\"meta\"><strong>Alexandre Rademaker</strong><br>" ++
-  "CSLib Initiative, Renphil | FGV/EMAp</div>\n" ++
-  "    <div class=\"date\">Foundations of AI Seminar Series, Georgia Tech | " ++
-  "October 5, 2026<br><a class=\"url\" href=\"https://arademaker.github.io/gatech-2026/\">" ++
-  "arademaker.github.io/gatech-2026</a></div>\n" ++
+  "FGV/EMAp | CSLib Initiative, Renphil</div>\n" ++
+  "    <div class=\"date\">V SEEMAp, FGV EMAp | 21 de outubro de 2026<br>" ++
+  "<a class=\"url\" href=\"https://arademaker.github.io/dama-2026/\">" ++
+  "arademaker.github.io/dama-2026</a></div>\n" ++
   "  </div>\n" ++
   "</section>"
 
@@ -109,7 +109,7 @@ public def main : IO UInt32 := do
   let rc ← slidesMain (config := config) (doc := %doc Slides)
   if rc != 0 then return rc
   let out := config.outputDir
-  IO.FS.writeFile (out / "cslib-logo.svg") (← IO.FS.readFile "static/cslib-logo.svg")
+  IO.FS.writeBinFile (out / "lean-logo.png") (← IO.FS.readBinFile "static/images/lean-logo.png")
   -- `include_str` above is only re-read when this file recompiles, so a CSS
   -- edit alone would ship a stale stylesheet. Copy the current one.
   IO.FS.writeFile (out / customCss.filename) (← IO.FS.readFile "static/custom.css")
