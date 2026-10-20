@@ -22,6 +22,7 @@ public import Slides.LeanGame
 public import Slides.MathlibExample
 public import Slides.WhereItStands
 public import Slides.Sorting
+public import Slides.BinSearchAI
 
 open VersoSlides
 
@@ -35,7 +36,7 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 
 Alexandre Rademaker
 
-FGV/EMAp | CSLib Initiative, Renphil
+FGV/EMAp
 
 V SEEMAp, FGV EMAp | 21 de outubro de 2026
 
@@ -43,16 +44,16 @@ V SEEMAp, FGV EMAp | 21 de outubro de 2026
 
 # Sobre mim
 
+- *Professor da EMAp* desde 2010: matemática discreta, programação,
+  algoritmos, teoria dos tipos, teoria das categorias, etc.
 - *Mestrado* (UFF, 2005): métodos formais, lógica de reescrita em
   [Maude](https://maude.cs.illinois.edu).
 - *Doutorado* (PUC-Rio, 2010): teoria da prova para lógicas de descrição.
   Estágios no [SRI](https://www.csl.sri.com/) (PVS) e na [Microsoft Research](https://www.microsoft.com/en-us/research/),
   com a equipe do [Z3](https://github.com/Z3Prover/z3).
 - *IBM Research Brasil* (2012–2025): PLN, semântica computacional, ontologias.
-
-- *Professor da EMAp* desde 2010: matemática discreta, programação,
-  algoritmos, teoria dos tipos, teoria das categorias, etc.
-- Na comunidade Lean desde março de 2015. Diretor da CSLib Initiative, na Renaissance Philanthropy.
+- Na comunidade Lean desde março de 2015; hoje também sou diretor da CSLib
+  Initiative.
 
 :::notes
 Agradecer à comissão da SEEMAp e ao DAMA. Slide rápido: o fio é lógica
@@ -531,35 +532,7 @@ Transição: para fazer isso com software em geral, falta vocabulário. É aí q
 entra a CSLib.
 :::
 
-# Um exemplo: busca binária escrita por IA
-
-[lean-binsearch](https://github.com/arademaker/lean-binsearch): implementação
-e prova feitas com o [Claude Code](https://claude.ai/code), 283 linhas. Para
-confiar no resultado, basta ler dois enunciados:
-
-```code lean
-theorem bsearch_sound (l : List Nat) (target : Nat) (i : Nat) :
-    bsearch l target = some i → l[i]? = some target
-
-theorem bsearch_complete (l : List Nat) (target : Nat)
-    (hs : Sorted l) (hm : target ∈ l) :
-    ∃ i, bsearch l target = some i
-```
-
-- *Correção*: se devolve `i`, então `target` está na posição `i`.
-- *Completude*: se a lista está ordenada e contém `target`, a busca acha.
-
-:::fragment
-E se escrevêssemos uma busca binária juntos, agora, deixando o Lean nos
-corrigir?
-:::
-
-:::notes
-Este bloco é citado, não conferido pelo deck: o projeto usa outra versão
-do Lean (v4.29.0). A recursão é bem fundada, na medida `hi + 1 - lo`. Pergunta
-para a plateia: o enunciado de completude precisa da hipótese `Sorted l`, e o
-de correção não. Por quê?
-:::
+{include 1 Slides.BinSearchAI}
 
 # Parte 6: Ao vivo
 
@@ -661,6 +634,35 @@ biblioteca; a biblioteca em si é da comunidade. Mantenha curto: o exemplo a
 seguir explica melhor do que a lista.
 :::
 
+# A biblioteca e a Initiative
+
+:::table +colHeaders +rowSeps
+*
+  * A biblioteca CSLib
+  * A CSLib Initiative
+*
+  * `leanprover/cslib`, código aberto
+  * Um programa na Renaissance Philanthropy
+*
+  * Governada pela comunidade; quase toda feita por voluntários
+  * Um diretor e uma pequena equipe
+*
+  * Decide a sua própria direção técnica
+  * Ajuda a biblioteca a crescer; não a comanda
+*
+  * Cresce organicamente
+  * Investe onde o crescimento *não* acontece sozinho
+:::
+
+O modelo é o da Mathlib: um projeto aberto e vivo, e ao lado dele uma
+equipe dedicada para o trabalho difícil de manter só com voluntários.
+
+:::notes
+A Initiative não é dona da biblioteca. Quem contribui com a CSLib contribui
+com o projeto aberto, como na Mathlib (que tem a sua Mathlib Initiative). A
+Renaissance Philanthropy cuida da infraestrutura: RH, jurídico, finanças.
+:::
+
 # CSLib no ensino
 
 - [Software Foundations in Lean](https://github.com/plclub/sf-in-lean/):
@@ -743,11 +745,9 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 
 *Alexandre Rademaker*
 
-FGV/EMAp · CSLib Initiative, Renaissance Philanthropy
+FGV/EMAp
 
 [arademaker.github.io/dama-2026](https://arademaker.github.io/dama-2026/)
-
-`alexandre.rademaker@renphil.org`
 
 :::notes
 80:00. Perguntas.

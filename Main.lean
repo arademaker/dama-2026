@@ -51,7 +51,7 @@ def titleSlide : String :=
   "  <div class=\"title-band\">\n" ++
   "    <h1>Lean 4: matemática, código e IA no mesmo lugar</h1>\n" ++
   "    <div class=\"meta\"><strong>Alexandre Rademaker</strong><br>" ++
-  "FGV/EMAp | CSLib Initiative, Renphil</div>\n" ++
+  "FGV/EMAp</div>\n" ++
   "    <div class=\"date\">V SEEMAp, FGV EMAp | 21 de outubro de 2026<br>" ++
   "<a class=\"url\" href=\"https://arademaker.github.io/dama-2026/\">" ++
   "arademaker.github.io/dama-2026</a></div>\n" ++
