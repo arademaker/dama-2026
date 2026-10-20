@@ -481,7 +481,7 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 Leituras: [_Proof Assistants in the Age of AI_](https://leodemoura.github.io/blog/2026-2-18-proof-assistants-in-the-age-of-ai/),
 [_Teaching AI to Make Proof Automation Work_](https://leodemoura.github.io/blog/2026-3-14-teaching-ai-to-make-proof-automation-work/),
 [_Why Lean?_](https://leodemoura.github.io/blog/2026-4-2-why-lean/) ·
-Comunidade: [FMxAI](https://fmxai.org), métodos formais × IA
+Comunidade: [FMxAI](https://fmxai.org)
 
 :::notes
 FMxAI é a série de encontros, só para convidados, organizada pela
