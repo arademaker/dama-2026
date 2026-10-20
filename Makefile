@@ -6,7 +6,7 @@ EXE := dama-2026
 # This avoids duplicate racing jobs (see #15435)
 QUOTED := @cslib/+Cslib.Algorithms.Lean.MergeSort.MergeSort
 
-.PHONY: all slides highlighted serve cache clean
+.PHONY: all slides highlighted serve cache clean demo
 
 all: slides
 
@@ -30,6 +30,11 @@ serve: slides
 # building from source.
 cache:
 	lake exe cache get
+
+# The live demo's answer key must still compile with this toolchain. It is not
+# part of the `Slides` library: the live file is meant to be incomplete.
+demo:
+	lake env lean Demo/BinSearch.lean
 
 clean:
 	rm -rf _slides

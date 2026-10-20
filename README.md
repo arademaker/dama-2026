@@ -55,25 +55,32 @@ Sobre o tema da palestra, achamos a proposta muito interessante, principalmente 
 
 - O que é o Lean
 
+ - apresentação Joachim Breitner (Lean FRO)
+   https://github.com/nomeata/lean-highlights-tfp , live coding
+   mostrando Lean. Ver vídeo em `doc/` também.
+
+ - referencias sobre Lean (histórico, recursos, etc)
+   https://leodemoura.github.io/static/marktoberdorf2026/
+   
+ - A Brief History of Lean at https://lean-lang.org/fro/about/
+
 - por que lean?
 
  - https://openai.com/index/ten-advances-in-mathematics/
+   - https://cdn.openai.com/pdf/ten-proofs-oai.pdf
+   - https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf
+   
  - https://openai.com/index/navier-stokes-solution/
+   - https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf
+   - https://github.com/openai/NavierStokesAndEuler
+
  - https://terrytao.wordpress.com/2026/10/17/starting-a-new-journal/
  - https://xenaproject.wordpress.com/2026/10/16/how-to-formalize-all-of-mathematics/
-
-- lean momentum
-
  - https://www.quantabooks.org/books/the-proof-in-the-code/
- - A Brief History of Lean at https://lean-lang.org/fro/about/
- 
+
 - the mathlib library
 
  - https://leanprover-community.github.io/mathlib-overview.html
-
-- referencias sobre Lean (histórico, recursos etc)
-
- - https://leodemoura.github.io/static/marktoberdorf2026/ 
 
 - AI and Lean 
 
@@ -89,5 +96,4 @@ Sobre o tema da palestra, achamos a proposta muito interessante, principalmente 
  
  - exemplo de AI gerando código
    https://github.com/arademaker/lean-binsearch , mas não tem CSLib.
-   
    

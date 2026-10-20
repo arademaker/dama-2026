@@ -55,7 +55,7 @@ V SEEMAp, FGV EMAp | 21 de outubro de 2026
 - Na comunidade Lean desde março de 2015.
 
 :::notes
-0:00. Agradecer à comissão da SEEMAp e ao DAMA. Slide rápido: o fio é lógica
+Agradecer à comissão da SEEMAp e ao DAMA. Slide rápido: o fio é lógica
 e métodos formais, depois linguagem e representação de conhecimento, e agora
 de volta às provas, com o Lean.
 :::
@@ -67,12 +67,12 @@ de volta às provas, com o Lean.
 3. *O momentum*: de projeto de pesquisa a infraestrutura.
 4. *A Mathlib*: a biblioteca de matemática.
 5. *IA e Lean*: por que um verificador é o parceiro natural de um modelo.
-6. *A CSLib*: fazer pela computação o que a Mathlib fez pela matemática.
-7. *Como começar.*
+6. *Ao vivo*: um programa com provas, escrito aqui, no VS Code.
+7. *A CSLib*, e *como começar*.
 
 :::notes
-1:00. Avisar que todo bloco de código nos slides foi conferido pelo Lean
-quando o deck foi gerado: as saídas na tela foram calculadas pela máquina.
+Avisar que todo bloco de código nos slides foi conferido pelo Lean quando o
+deck foi gerado. Primeira metade em slides, segunda metade ao vivo.
 :::
 
 # Parte 1: O que é o Lean
@@ -106,12 +106,10 @@ Este slide e o do "jogo" são adaptados do deck FROCON 2026 de Leo de Moura ([@l
 :::
 
 :::notes
-2:15. Criado por Leonardo de Moura em 2013, na Microsoft Research; hoje
+Criado por Leonardo de Moura em 2013, na Microsoft Research; hoje
 mantido pela Lean FRO, uma organização sem fins lucrativos. Contagem de
 instalações: VS Code (184 mil) + Open VSX (141 mil), números do deck de Leo.
 :::
-
-{include 1 Slides.LeanBasics}
 
 {include 1 Slides.LeanGame}
 
@@ -130,7 +128,7 @@ O Lean separa *quem procura* a prova de *quem confere* a prova.
   — Leonardo de Moura, [_Why Lean?_](https://leodemoura.github.io/blog/2026-4-2-why-lean/) (abril de 2026)
 
 :::notes
-12:00. Este é o slide-chave para o resto da palestra: é por isso que faz
+Este é o slide-chave para o resto da palestra: é por isso que faz
 sentido deixar uma IA escrever provas. Há várias implementações
 independentes do kernel, e o Comparator, ferramenta da FRO, confere as provas
 em mais de uma delas.
@@ -143,7 +141,7 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 %%%
 
 :::notes
-13:00.
+7:00.
 :::
 
 # Só na última semana
@@ -159,7 +157,7 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
   Lean.
 
 :::notes
-13:15. Uma revista de matemática que exige prova verificada em Lean para
+Uma revista de matemática que exige prova verificada em Lean para
 aceitar um artigo. O post é de Shaoming Guo, convidado no blog do Tao. Os
 valores declarados: "Prioritizing understanding over being first" e
 "Ensuring rigor through formal verification". O post do Xena também diz que
@@ -187,23 +185,62 @@ all": formalizar bem é um ofício.
   * Lançamento do Tau Ceti
 *
   * ago
-  * OpenAI: [progresso em 10 problemas de pesquisa](https://openai.com/index/ten-advances-in-mathematics/),
-    com certificados em Lean; Anthropic: resultados sobre a função zeta de
-    Riemann, formalizados em Lean
+  * OpenAI: dez problemas em aberto, com certificados em Lean
 *
   * set
-  * Anthropic formaliza o Último Teorema de Fermat; OpenAI, Alpöge e
-    Buckmaster: [resultados sobre Navier–Stokes](https://openai.com/index/navier-stokes-solution/)
-    (problema do milênio) verificados em Lean
+  * Anthropic formaliza o Último Teorema de Fermat; OpenAI: Navier–Stokes,
+    com prova em Lean
 :::
 
 :::notes
-15:00. Linha do tempo da página da Lean FRO, "A Brief History of Lean"
+Linha do tempo da página da Lean FRO, "A Brief History of Lean"
 (lean-lang.org/fro/about). Segundo o post do Xena (16/10), a formalização de
 Fermat pelo Claude teve 13 milhões de linhas, escritas em 11 dias; Kevin
 Buzzard elogiou o resultado e segue com a sua própria formalização, de uma
 prova mais moderna. Também em setembro: o GPT-6 Astra ajudou a chegar a um
 limite de 186 para intervalos entre primos, com formalização em Lean.
+:::
+
+# Agosto: dez avanços
+
+[OpenAI, 1º de agosto](https://openai.com/index/ten-advances-in-mathematics/):
+dez resultados, cada um resolvendo ou avançando um problema em aberto.
+
+- Empacotamento de esferas em dimensão alta; códigos binários e esféricos.
+- Grupos não sóficos existem; a conjectura de rigidez de Connes é falsa.
+- Números de Ramsey multicolor (problema de Erdős 183).
+- Complexidade de circuitos aritméticos, repetição paralela quântica, …
+
+> Afterward, the model formalized each argument in a Lean certificate.
+
+:::notes
+Resultados de uma versão interna do Astra. Segundo o post, encontrar as
+soluções custaria cerca de US$ 2.000 em tokens. Os manuscritos foram
+preparados por pessoas, com o mesmo modelo, e o modelo depois formalizou cada
+argumento em Lean. Artigo: cdn.openai.com/pdf/ten-proofs-oai.pdf. O post cita
+a declaração de Leiden sobre IA e matemática e defende que a autoria reflita
+como o resultado foi produzido.
+:::
+
+# Setembro: Navier–Stokes
+
+[OpenAI, 8 de setembro](https://openai.com/index/navier-stokes-solution/): um
+fluido que parte do repouso, com uma força externa suave, desenvolve
+velocidade infinita em tempo finito, com energia finita.
+
+- Segundo a OpenAI, isso estabelece as alternativas (C) e (D) do enunciado
+  oficial do Problema do Milênio.
+- Cerca de *10.000 agentes* simultâneos; *88 horas* até a prova.
+- Formalização e verificação em Lean: mais *17 horas*.
+- Prova em Lean: [github.com/openai/NavierStokesAndEuler](https://github.com/openai/NavierStokesAndEuler).
+
+:::notes
+Formular com cuidado: "segundo a OpenAI". O post diz que não pretendem
+reivindicar o prêmio. O mesmo sistema resolveu antes o problema de Euler sem
+força externa. Em paralelo, Levent Alpöge (Anthropic) e Tristan Buckmaster
+(NYU) resolveram o problema de Euler com força externa; a OpenAI reconhece a
+prioridade deles nesse caso. O repositório explica como conferir as provas
+com o Comparator, de forma independente.
 :::
 
 # Por que isso importa
@@ -218,7 +255,7 @@ O gargalo deixa de ser *escrever* a prova e passa a ser *enunciar* o
 problema certo.
 
 :::notes
-18:00. Ligar com o slide "Em quem confiar?". Para quem faz matemática
+Ligar com o slide "Em quem confiar?". Para quem faz matemática
 aplicada: o enunciado continua sendo trabalho humano, e é onde mora o erro
 mais perigoso, o de provar a coisa errada.
 :::
@@ -230,7 +267,7 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 %%%
 
 :::notes
-20:00.
+17:00.
 :::
 
 # Uma breve história
@@ -263,7 +300,7 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 :::
 
 :::notes
-20:15. Fonte: "A Brief History of Lean", lean-lang.org/fro/about. A FRO é uma
+Fonte: "A Brief History of Lean", lean-lang.org/fro/about. A FRO é uma
 organização sem fins lucrativos sob a Convergent Research, fundada por
 Leonardo de Moura e Sebastian Ullrich. A página diz julho de 2023 para a
 fundação; o post "Why Lean?" diz agosto. Não citar o mês.
@@ -281,7 +318,7 @@ expressivos, uma grande biblioteca e um ecossistema programável: o Lean
 fevereiro de 2026).
 
 :::notes
-23:00. As três usaram Lean. Pushmeet Kohli (DeepMind) creditou a
+As três usaram Lean. Pushmeet Kohli (DeepMind) creditou a
 "extensibility and verification capabilities" do Lean. No mesmo post, sobre
 o uso de IA na própria FRO: "we cannot imagine building Lean without it".
 :::
@@ -297,7 +334,7 @@ Math and AI_](https://www.quantabooks.org/books/the-proof-in-the-code/)
   — Grant Sanderson (3Blue1Brown)
 
 :::notes
-24:30. O livro conta a história do Lean: concebido para conferir código, e
+O livro conta a história do Lean: concebido para conferir código, e
 adotado por um pequeno grupo de matemáticos que viu nele um "oráculo da
 verdade". Também traz a conversa entre Pushmeet Kohli e Leonardo de Moura que
 está na origem da CSLib.
@@ -310,7 +347,7 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 %%%
 
 :::notes
-25:30.
+21:00.
 :::
 
 # Mathlib: a biblioteca de matemática do Lean
@@ -328,7 +365,7 @@ Criada em julho de 2017, em Lean 3. Aberta e mantida pela comunidade. *Hoje*:
 :::
 
 :::notes
-25:45. Teoremas, linhas, classes e instâncias: deck FROCON 2026 de Leo.
+Teoremas, linhas, classes e instâncias: deck FROCON 2026 de Leo.
 Contribuidores e revisores: post do Xena (16/10/2026). A Mathlib recebeu o
 Prêmio Jean-Pierre Demailly 2026 de Ciência Aberta em Matemática. As extensões (táticas, linters,
 automação) foram escritas pela comunidade sem coordenação do time do Lean.
@@ -366,7 +403,7 @@ automação) foram escritas pela comunidade sem coordenação do time do Lean.
 [Visão geral da Mathlib](https://leanprover-community.github.io/mathlib-overview.html)
 
 :::notes
-27:00. Boa parte do currículo da graduação da EMAp está aqui. Vale mostrar a
+Boa parte do currículo da graduação da EMAp está aqui. Vale mostrar a
 página da visão geral ao vivo, se houver tempo.
 :::
 
@@ -379,7 +416,7 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 %%%
 
 :::notes
-33:00.
+26:00.
 :::
 
 # Um verificador é o parceiro natural de um modelo
@@ -396,7 +433,7 @@ Leituras: [_Proof Assistants in the Age of AI_](https://leodemoura.github.io/blo
 Comunidade: [FMxAI](https://fmxai.org), métodos formais × IA
 
 :::notes
-33:15. FMxAI é a série de encontros, só para convidados, organizada pela
+FMxAI é a série de encontros, só para convidados, organizada pela
 Atlas Computing, onde trabalhei no projeto Specification IDE: "Proof-grade
 software, at the speed of AI". A próxima edição é em Londres, em março de
 2027. Do segundo post: a proposta é usar as anotações humanas da Mathlib
@@ -418,7 +455,7 @@ Segundo o post do Xena (16/10), o Tau Ceti já é um pouco *maior que a
 Mathlib*.
 
 :::notes
-35:00. Exemplos que a página confere a cada build: teorema de Burnside,
+Exemplos que a página confere a cada build: teorema de Burnside,
 extensão de Carathéodory na fronteira, dualidade de Schur–Weyl. Pergunta para
 a plateia: o que muda no trabalho do matemático quando escrever a prova deixa
 de ser o gargalo?
@@ -449,7 +486,7 @@ biblioteca resolve.
 :::
 
 :::notes
-35:30. Este bloco é citado, não conferido pelo deck: o projeto usa outra versão
+Este bloco é citado, não conferido pelo deck: o projeto usa outra versão
 do Lean (v4.29.0). A recursão é bem fundada, na medida `hi + 1 - lo`. Pergunta
 para a plateia: o enunciado de completude precisa da hipótese `Sorted l`, e o
 de correção não. Por quê?
@@ -467,21 +504,79 @@ para toda entrada e todo nível. Cerca de 1.100 teoremas, nenhum `sorry`.
   com a mesma taxa de compressão.
 
 :::notes
-37:00. Fatos do README do lean-zip (set/2026): cerca de 32 mil linhas de
+Fatos do README do lean-zip (set/2026): cerca de 32 mil linhas de
 prova; no nível 6, uns 30% mais rápido que o `miniz_oxide` com a mesma taxa.
 Kim: a prova de correção "allows us to let AIs loose optimizing the code".
 Transição: para fazer isso com software em geral, falta vocabulário. É aí que
 entra a CSLib.
 :::
 
-# Parte 6: A CSLib
+# Parte 6: Ao vivo
+
+%%%
+backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
+%%%
+
+Vamos escrever juntos um programa em Lean, com provas, no VS Code.
+
+A ideia e o roteiro são do *live demo* de Joachim Breitner (Lean FRO):
+[github.com/nomeata/lean-highlights-tfp](https://github.com/nomeata/lean-highlights-tfp).
+
+:::notes
+35:00. Abrir o VS Code em `Demo/BinSearchLive.lean`; o roteiro está em
+`Demo/Roteiro.md` e o gabarito em `Demo/BinSearch.lean`. Fonte grande, painel
+do Lean (Infoview) aberto à direita. Se algo der errado, o apêndice tem os
+exemplos em slides.
+:::
+
+# Bingo
+
+Marque o que aparecer durante a demonstração:
+
+:::table +rowSeps
+*
+  * programação funcional básica (*basic functional programming*)
+  * estruturas (*structures*)
+*
+  * tipos dependentes (*dependent types*)
+  * avaliar código (*evaluating code*)
+*
+  * testes embutidos (*embedded tests*)
+  * notação própria (*custom notation*)
+*
+  * atualização imutável (*immutable updates*)
+  * recursão bem fundada (*well-founded recursion*)
+*
+  * terminação automática (*automatic termination checking*)
+  * parâmetros automáticos (*auto-params*)
+*
+  * automação com `grind` (*automation with `grind`*)
+  * inspecionar o estado do `grind` (*inspecting grind states*)
+*
+  * provas com táticas (*tactic proofs*)
+  * indução funcional (*functional induction*)
+*
+  * dicas embutidas no texto (*inlay hints*)
+  * sugestões clicáveis (*clickable hints*)
+:::
+
+:::attr («class» := "credits")
+Lista adaptada do "Lean Highlights Bingo" de Joachim Breitner ([@nomeata](https://github.com/nomeata)).
+:::
+
+:::notes
+A lista completa (33 itens) está em `Demo/Roteiro.md`, para imprimir. Pedir
+para a plateia gritar "bingo!" quando completar uma linha.
+:::
+
+# Parte 7: A CSLib
 
 %%%
 backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
 %%%
 
 :::notes
-38:30.
+70:00.
 :::
 
 # O que é a CSLib?
@@ -501,14 +596,10 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 [cslib.io](https://www.cslib.io/)
 
 :::notes
-38:45. Dirijo a CSLib Initiative na Renaissance Philanthropy, que apoia a
+Dirijo a CSLib Initiative na Renaissance Philanthropy, que apoia a
 biblioteca; a biblioteca em si é da comunidade. Mantenha curto: o exemplo a
 seguir explica melhor do que a lista.
 :::
-
-{include 1 Slides.WhereItStands}
-
-{include 1 Slides.Sorting}
 
 # CSLib no ensino
 
@@ -522,7 +613,7 @@ seguir explica melhor do que a lista.
   slides.
 
 :::notes
-58:00. O CSwL é feito aqui: quem está no curso já está usando Lean. Os três
+O CSwL é feito aqui: quem está no curso já está usando Lean. Os três
 projetos usam a CSLib e devolvem para ela o que é geral.
 :::
 
@@ -559,7 +650,7 @@ projetos construídos com, em volta de, e para a CSLib.
 :::
 
 :::notes
-59:00. É onde os projetos vivem antes de levar à CSLib o que for geral. Bons
+É onde os projetos vivem antes de levar à CSLib o que for geral. Bons
 pontos de partida para IC e TCC: cada um tem pedaços pequenos e bem
 delimitados.
 :::
@@ -580,7 +671,7 @@ backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 
 - *Contribuir*: Mathlib e CSLib aceitam PRs, e revisar também é contribuir.
 
 :::notes
-60:00. Para quem quer fazer IC ou TCC com Lean: me procurem. Passar o link do
+76:00. Para quem quer fazer IC ou TCC com Lean: me procurem. Passar o link do
 deck de novo.
 :::
 
@@ -599,5 +690,19 @@ FGV/EMAp · CSLib Initiative, Renaissance Philanthropy
 `alexandre.rademaker@renphil.org`
 
 :::notes
-62:00. Perguntas.
+80:00. Perguntas.
 :::
+
+# Apêndice
+
+%%%
+backgroundGradient := "linear-gradient(135deg, #CCAE8E 5%, #B8936F 40%, #A0704A 100%)"
+%%%
+
+Exemplos em slides, para o caso de a demonstração ao vivo falhar.
+
+{include 1 Slides.LeanBasics}
+
+{include 1 Slides.Sorting}
+
+{include 1 Slides.WhereItStands}

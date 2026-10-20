@@ -80,6 +80,10 @@ jobs:
       - name: Build the deck
         run: make slides
 
+      # The live demo's answer key, checked against the same toolchain.
+      - name: Check the demo
+        run: make demo
+
       - name: Save Lake cache
         if: success() && github.ref == 'refs/heads/main'
         uses: actions/cache/save@v5
