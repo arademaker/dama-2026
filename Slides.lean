@@ -50,7 +50,8 @@ V SEEMAp, FGV EMAp | 21 de outubro de 2026
 - *Mestrado* (UFF, 2005): métodos formais, lógica de reescrita em
   [Maude](https://maude.cs.illinois.edu).
 - *Doutorado* (PUC-Rio, 2010): teoria da prova para lógicas de descrição.
-  Estágios no [SRI](https://www.sri.com) (PVS) e na [Microsoft Research](https://www.microsoft.com/en-us/research/),
+  Estágios no [SRI](https://www.sri.com) (PVS) e na
+  [Microsoft Research](https://www.microsoft.com/en-us/research/),
   com a equipe do [Z3](https://github.com/Z3Prover/z3).
 - *IBM Research Brasil* (2012–2025): PLN, semântica computacional, ontologias.
 - Na comunidade Lean desde março de 2015; hoje também sou diretor da CSLib

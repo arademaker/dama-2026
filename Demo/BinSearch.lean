@@ -2,16 +2,16 @@
 # Busca binária ao vivo: o gabarito
 
 Adaptado do live demo "Lean Highlights" de Joachim Breitner (Lean FRO):
-https://github.com/nomeata/lean-highlights-tfp (`Highlights/03_BinSearch.lean`).
-A ideia, o exemplo e a sequência da demonstração são dele.
+https://github.com/nomeata/lean-highlights-tfp. A ideia, o exemplo e a sequência
+da demonstração são dele.
 
-Este arquivo é o ponto de chegada do roteiro em `ROTEIRO.md`, na
-ordem em que Joachim escreve o código ao vivo. Difere um pouco da versão
-final do repositório dele: lá, `go` só tem o parâmetro `hj`, calcula `mid`
-antes do caso base e grava em `mid`.
+Este arquivo é o ponto de chegada do roteiro em `ROTEIRO.md`, na ordem em que
+Joachim escreve o código ao vivo. Difere da versão final do repositório dele:
+lá, `go` só tem o parâmetro `hj`, calcula `mid` antes do caso base e grava em
+`mid`.
 
-Rede de segurança: se o arquivo ao vivo (`Demo/BinSearchLive.lean`) se
-perder, abrir este. Conferido com o toolchain deste projeto por `make demo`.
+Rede de segurança: se o arquivo ao vivo (`Demo/BinSearchLive.lean`) se perder,
+abrir este. Conferido com o toolchain deste projeto por `make demo`.
 -/
 
 -- Etapa 1: a estrutura. `hSize` só aparece na etapa 6.
@@ -51,11 +51,17 @@ def testMap : Map Nat where
   values := #[1,3,5,7]
   hSize := rfl
 
-/-- info: { keys := #[1, 3, 5, 7], values := #[1, 42, 5, 7], hSize := _ } -/
+#eval testMap
+
+/--
+info: { keys := #[1, 3, 5, 7], values := #[1, 42, 5, 7], hSize := _ }
+-/
 #guard_msgs in
 #eval testMap.update 3 42
 
-/-- info: { keys := #[1, 3, 5, 7], values := #[1, 3, 5, 7], hSize := _ } -/
+/--
+info: { keys := #[1, 3, 5, 7], values := #[1, 3, 5, 7], hSize := _ }
+-/
 #guard_msgs in
 #eval testMap.update 4 42
 
@@ -69,14 +75,16 @@ theorem Map.update_eq_self (m : Map β) (h : k ∉ m.keys) :
     m.update k v = m :=
   Map.update_go_eq_self m h ..
 
--- Extra, se sobrar tempo (está na versão final do repositório de Joachim).
+-- Extra: notação
 notation:max m "[" k " := " v "]" => Map.update k v m
 
-/-- info: { keys := #[1, 3, 5, 7], values := #[1, 3, 5, 7], hSize := _ } -/
+/--
+info: { keys := #[1, 3, 5, 7], values := #[1, 3, 5, 7], hSize := _ }
+-/
 #guard_msgs in
 #eval testMap[0 := 42]
 
--- Extra, se sobrar tempo: notação `do` (também da versão final de Joachim).
+-- Extra: notação `do`
 def Map.sumKeysUntil (p : β → Bool) (m : Map β) : Nat := Id.run do
   let mut s := 0
   for k in m.keys, v in m.values do
